@@ -135,6 +135,11 @@
         "button_link": ""
       }
     },
+    "custom_glowing_GMpGRW": {
+      "type": "custom-glowing",
+      "name": "NextShine Ingredients",
+      "settings": {}
+    },
     "custom_features_3hwnE3": {
       "type": "custom-features",
       "blocks": {
@@ -176,10 +181,56 @@
       "name": "Nextshine Features",
       "settings": {}
     },
-    "custom_glowing_GMpGRW": {
-      "type": "custom-glowing",
-      "name": "NextShine Ingredients",
-      "settings": {}
+    "customer_blog_cards_Nkxaif": {
+      "type": "customer-blog-cards",
+      "blocks": {
+        "card_U9K3i7": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/How_to_Wash_your_car_right_way.png",
+            "tag": "GUIDES",
+            "title": "How to Wash Your Car the Right Way",
+            "link": "shopify://pages/how-to-wash-your-car-right-way"
+          }
+        },
+        "card_nEDwj6": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/5_tips_for_a_cleanner_car_interior.png",
+            "tag": "INTERIOR",
+            "title": "5 Tips for a Cleaner Car Interior",
+            "link": "shopify://pages/5-tips-for-a-cleaner-car-interior"
+          }
+        },
+        "card_WUU7xP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/tools_every_car_love.png",
+            "tag": "DETAILING",
+            "title": "Tools Every Car Lover Should Have",
+            "link": "shopify://pages/tools-every-car-lover-should-have"
+          }
+        },
+        "card_TTqYGG": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/how_to_protect_your_wheel.png",
+            "tag": "MAINTENANCE",
+            "title": "How to Protect Your Car Paint",
+            "link": "shopify://pages/how-to-protect-your-car-paint"
+          }
+        }
+      },
+      "block_order": [
+        "card_U9K3i7",
+        "card_nEDwj6",
+        "card_WUU7xP",
+        "card_TTqYGG"
+      ],
+      "name": "Customer Blog Cards",
+      "settings": {
+        "heading": "WHAT OUR CUSTOMERS SAY"
+      }
     }
   },
   "order": [
@@ -187,6 +238,7 @@
     "custom_shop_by_category_cards_Up84T6",
     "custom_why_choose_us_XbzCan",
     "custom_glowing_GMpGRW",
-    "custom_features_3hwnE3"
+    "custom_features_3hwnE3",
+    "customer_blog_cards_Nkxaif"
   ]
 }
