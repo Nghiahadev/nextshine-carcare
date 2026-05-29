@@ -1,0 +1,300 @@
+<section class="why-choose">
+  <div class="why-choose__container">
+
+    <div class="why-left">
+      <h2>{{ section.settings.heading }}</h2>
+
+      <p>
+        {{ section.settings.description }}
+      </p>
+
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn5">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="why-right">
+
+      {% for block in section.blocks %}
+        <div class="why-item" {{ block.shopify_attributes }}>
+
+          {% if block.settings.icon != blank %}
+            <img
+              src="{{ block.settings.icon | image_url: width: 100 }}"
+              alt=""
+              class="why-icon"
+            >
+          {% endif %}
+
+          <h3>{{ block.settings.title }}</h3>
+
+          <p>
+            {{ block.settings.text }}
+          </p>
+
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+.why-choose{
+  background:
+    linear-gradient(
+      90deg,
+      #071b08 0%,
+      #0b2d0d 35%,
+      #0f3f12 70%,
+      #071b08 100%
+    );
+  padding:70px 5%;
+  overflow:hidden;
+}
+
+.why-choose__container{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:350px 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.why-left{
+  padding-right:30px;
+  border-right:1px solid rgba(125,255,90,.25);
+}
+
+.why-left h2{
+  color:#fff;
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:20px;
+  text-transform:uppercase;
+  font-weight:800;
+}
+
+.why-left h2 strong{
+  color:#84ff2f;
+}
+
+.why-left p{
+  color:#d5d5d5;
+  font-size:16px;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+.why-right{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.why-item{
+  text-align:center;
+  padding:0 25px;
+  position:relative;
+}
+
+.why-item:not(:last-child){
+  border-right:1px solid rgba(125,255,90,.18);
+}
+
+.why-icon{
+  width:55px;
+  height:55px;
+  object-fit:contain;
+  margin-bottom:18px;
+  filter:brightness(0) invert(1);
+}
+
+.why-item h3{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.why-item p{
+  color:#d0d0d0;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.btn5 {
+  --color: #84ff2f;
+
+  padding: 0.8em 1.7em;
+  background-color: transparent;
+  border-radius: 0.3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  text-decoration:none;
+  display:inline-block;
+
+  color: var(--color);
+  border-color: var(--color);
+  z-index: 1;
+}
+
+.btn5::before,
+.btn5::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.btn5::before {
+  top: -1em;
+  left: -1em;
+}
+
+.btn5::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.btn5:hover::before,
+.btn5:hover::after {
+  width: 420px;
+  height: 420px;
+}
+
+.btn5:hover {
+  color: #071b08;
+}
+
+.btn5:active {
+  transform: scale(.96);
+}
+
+@media(max-width:991px){
+
+  .why-choose__container{
+    grid-template-columns:1fr;
+  }
+
+  .why-left{
+    border-right:none;
+    padding-right:0;
+    text-align:center;
+  }
+
+  .why-right{
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+  }
+
+  .why-item{
+    border:none !important;
+    padding:0;
+  }
+
+}
+
+@media(max-width:576px){
+
+  .why-left h2{
+    font-size:32px;
+  }
+
+  .why-right{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+{% schema %}
+{
+  "name":"Why Choose Us",
+  "settings":[
+    {
+      "type":"text",
+      "id":"heading",
+      "label":"Heading",
+      "default":"WHY CHOOSE NEXTSHINE CAR CARE?"
+    },
+    {
+      "type":"textarea",
+      "id":"description",
+      "label":"Description"
+    },
+    {
+      "type":"text",
+      "id":"button_text",
+      "label":"Button Text",
+      "default":"Learn More"
+    },
+    {
+      "type":"url",
+      "id":"button_link",
+      "label":"Button Link"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"feature",
+      "name":"Feature",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"icon",
+          "label":"Icon"
+        },
+        {
+          "type":"text",
+          "id":"title",
+          "label":"Title"
+        },
+        {
+          "type":"textarea",
+          "id":"text",
+          "label":"Description"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name":"Why Choose Us",
+      "blocks":[
+        {
+          "type":"feature"
+        },
+        {
+          "type":"feature"
+        },
+        {
+          "type":"feature"
+        },
+        {
+          "type":"feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
