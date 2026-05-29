@@ -1,0 +1,270 @@
+<section class="ns-stack-area">
+  {% for block in section.blocks %}
+    <article class="ns-card">
+      <div class="ns-card-content">
+        <span class="ns-card-num">{{ block.settings.label }}</span>
+        <h2>{{ block.settings.title }}</h2>
+        <p>{{ block.settings.text }}</p>
+      </div>
+
+      <div class="ns-card-img">
+        {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | image_url: width: 900 }}" alt="{{ block.settings.title }}">
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</section>
+
+<style>
+:root {
+  --ns-bg: #ffffff;
+  --ns-card-bg: #111111;
+  --ns-accent: #77bd1f;
+  --ns-text: #ffffff;
+}
+
+.ns-stack-area {
+  background: var(--ns-bg);
+  padding: 80px 20px 140px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ns-card {
+  height: 400px;
+  position: sticky;
+  top: 14vh;
+  background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+  transform-origin: center top;
+  transition: transform .3s ease-out, filter .3s ease-out;
+  will-change: transform;
+}
+
+.ns-card:nth-child(2) {
+  background: linear-gradient(145deg, #202020, #101010);
+}
+
+.ns-card:nth-child(3) {
+  background: linear-gradient(145deg, #292929, #151515);
+}
+
+.ns-card:nth-child(4) {
+  background: linear-gradient(145deg, #333333, #1a1a1a);
+}
+
+.ns-card-content {
+  flex: 1;
+  padding-right: 40px;
+  z-index: 2;
+}
+
+.ns-card-num {
+  font-size: 14px;
+  color: var(--ns-accent);
+  margin-bottom: 20px;
+  display: block;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.ns-card h2 {
+  color: var(--ns-text);
+  font-size: 46px;
+  line-height: 1;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.ns-card p {
+  color: #cfcfcf;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 460px;
+  margin: 0;
+}
+
+.ns-card-img {
+  flex: 1;
+  height: 100%;
+  background: #000;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ns-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .86;
+  transition: transform .6s ease, opacity .6s ease;
+}
+
+.ns-card:hover .ns-card-img img {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .ns-stack-area {
+    padding: 50px 15px 100px;
+  }
+
+  .ns-card {
+    flex-direction: column;
+    height: auto;
+    min-height: 620px;
+    padding: 24px;
+    top: 9vh;
+    margin-bottom: 6vh;
+  }
+
+  .ns-card-content {
+    padding-right: 0;
+    margin-bottom: 24px;
+  }
+
+  .ns-card h2 {
+    font-size: 34px;
+  }
+
+  .ns-card p {
+    font-size: 15px;
+  }
+
+  .ns-card-img {
+    height: 260px;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".ns-card");
+
+  window.addEventListener("scroll", () => {
+    const viewportHeight = window.innerHeight;
+    const isMobile = window.innerWidth <= 768;
+    const stickyTopOffset = isMobile ? viewportHeight * 0.09 : viewportHeight * 0.14;
+
+    cards.forEach((card, index) => {
+      const nextCard = cards[index + 1];
+
+      if (nextCard) {
+        const nextRect = nextCard.getBoundingClientRect();
+        const distance = nextRect.top - stickyTopOffset;
+
+        if (distance < viewportHeight && distance > 0) {
+          const maxShrink = isMobile ? 0.96 : 0.9;
+          const factor = (1 - maxShrink) / viewportHeight;
+          const scale = 1 - ((viewportHeight - distance) * factor);
+          const finalScale = Math.max(maxShrink, Math.min(1, scale));
+          const brightness = Math.max(0.65, Math.min(1, scale));
+
+          card.style.transform = `scale(${finalScale})`;
+          card.style.filter = `brightness(${brightness})`;
+        } else if (distance <= 0) {
+          const maxShrink = isMobile ? 0.96 : 0.9;
+          card.style.transform = `scale(${maxShrink})`;
+          card.style.filter = `brightness(0.65)`;
+        } else {
+          card.style.transform = `scale(1)`;
+          card.style.filter = `brightness(1)`;
+        }
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "NextShine Brand Stack",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Brand Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Small Label",
+          "default": "01. MISSION"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Main Title",
+          "default": "Mission"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Our mission is to make car care simple, powerful, and enjoyable for every driver. NextShine creates premium cleaning products that help protect, refresh, and bring out the best shine in every vehicle."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NextShine Brand Stack",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "label": "01. MISSION",
+            "title": "Mission",
+            "text": "Our mission is to make car care simple, powerful, and enjoyable for every driver. NextShine creates premium cleaning products that help protect, refresh, and bring out the best shine in every vehicle."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "label": "02. VISION",
+            "title": "Vision",
+            "text": "Our vision is to become a trusted car care brand for people who want their vehicle to look clean, protected, and showroom-ready without complicated steps."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "label": "03. STORY",
+            "title": "Story",
+            "text": "NextShine was built from a love for clean cars and better detailing products. We wanted products that look professional, work effectively, and feel easy enough for anyone to use at home."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "label": "04. PROMISE",
+            "title": "Promise",
+            "text": "We are committed to safe formulas, modern design, and reliable results. Every product is made to help customers clean smarter, protect longer, and drive with confidence."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
