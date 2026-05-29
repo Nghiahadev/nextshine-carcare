@@ -166,42 +166,37 @@
   </div>
 </div>
 <style>
-
-/* =========================
-   DESKTOP
-========================= */
+/* DESKTOP: show Image 1 only, normal full banner */
 @media screen and (min-width: 750px) {
-
-  /* Show desktop image */
   #Banner-{{ section.id }} .banner__media:first-of-type {
     display: block !important;
+    width: 100% !important;
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
   }
 
-  /* Hide mobile image */
   #Banner-{{ section.id }} .banner__media:nth-of-type(2) {
     display: none !important;
   }
 
-  /* Normal Dawn desktop behavior */
   #Banner-{{ section.id }} .banner__media img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
   }
+
+  #Banner-{{ section.id }} .banner__media-half {
+    width: 100% !important;
+  }
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE: show Image 2 only, no crop */
 @media screen and (max-width: 749px) {
-
-  /* Hide desktop image */
   #Banner-{{ section.id }} .banner__media:first-of-type {
     display: none !important;
   }
 
-  /* Show mobile image */
   #Banner-{{ section.id }} .banner__media:nth-of-type(2) {
     display: block !important;
     width: 100% !important;
@@ -210,7 +205,6 @@
     min-height: auto !important;
   }
 
-  /* Remove Dawn banner height */
   #Banner-{{ section.id }} {
     min-height: auto !important;
     height: auto !important;
@@ -223,33 +217,22 @@
     content: none !important;
   }
 
-  #Banner-{{ section.id }} .banner__media {
-    text-align: center !important;
-    background: transparent !important;
-    overflow: visible !important;
-  }
-
-  /* Make image smaller */
   #Banner-{{ section.id }} .banner__media img {
-    width: 80% !important;
+    position: relative !important;
+    width: 100% !important;
     height: auto !important;
     object-fit: contain !important;
-    margin: 0 auto !important;
     display: block !important;
-    position: relative !important;
   }
 
-  /* Hide content since text is inside image */
   #Banner-{{ section.id }} .banner__content {
     display: none !important;
   }
 
-  /* Prevent stacked images */
   #Banner-{{ section.id }}.banner--stacked {
     display: block !important;
   }
 }
-
 </style>
 {% schema %}
 {
