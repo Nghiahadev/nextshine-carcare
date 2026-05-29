@@ -1,0 +1,170 @@
+<section class="nextshine-features">
+  <div class="page-width">
+    <div class="nextshine-features-grid">
+
+      {% for block in section.blocks %}
+        <div class="nextshine-feature" {{ block.shopify_attributes }}>
+
+          {% if block.settings.icon != blank %}
+            <div class="nextshine-feature-icon">
+              {{
+                block.settings.icon
+                | image_url: width: 120
+                | image_tag:
+                  loading: 'lazy',
+                  alt: block.settings.heading
+              }}
+            </div>
+          {% endif %}
+
+          <div class="nextshine-feature-content">
+            <h3>{{ block.settings.heading }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+.nextshine-features{
+  background:#fff;
+  padding:20px 0;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+}
+
+.nextshine-features-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.nextshine-feature{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:0 25px;
+  border-right:1px solid #e5e5e5;
+}
+
+.nextshine-feature:last-child{
+  border-right:none;
+}
+
+.nextshine-feature-icon{
+  flex-shrink:0;
+}
+
+.nextshine-feature-icon img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  display:block;
+}
+
+.nextshine-feature-content h3{
+  margin:0;
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  color:#111;
+  line-height:1.2;
+}
+
+.nextshine-feature-content p{
+  margin:4px 0 0;
+  font-size:12px;
+  color:#666;
+  line-height:1.4;
+}
+
+@media screen and (max-width: 989px){
+
+  .nextshine-features-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:20px 0;
+  }
+
+  .nextshine-feature{
+    border-right:none;
+    justify-content:flex-start;
+  }
+}
+
+@media screen and (max-width: 749px){
+
+  .nextshine-features{
+    padding:15px 0;
+  }
+
+  .nextshine-features-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .nextshine-feature{
+    justify-content:flex-start;
+    padding:0;
+  }
+
+  .nextshine-feature-icon img{
+    width:36px;
+    height:36px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Nextshine Features",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "FAST SHIPPING"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Quick & Reliable Delivery"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nextshine Features",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
