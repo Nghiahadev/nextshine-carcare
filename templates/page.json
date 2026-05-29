@@ -16,6 +16,37 @@
         "padding_bottom": 28
       }
     },
+    "custom_timeline_NKR9rb": {
+      "type": "custom-timeline",
+      "blocks": {
+        "timeline_jBnWbK": {
+          "type": "timeline",
+          "settings": {
+            "year": "2026",
+            "title": "Brand Launch",
+            "text": "NextShine launches with premium car care products focused on clean shine, safe formulas, and easy detailing at home.",
+            "image": "shopify://shop_images/Tools_Accessories.png"
+          }
+        },
+        "timeline_NWfaJH": {
+          "type": "timeline",
+          "settings": {
+            "year": "2027",
+            "title": "Grow Product Line",
+            "text": "NextShine expands into ceramic boosters, UV protectants, wheel care, interior cleaners, and complete detailing bundles.",
+            "image": "shopify://shop_images/tools_every_car_love.png"
+          }
+        }
+      },
+      "block_order": [
+        "timeline_jBnWbK",
+        "timeline_NWfaJH"
+      ],
+      "name": "NextShine Timeline",
+      "settings": {
+        "heading": "NextShine Roadmap"
+      }
+    },
     "custom_faq_aMD4wf": {
       "type": "custom-faq",
       "blocks": {
@@ -57,6 +88,7 @@
   },
   "order": [
     "main",
+    "custom_timeline_NKR9rb",
     "custom_faq_aMD4wf"
   ]
 }
