@@ -134,11 +134,53 @@
         "button_text": "Learn More",
         "button_link": ""
       }
+    },
+    "custom_features_3hwnE3": {
+      "type": "custom-features",
+      "blocks": {
+        "feature_GPfLAR": {
+          "type": "feature",
+          "settings": {
+            "heading": "FAST SHIPPING",
+            "text": "Quick & Reliable Delivery"
+          }
+        },
+        "feature_PaK6tb": {
+          "type": "feature",
+          "settings": {
+            "heading": "FAST SHIPPING",
+            "text": "Quick & Reliable Delivery"
+          }
+        },
+        "feature_7BYLF9": {
+          "type": "feature",
+          "settings": {
+            "heading": "FAST SHIPPING",
+            "text": "Quick & Reliable Delivery"
+          }
+        },
+        "feature_DP4Hkb": {
+          "type": "feature",
+          "settings": {
+            "heading": "FAST SHIPPING",
+            "text": "Quick & Reliable Delivery"
+          }
+        }
+      },
+      "block_order": [
+        "feature_GPfLAR",
+        "feature_PaK6tb",
+        "feature_7BYLF9",
+        "feature_DP4Hkb"
+      ],
+      "name": "Nextshine Features",
+      "settings": {}
     }
   },
   "order": [
     "custom_banner_J6YdFf",
     "custom_shop_by_category_cards_Up84T6",
-    "custom_why_choose_us_XbzCan"
+    "custom_why_choose_us_XbzCan",
+    "custom_features_3hwnE3"
   ]
 }
