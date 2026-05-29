@@ -19,6 +19,14 @@
     "custom_faq_aMD4wf": {
       "type": "custom-faq",
       "blocks": {
+        "faq_M6wi3b": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/How_to_Wash_your_car_right_way.png",
+            "question": "Do you offer international shipping",
+            "answer": "Yes! Our products are pH balanced and safe for paint, plastic, rubber, glass, and other exterior and interior surfaces."
+          }
+        },
         "faq_k93a9k": {
           "type": "faq",
           "settings": {
@@ -31,23 +39,15 @@
           "type": "faq",
           "settings": {
             "faq_image": "shopify://shop_images/interior_care.png",
-            "question": "Are your products safe for all car surfaces?",
-            "answer": "Yes! Our products are pH balanced and safe for paint, plastic, rubber, glass, and other exterior and interior surfaces."
-          }
-        },
-        "faq_M6wi3b": {
-          "type": "faq",
-          "settings": {
-            "faq_image": "shopify://shop_images/How_to_Wash_your_car_right_way.png",
-            "question": "Are your products safe for all car surfaces?",
+            "question": "How often should i use NextShine products",
             "answer": "Yes! Our products are pH balanced and safe for paint, plastic, rubber, glass, and other exterior and interior surfaces."
           }
         }
       },
       "block_order": [
+        "faq_M6wi3b",
         "faq_k93a9k",
-        "faq_yMEmHD",
-        "faq_M6wi3b"
+        "faq_yMEmHD"
       ],
       "name": "FAQ Image Accordion",
       "settings": {
