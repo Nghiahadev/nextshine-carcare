@@ -1,0 +1,228 @@
+<section class="nx-blog-section">
+  <div class="nx-blog-container">
+    <h2>{{ section.settings.heading }}</h2>
+
+    <div class="nx-blog-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="nx-blog-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.title | escape }}">
+          {% endif %}
+
+          <div class="nx-blog-overlay"></div>
+
+          <div class="nx-blog-content">
+            <span>{{ block.settings.tag }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p>Read More →</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.nx-blog-section {
+  background: #050706;
+  padding: 10px 20px 18px;
+  color: #fff;
+}
+
+.nx-blog-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.nx-blog-container h2 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.nx-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.nx-blog-card {
+  position: relative;
+  height: 190px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.14);
+  background: #111;
+}
+
+.nx-blog-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .45s ease;
+}
+
+.nx-blog-card:hover img {
+  transform: scale(1.08);
+}
+
+.nx-blog-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.85) 0%,
+    rgba(0,0,0,.55) 45%,
+    rgba(0,0,0,.25) 100%
+  );
+}
+
+.nx-blog-content {
+  position: absolute;
+  left: 18px;
+  right: 14px;
+  bottom: 16px;
+  z-index: 2;
+}
+
+.nx-blog-content span {
+  display: inline-block;
+  background: #7ed321;
+  color: #071006;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 4px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.nx-blog-content h3 {
+  font-size: 17px;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  color: #fff;
+  font-weight: 800;
+  max-width: 240px;
+}
+
+.nx-blog-content p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+@media (max-width: 990px) {
+  .nx-blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nx-blog-card {
+    height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nx-blog-section {
+    padding: 16px 14px;
+  }
+
+  .nx-blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nx-blog-card {
+    height: 210px;
+  }
+
+  .nx-blog-container h2 {
+    font-size: 18px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Customer Blog Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT OUR CUSTOMERS SAY"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Blog Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Green tag",
+          "default": "DETAILING"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Tools Every Car Lover Should Have"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Blog Cards",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "tag": "GUIDES",
+            "title": "How to Wash Your Car the Right Way"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tag": "INTERIOR",
+            "title": "5 Tips for a Cleaner Car Interior"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tag": "DETAILING",
+            "title": "Tools Every Car Lover Should Have"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tag": "MAINTENANCE",
+            "title": "How to Protect Your Car Paint"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
