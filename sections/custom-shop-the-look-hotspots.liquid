@@ -120,40 +120,58 @@
 
 .stl-hotspot {
   position: absolute;
-  width: 34px;
-  height: 34px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  border: 8px solid rgba(255,255,255,.9);
+  border: none;
   background: #fff;
   cursor: pointer;
   transform: translate(-50%, -50%);
-  box-shadow: 0 4px 20px rgba(0,0,0,.25);
-  transition: .25s ease;
+  transition: all .3s ease;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 0 6px rgba(255,255,255,.25),
+    0 4px 20px rgba(0,0,0,.25);
+}
+
+.stl-hotspot::before {
+  content: "+";
+  color: #111;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .stl-hotspot::after {
   content: "";
   position: absolute;
-  inset: -16px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  background: rgba(255,255,255,.25);
-  animation: stlPulse 1.8s infinite;
+  border: 2px solid rgba(255,255,255,.7);
+
+  animation: hotspotPulse 2s infinite;
 }
 
-.stl-hotspot:hover,
-.stl-hotspot.active {
-  transform: translate(-50%, -50%) scale(1.15);
-}
-
-@keyframes stlPulse {
+@keyframes hotspotPulse {
   0% {
-    transform: scale(.7);
-    opacity: .7;
+    transform: scale(1);
+    opacity: .8;
   }
+
   100% {
-    transform: scale(1.4);
+    transform: scale(2.2);
     opacity: 0;
   }
+}
+
+.stl-hotspot:hover {
+  transform: translate(-50%, -50%) scale(1.15);
 }
 
 @media (max-width: 900px) {
