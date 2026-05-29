@@ -7,46 +7,39 @@
         NEXTSHINE CAR CARE?
       </h2>
 
-      <p>
-        We combine advanced formulas with premium tools to deliver unmatched results and make car care simple, effective, and satisfying.
-      </p>
+      <p>{{ section.settings.description }}</p>
 
-      <a href="/collections/all" class="btn5">Learn More</a>
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn5">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
     </div>
 
     <div class="why-right">
+      {% for block in section.blocks %}
+        <div class="why-item" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}
+            <img
+              src="{{ block.settings.icon | image_url: width: 120 }}"
+              alt=""
+              class="why-icon"
+              loading="lazy"
+            >
+          {% endif %}
 
-      <div class="why-item">
-        <div class="why-icon-box">⚙️</div>
-        <h3>Advanced Formulas</h3>
-        <p>High performance ingredients for superior cleaning.</p>
-      </div>
-
-      <div class="why-item">
-        <div class="why-icon-box">🛡️</div>
-        <h3>Safe On Surfaces</h3>
-        <p>Gentle but powerful products for interior and exterior care.</p>
-      </div>
-
-      <div class="why-item">
-        <div class="why-icon-box">✨</div>
-        <h3>Easy To Use</h3>
-        <p>Simple application for beginners and car enthusiasts.</p>
-      </div>
-
-      <div class="why-item">
-        <div class="why-icon-box">🚗</div>
-        <h3>Premium Results</h3>
-        <p>Designed to make every vehicle look clean, glossy, and fresh.</p>
-      </div>
-
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
     </div>
+
   </div>
 </section>
 
 <style>
 .why-choose {
-  background: linear-gradient(90deg, #031103 0%, #072207 30%, #0c330c 60%, #031103 100%);
+  background: linear-gradient(90deg, #031103 0%, #072207 35%, #0c330c 70%, #031103 100%);
   padding: 70px 5%;
   overflow: hidden;
 }
@@ -62,7 +55,7 @@
 
 .why-left {
   padding-right: 35px;
-  border-right: 1px solid rgba(181, 211, 52, 0.25);
+  border-right: 1px solid rgba(181, 211, 52, 0.3);
 }
 
 .why-left h2 {
@@ -70,9 +63,8 @@
   color: #ffffff;
   font-size: 42px;
   line-height: 1.15;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .why-highlight {
@@ -97,18 +89,20 @@
 }
 
 .why-item:not(:last-child) {
-  border-right: 1px solid rgba(181, 211, 52, 0.15);
+  border-right: 1px solid rgba(181, 211, 52, 0.18);
 }
 
-.why-icon-box {
-  font-size: 42px;
+.why-icon {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
   margin-bottom: 18px;
 }
 
 .why-item h3 {
   color: #ffffff;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
@@ -120,15 +114,15 @@
 }
 
 .btn5 {
-  --color: #8DFF3F;
+  --color: #B5D334;
   padding: 0.85em 1.8em;
-  background-color: transparent;
+  background: transparent;
   border-radius: 4px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   transition: 0.5s;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 15px;
   border: 1px solid var(--color);
   text-transform: uppercase;
@@ -145,7 +139,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--color);
+  background: var(--color);
   z-index: -1;
   transition: 1s ease;
 }
@@ -168,9 +162,7 @@
 
 .btn5:hover {
   color: #031103;
-  box-shadow:
-    0 0 15px rgba(141, 255, 63, 0.4),
-    0 0 30px rgba(141, 255, 63, 0.25);
+  box-shadow: 0 0 18px rgba(181, 211, 52, 0.45);
 }
 
 .btn5:active {
@@ -209,6 +201,7 @@
   }
 }
 </style>
+
 {% schema %}
 {
   "name": "Why Choose Us",
@@ -217,7 +210,7 @@
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "We combine advanced formulas with premium tools to deliver unmatched results."
+      "default": "We combine advanced formulas with premium tools to deliver unmatched results and make car care simple, effective, and satisfying."
     },
     {
       "type": "text",
@@ -260,18 +253,10 @@
     {
       "name": "Why Choose Us",
       "blocks": [
-        {
-          "type": "feature"
-        },
-        {
-          "type": "feature"
-        },
-        {
-          "type": "feature"
-        },
-        {
-          "type": "feature"
-        }
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" }
       ]
     }
   ]
