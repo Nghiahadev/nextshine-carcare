@@ -141,6 +141,7 @@
         "feature_PePKV8": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/UV_protectants-removebg-preview.png",
             "title": "PERFECTLY MATCHED PRODUCTS",
             "text": "Curated combinations for the best results."
           }
@@ -344,12 +345,66 @@
       ],
       "name": "Nextshine Features",
       "settings": {}
+    },
+    "custom_best_sellers_grid_MhpwnD": {
+      "type": "custom-best-sellers-grid",
+      "blocks": {
+        "product_hRBM8m": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_VmbY79": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_yiewni": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_zVcG4r": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_LwH8t4": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        }
+      },
+      "block_order": [
+        "product_hRBM8m",
+        "product_VmbY79",
+        "product_yiewni",
+        "product_zVcG4r",
+        "product_LwH8t4"
+      ],
+      "name": "Best Sellers Grid",
+      "settings": {
+        "heading": "BEST SELLERS",
+        "button_label": "VIEW ALL PRODUCTS",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "custom_banner_J6YdFf",
     "custom_shop_by_category_cards_Up84T6",
     "custom_why_choose_us_XbzCan",
+    "custom_best_sellers_grid_MhpwnD",
     "custom_build_bundle_JDwfqc",
     "custom_car_care_steps_xgDUhK",
     "custom_shop_the_look_hotspots_BWtq9i",
