@@ -51,6 +51,12 @@
 </section>
 
 <style>
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .nx-best-sellers {
   background:
     radial-gradient(circle at center, rgba(126,211,33,.12), transparent 36%),
@@ -177,24 +183,86 @@
 }
 
 .nx-view-all {
+  position: relative;
+  overflow: hidden;
+
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  min-width: 260px;
   justify-content: center;
+  gap: 14px;
+
+  min-width: 260px;
+  padding: 13px 26px;
+
   color: #fff;
   text-decoration: none;
-  border: 1px solid #4fb000;
-  border-radius: 4px;
-  padding: 13px 26px;
+
   font-size: 13px;
   font-weight: 900;
   text-transform: uppercase;
+
+  border-radius: 6px;
+  background: #061206;
+
+  z-index: 1;
   transition: .3s ease;
+
+  box-shadow:
+    0 0 0 1px rgba(126,211,33,.08),
+    0 8px 20px rgba(0,0,0,.25);
+}
+
+.nx-view-all::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+
+  background:
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0deg,
+      transparent 260deg,
+      rgba(126,211,33,.15) 290deg,
+      #7ed321 320deg,
+      rgba(126,211,33,.15) 350deg,
+      transparent 360deg
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  animation: borderRotate 4s linear infinite;
+  pointer-events: none;
 }
 
 .nx-view-all:hover {
-  background: #4fb000;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 15px rgba(126,211,33,.25);
+}
+
+.nx-view-all span {
+  transition: transform .3s ease;
+}
+
+.nx-view-all:hover span {
+  transform: translateX(5px);
+}
+
+@keyframes borderRotate {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
 }
 
 @media (max-width: 1100px) {
