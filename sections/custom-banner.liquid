@@ -1,245 +1,198 @@
-<section class="clean-drive-banner-{{ section.id }}">
+<section class="cd-banner-{{ section.id }}">
+
   {% if section.settings.desktop_image != blank %}
     <img
-      class="clean-drive-banner-img desktop-img"
-      src="{{ section.settings.desktop_image | image_url: width: 2400 }}"
-      alt="{{ section.settings.banner_alt | escape }}"
+      class="cd-image desktop-image"
+      src="{{ section.settings.desktop_image | image_url: width: 2500 }}"
+      alt="Banner"
       loading="eager"
     >
   {% endif %}
 
   {% if section.settings.mobile_image != blank %}
     <img
-      class="clean-drive-banner-img mobile-img"
-      src="{{ section.settings.mobile_image | image_url: width: 900 }}"
-      alt="{{ section.settings.banner_alt | escape }}"
+      class="cd-image mobile-image"
+      src="{{ section.settings.mobile_image | image_url: width: 1000 }}"
+      alt="Mobile Banner"
       loading="eager"
     >
   {% endif %}
 
-  {% if section.settings.show_button %}
-    <div class="clean-drive-button-wrap">
-      <a href="{{ section.settings.button_link }}" class="clean-drive-btn">
-        {{ section.settings.button_text }}
-      </a>
-    </div>
-  {% endif %}
+  <div class="cd-content">
+    <a href="{{ section.settings.button_link }}" class="cd-btn">
+      {{ section.settings.button_text }}
+    </a>
+  </div>
+
 </section>
 
 <style>
-.clean-drive-banner-{{ section.id }} {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: #000;
+
+.cd-banner-{{ section.id }}{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  background:#000;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-banner-img {
-  width: 100%;
-  height: auto;
-  display: block;
+.cd-banner-{{ section.id }} .cd-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.clean-drive-banner-{{ section.id }} .mobile-img {
-  display: none;
+.cd-banner-{{ section.id }} .mobile-image{
+  display:none;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-button-wrap {
-  position: absolute;
-  left: {{ section.settings.button_left }}%;
-  bottom: {{ section.settings.button_bottom }}%;
-  z-index: 5;
+.cd-content{
+  position:absolute;
+  left:8%;
+  bottom:12%;
+  z-index:20;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-btn {
-  --color: {{ section.settings.button_color }};
+/* PREMIUM GREEN BUTTON */
 
-  padding: 0.8em 1.7em;
-  background-color: transparent;
-  border-radius: 0.3em;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.5s;
-  font-weight: 700;
-  font-size: {{ section.settings.button_size }}px;
-  border: 1px solid var(--color);
-  font-family: inherit;
-  text-transform: uppercase;
-  color: var(--color);
-  text-decoration: none;
-  display: inline-block;
-  z-index: 1;
+.cd-btn{
+  --color:#63d110;
+
+  padding:16px 42px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+
+  border-radius:8px;
+  position:relative;
+  overflow:hidden;
+
+  cursor:pointer;
+  transition:.5s;
+
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:1px;
+
+  border:2px solid var(--color);
+
+  color:#fff;
+  text-decoration:none;
+  text-transform:uppercase;
+
+  box-shadow:
+  0 0 20px rgba(99,209,16,.25),
+  0 0 40px rgba(99,209,16,.15);
+
+  z-index:1;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-btn::before,
-.clean-drive-banner-{{ section.id }} .clean-drive-btn::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 50px;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1;
-  background-color: var(--color);
-  transition: 1s ease;
+.cd-btn::before,
+.cd-btn::after{
+  content:'';
+  position:absolute;
+
+  width:60px;
+  height:60px;
+
+  border-radius:50%;
+
+  background:var(--color);
+
+  z-index:-1;
+
+  transition:1s ease;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-btn::before {
-  top: -1em;
-  left: -1em;
+.cd-btn::before{
+  top:-30px;
+  left:-30px;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-btn::after {
-  left: calc(100% + 1em);
-  top: calc(100% + 1em);
+.cd-btn::after{
+  bottom:-30px;
+  right:-30px;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-btn:hover::before,
-.clean-drive-banner-{{ section.id }} .clean-drive-btn:hover::after {
-  height: 410px;
-  width: 410px;
+.cd-btn:hover::before,
+.cd-btn:hover::after{
+  width:450px;
+  height:450px;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-btn:hover {
-  color: {{ section.settings.button_hover_text }};
+.cd-btn:hover{
+  color:#000;
 }
 
-.clean-drive-banner-{{ section.id }} .clean-drive-btn:active {
-  filter: brightness(0.85);
-  transform: scale(0.97);
+.cd-btn:active{
+  transform:scale(.97);
 }
 
-@media screen and (max-width: 749px) {
-  .clean-drive-banner-{{ section.id }} .desktop-img {
-    display: none;
+/* MOBILE */
+
+@media screen and (max-width:749px){
+
+  .cd-banner-{{ section.id }}{
+    height:100vh;
   }
 
-  .clean-drive-banner-{{ section.id }} .mobile-img {
-    display: block;
+  .desktop-image{
+    display:none;
   }
 
-  .clean-drive-banner-{{ section.id }} .clean-drive-button-wrap {
-    left: 50%;
-    bottom: {{ section.settings.mobile_button_bottom }}%;
-    transform: translateX(-50%);
-    width: 100%;
-    text-align: center;
+  .mobile-image{
+    display:block !important;
   }
 
-  .clean-drive-banner-{{ section.id }} .clean-drive-btn {
-    font-size: {{ section.settings.mobile_button_size }}px;
-    padding: 0.75em 1.5em;
+  .cd-content{
+    left:50%;
+    bottom:8%;
+    transform:translateX(-50%);
+    width:100%;
+    text-align:center;
   }
+
+  .cd-btn{
+    font-size:15px;
+    padding:14px 28px;
+  }
+
 }
+
 </style>
 
 {% schema %}
 {
-  "name": "Clean Drive Banner",
+  "name": "Clean Drive Hero",
   "settings": [
     {
       "type": "image_picker",
       "id": "desktop_image",
-      "label": "Desktop banner image"
+      "label": "Desktop Banner"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Mobile banner image"
-    },
-    {
-      "type": "text",
-      "id": "banner_alt",
-      "label": "Image alt text",
-      "default": "Clean Drive car wash banner"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_button",
-      "label": "Show button",
-      "default": true
+      "label": "Mobile Banner"
     },
     {
       "type": "text",
       "id": "button_text",
-      "label": "Button text",
+      "label": "Button Text",
       "default": "Shop Now"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button link",
-      "default": "/collections/all"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "Button color",
-      "default": "#F9C705"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_text",
-      "label": "Button hover text color",
-      "default": "#0b1727"
-    },
-    {
-      "type": "range",
-      "id": "button_left",
-      "label": "Desktop button position from left",
-      "min": 1,
-      "max": 90,
-      "step": 1,
-      "unit": "%",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "button_bottom",
-      "label": "Desktop button position from bottom",
-      "min": 1,
-      "max": 90,
-      "step": 1,
-      "unit": "%",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "mobile_button_bottom",
-      "label": "Mobile button position from bottom",
-      "min": 1,
-      "max": 90,
-      "step": 1,
-      "unit": "%",
-      "default": 7
-    },
-    {
-      "type": "range",
-      "id": "button_size",
-      "label": "Desktop button font size",
-      "min": 12,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "default": 17
-    },
-    {
-      "type": "range",
-      "id": "mobile_button_size",
-      "label": "Mobile button font size",
-      "min": 10,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "default": 14
+      "label": "Button Link"
     }
   ],
   "presets": [
     {
-      "name": "Clean Drive Banner"
+      "name": "Clean Drive Hero"
     }
   ]
 }
 {% endschema %}
+
