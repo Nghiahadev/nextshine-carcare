@@ -166,32 +166,81 @@
   </div>
 </div>
 <style>
+/* =========================
+   DESKTOP
+========================= */
+@media screen and (min-width: 750px) {
+
+  /* Show desktop image */
+  #Banner-{{ section.id }} .banner__media:first-of-type {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Hide mobile image */
+  #Banner-{{ section.id }} .banner__media:nth-of-type(2) {
+    display: none !important;
+  }
+
+  #Banner-{{ section.id }} .banner__media-half {
+    width: 100% !important;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
 @media screen and (max-width: 749px) {
+
+  /* Hide desktop image */
+  #Banner-{{ section.id }} .banner__media:first-of-type {
+    display: none !important;
+  }
+
+  /* Show mobile image */
+  #Banner-{{ section.id }} .banner__media:nth-of-type(2) {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Remove Dawn height restrictions */
   #Banner-{{ section.id }} {
     min-height: auto !important;
+    height: auto !important;
   }
 
   #Banner-{{ section.id }}::before,
   #Banner-{{ section.id }} .banner__media::before {
+    display: none !important;
     padding-bottom: 0 !important;
     content: none !important;
   }
 
+  /* Banner media */
   #Banner-{{ section.id }} .banner__media {
     position: relative !important;
     height: auto !important;
     min-height: auto !important;
+    overflow: visible !important;
   }
 
+  /* Mobile image */
   #Banner-{{ section.id }} .banner__media img {
     position: relative !important;
     width: 100% !important;
     height: auto !important;
     object-fit: contain !important;
+    display: block !important;
   }
 
+  /* Hide content box since text is baked into image */
   #Banner-{{ section.id }} .banner__content {
     display: none !important;
+  }
+
+  /* Remove stacked layout */
+  #Banner-{{ section.id }}.banner--stacked {
+    display: block !important;
   }
 }
 </style>
