@@ -1,262 +1,254 @@
-<section class="why-choose">
-  <div class="why-choose__container">
+<section class="viora-category-section">
+  <div class="viora-category-heading">
+    <span></span>
+    <h2>{{ section.settings.heading }}</h2>
+    <span></span>
+  </div>
 
-    <div class="why-left">
-      <h2>
-        <span class="why-highlight">WHY CHOOSE</span><br>
-        NEXTSHINE CAR CARE?
-      </h2>
+  <div class="viora-category-grid">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link }}" class="viora-category-card" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          <img
+            class="viora-category-bg"
+            src="{{ block.settings.image | image_url: width: 700 }}"
+            alt="{{ block.settings.title | escape }}"
+            loading="lazy"
+          >
+        {% endif %}
 
-      <p>{{ section.settings.description }}</p>
+        <div class="viora-category-overlay"></div>
 
-      {% if section.settings.button_text != blank %}
-        <a href="{{ section.settings.button_link }}" class="btn5">
-          {{ section.settings.button_text }}
-        </a>
-      {% endif %}
-    </div>
-
-    <div class="why-right">
-      {% for block in section.blocks %}
-        <div class="why-item" {{ block.shopify_attributes }}>
+        <div class="viora-category-content">
           {% if block.settings.icon != blank %}
             <img
-              src="{{ block.settings.icon | image_url: width: 120 }}"
+              class="viora-category-icon"
+              src="{{ block.settings.icon | image_url: width: 80 }}"
               alt=""
-              class="why-icon"
               loading="lazy"
             >
           {% endif %}
 
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
+          <div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
         </div>
-      {% endfor %}
-    </div>
-
+      </a>
+    {% endfor %}
   </div>
 </section>
 
 <style>
-.why-choose {
-  background: linear-gradient(90deg, #031103 0%, #072207 35%, #0c330c 70%, #031103 100%);
-  padding: 70px 5%;
-  overflow: hidden;
+.viora-category-section {
+  background: #f7f7f7;
+  padding: 18px 4%;
 }
 
-.why-choose__container {
-  max-width: 1400px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 40px;
+.viora-category-heading {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 14px;
 }
 
-.why-left {
-  padding-right: 35px;
-  border-right: 1px solid rgba(181, 211, 52, 0.3);
+.viora-category-heading span {
+  width: 90px;
+  height: 1px;
+  background: #7db342;
 }
 
-.why-left h2 {
-  margin: 0 0 20px;
-  color: #ffffff;
-  font-size: 42px;
-  line-height: 1.15;
+.viora-category-heading h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.viora-category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.viora-category-card {
+  position: relative;
+  min-height: 190px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  background: #111;
+  box-shadow: 0 6px 18px rgba(0,0,0,.14);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.viora-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.24);
+}
+
+.viora-category-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.viora-category-card:hover .viora-category-bg {
+  transform: scale(1.08);
+}
+
+.viora-category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.5),
+    rgba(0,0,0,.92)
+  );
+}
+
+.viora-category-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 18px 14px;
+  width: 100%;
+}
+
+.viora-category-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.viora-category-content h3 {
+  margin: 0 0 5px;
+  color: #fff;
+  font-size: 14px;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-.why-highlight {
-  color: #B5D334;
+.viora-category-content p {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
-.why-left p {
-  color: #d8d8d8;
-  font-size: 16px;
-  line-height: 1.8;
-  margin-bottom: 30px;
-}
-
-.why-right {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.why-item {
-  text-align: center;
-  padding: 0 25px;
-}
-
-.why-item:not(:last-child) {
-  border-right: 1px solid rgba(181, 211, 52, 0.18);
-}
-
-.why-icon {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
-  margin-bottom: 18px;
-}
-
-.why-item h3 {
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.why-item p {
-  color: #d0d0d0;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.btn5 {
-  --color: #B5D334;
-  padding: 0.85em 1.8em;
-  background: transparent;
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.5s;
-  font-weight: 800;
-  font-size: 15px;
-  border: 1px solid var(--color);
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-block;
-  color: var(--color);
-  z-index: 1;
-}
-
-.btn5::before,
-.btn5::after {
-  content: "";
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--color);
-  z-index: -1;
-  transition: 1s ease;
-}
-
-.btn5::before {
-  top: -20px;
-  left: -20px;
-}
-
-.btn5::after {
-  right: -20px;
-  bottom: -20px;
-}
-
-.btn5:hover::before,
-.btn5:hover::after {
-  width: 420px;
-  height: 420px;
-}
-
-.btn5:hover {
-  color: #031103;
-  box-shadow: 0 0 18px rgba(181, 211, 52, 0.45);
-}
-
-.btn5:active {
-  transform: scale(0.97);
-}
-
-@media (max-width: 991px) {
-  .why-choose__container {
-    grid-template-columns: 1fr;
-  }
-
-  .why-left {
-    border-right: none;
-    padding-right: 0;
-    text-align: center;
-  }
-
-  .why-right {
+@media (max-width: 990px) {
+  .viora-category-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
   }
 
-  .why-item {
-    border: none !important;
-    padding: 0;
+  .viora-category-card {
+    min-height: 180px;
   }
 }
 
-@media (max-width: 576px) {
-  .why-left h2 {
-    font-size: 32px;
+@media (max-width: 600px) {
+  .viora-category-section {
+    padding: 22px 14px;
   }
 
-  .why-right {
+  .viora-category-heading span {
+    width: 45px;
+  }
+
+  .viora-category-heading h2 {
+    font-size: 16px;
+  }
+
+  .viora-category-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .viora-category-card {
+    min-height: 210px;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "Why Choose Us",
+  "name": "Shop by Category Cards",
   "settings": [
     {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "We combine advanced formulas with premium tools to deliver unmatched results and make car care simple, effective, and satisfying."
-    },
-    {
       "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "default": "Learn More"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop By Category"
     }
   ],
   "blocks": [
     {
-      "type": "feature",
-      "name": "Feature",
+      "type": "category",
+      "name": "Category Card",
       "settings": [
         {
           "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
           "id": "icon",
-          "label": "Icon"
+          "label": "Icon Image"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Advanced Formulas"
+          "default": "Wash & Foam"
         },
         {
           "type": "textarea",
           "id": "text",
-          "label": "Description",
-          "default": "High performance ingredients for superior cleaning."
+          "label": "Text",
+          "default": "Keep your car spotless"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Why Choose Us",
+      "name": "Shop by Category Cards",
       "blocks": [
-        { "type": "feature" },
-        { "type": "feature" },
-        { "type": "feature" },
-        { "type": "feature" }
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        }
       ]
     }
   ]
