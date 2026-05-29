@@ -3783,3 +3783,20 @@ details-disclosure > details {
 summary.header__icon--menu {
     display: none !important;
 }
+
+
+/* buttom nav */
+.header__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__menu-item i {
+  font-size: 18px;
+  transition: all .3s ease;
+}
+
+.header__menu-item:hover i {
+  transform: translateY(-2px);
+}
