@@ -1,0 +1,228 @@
+<section class="nx-steps-section">
+  <div class="nx-steps-container">
+
+    <h2>{{ section.settings.heading }}</h2>
+
+    <div class="nx-steps-grid">
+
+      {% for block in section.blocks %}
+        <div class="nx-step">
+
+          <div class="nx-step-icon">
+            {% if block.settings.icon != blank %}
+              <img
+                src="{{ block.settings.icon | image_url: width: 120 }}"
+                alt="{{ block.settings.title }}"
+              >
+            {% endif %}
+          </div>
+
+          <div class="nx-step-content">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+
+          {% unless forloop.last %}
+            <div class="nx-arrow">
+              →
+            </div>
+          {% endunless %}
+
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+.nx-steps-section{
+  padding:60px 20px;
+  background:
+    radial-gradient(circle at left center,
+      rgba(57,255,20,.15),
+      transparent 35%),
+    radial-gradient(circle at right center,
+      rgba(57,255,20,.12),
+      transparent 35%),
+    linear-gradient(
+      90deg,
+      #050505 0%,
+      #07180c 50%,
+      #050505 100%
+    );
+}
+
+.nx-steps-container{
+  max-width:1400px;
+  margin:auto;
+}
+
+.nx-steps-container h2{
+  text-align:center;
+  color:#fff;
+  font-size:36px;
+  font-weight:800;
+  margin-bottom:40px;
+  text-transform:uppercase;
+}
+
+.nx-steps-grid{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.nx-step{
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  position:relative;
+}
+
+.nx-step-icon{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(110,255,70,.4);
+
+  background:
+  radial-gradient(
+  circle,
+  rgba(110,255,70,.15),
+  rgba(0,0,0,.2)
+  );
+}
+
+.nx-step-icon img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+}
+
+.nx-step-content h3{
+  color:#fff;
+  margin:0 0 8px;
+  font-size:20px;
+  text-transform:uppercase;
+}
+
+.nx-step-content p{
+  color:#cfcfcf;
+  line-height:1.5;
+  margin:0;
+  font-size:14px;
+}
+
+.nx-arrow{
+  position:absolute;
+  right:-25px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:34px;
+  color:#78d71e;
+  font-weight:700;
+}
+
+@media(max-width:990px){
+
+.nx-steps-grid{
+  flex-direction:column;
+}
+
+.nx-step{
+  width:100%;
+  padding:20px;
+  border-radius:15px;
+  background:
+  linear-gradient(
+  135deg,
+  rgba(0,0,0,.4),
+  rgba(57,255,20,.05)
+  );
+}
+
+.nx-arrow{
+  display:none;
+}
+
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Car Care Steps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "CAR CARE MADE SIMPLE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "WASH"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Remove dirt and grime with our powerful foam and shampoo."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Car Care Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "WASH"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "CLEAN"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "PROTECT"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "ENJOY"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
