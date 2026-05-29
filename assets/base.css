@@ -3596,60 +3596,93 @@ details-disclosure > details {
   }
 }
 
-/* ===== Black Modern Sticky Blur Navbar ===== */
+
+/* ==========================================
+   PREMIUM BLACK GLASS NAVBAR
+========================================== */
 
 .header-wrapper {
   position: sticky;
   top: 0;
   z-index: 9999;
-  background: rgba(5, 5, 5, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.3s ease;
 }
 
 .header {
-  padding-top: 14px;
-  padding-bottom: 14px;
+  min-height: 80px;
+  align-items: center;
 }
 
+/* Logo */
+
 .header__heading-logo {
-  max-height: 55px;
+  max-height: 58px;
   width: auto;
+  transition: transform 0.3s ease;
+}
+
+.header__heading-logo:hover {
+  transform: scale(1.03);
+}
+
+/* Main Menu */
+
+.list-menu--inline {
+  gap: 12px;
 }
 
 .header__menu-item {
-  color: #ffffff !important;
+  position: relative;
+  padding: 12px 18px !important;
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.35px;
-  padding: 12px 16px;
-  position: relative;
+  letter-spacing: 0.4px;
+
+  color: #f8f8f8 !important;
+
   transition: all 0.3s ease;
 }
 
 .header__menu-item span {
-  color: #ffffff !important;
+  color: #f8f8f8 !important;
   text-decoration: none !important;
 }
+
+/* Animated underline */
 
 .header__menu-item::after {
   content: "";
   position: absolute;
-  left: 16px;
-  right: 16px;
+  left: 18px;
+  right: 18px;
   bottom: 6px;
   height: 2px;
-  background: linear-gradient(90deg, #ffffff, #9ca3af);
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #d1d5db,
+    #ffffff
+  );
+
+  border-radius: 999px;
+
   transform: scaleX(0);
   transform-origin: center;
+
   transition: transform 0.3s ease;
-  border-radius: 20px;
 }
 
 .header__menu-item:hover {
-  color: #d1d5db !important;
+  color: #ffffff !important;
 }
 
 .header__menu-item:hover::after {
@@ -3657,32 +3690,50 @@ details-disclosure > details {
 }
 
 /* Icons */
+
 .header__icon,
 .header__icon svg {
   color: #ffffff !important;
   fill: #ffffff !important;
+}
+
+.header__icon {
   transition: all 0.3s ease;
 }
 
 .header__icon:hover {
-  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+/* Cart Bubble */
+
+.cart-count-bubble {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700;
 }
 
 /* Dropdown */
+
 .header__submenu {
-  background: rgba(8, 8, 8, 0.95);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-radius: 14px;
+  background: rgba(10, 10, 10, 0.96);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.6);
+
   padding: 12px 0;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header__submenu .header__menu-item {
-  padding: 12px 22px;
-  color: #ffffff !important;
+  padding: 14px 24px !important;
 }
 
 .header__submenu .header__menu-item::after {
@@ -3690,31 +3741,35 @@ details-disclosure > details {
 }
 
 .header__submenu .header__menu-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #d1d5db !important;
+  background: rgba(255,255,255,0.06);
 }
 
-/* Mobile */
+/* Search */
+
+.search-modal {
+  background: rgba(0,0,0,0.95);
+}
+
+/* Mobile Drawer */
+
 @media screen and (max-width: 989px) {
-  .header {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
 
   .menu-drawer {
-    background: #050505;
+    background: #000000;
   }
 
   .menu-drawer__menu-item {
     color: #ffffff !important;
-    font-size: 16px;
     font-weight: 600;
-    padding: 16px 24px;
+    padding: 18px 24px;
   }
 
   .menu-drawer__menu-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #d1d5db !important;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .header {
+    min-height: 70px;
   }
 
   .header__heading-logo {
