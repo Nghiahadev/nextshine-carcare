@@ -34,17 +34,19 @@
         "category_zJGJjb": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/wash_foam.png",
             "title": "Wash & Foam",
             "text": "Keep your car spotless",
-            "link": ""
+            "link": "shopify://collections/wash-foam"
           }
         },
         "category_xdkqBQ": {
           "type": "category",
           "settings": {
-            "title": "Wash & Foam",
-            "text": "Keep your car spotless",
-            "link": ""
+            "image": "shopify://shop_images/interior_care.png",
+            "title": "Interior care",
+            "text": "Clean, fresh & protected",
+            "link": "shopify://collections/interior-care"
           }
         },
         "category_BbkbTW": {
