@@ -1,217 +1,331 @@
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+<section class="nx-contact-section">
+  <div class="nx-contact-container">
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
+    <div class="nx-contact-inner">
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.heading }}
-      </h2>
-    {%- else -%}
-      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
-    {%- endif -%}
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
-      {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
-          {{- 'icon-success.svg' | inline_asset_content -}}
-          {{ 'templates.contact.form.post_success' | t }}
-        </h2>
-      {%- elsif form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-            {{- 'icon-error.svg' | inline_asset_content -}}
-            {{ 'templates.contact.form.error_heading' | t }}
-          </h2>
-        </div>
-        <ul class="form-status-list caption-large" role="list">
-          <li>
-            <a href="#ContactForm-email" class="link">
-              {{ form.errors.translated_fields.email | capitalize }}
-              {{ form.errors.messages.email }}
-            </a>
-          </li>
-        </ul>
-      {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
+      <div class="nx-contact-form-area">
+        <span class="nx-small-title">NEXTSHINE CAR CARE</span>
+        <h2>Contact Us</h2>
+        <p>Feel free to contact us any time. We will get back to you as soon as we can.</p>
+
+        {% form 'contact', id: 'ContactForm', class: 'nx-contact-form' %}
+
+          {% if form.posted_successfully? %}
+            <p class="nx-success">Thank you! Your message has been sent.</p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+
           <input
-            class="field__input"
-            autocomplete="name"
             type="text"
-            id="ContactForm-name"
-            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            name="contact[name]"
+            placeholder="Name"
             value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-            placeholder="{{ 'templates.contact.form.name' | t }}"
           >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
-        </div>
-        <div class="field field--with-error">
+
           <input
-            autocomplete="email"
             type="email"
-            id="ContactForm-email"
-            class="field__input"
             name="contact[email]"
-            spellcheck="false"
-            autocapitalize="off"
+            placeholder="Email"
+            required
             value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            aria-required="true"
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="ContactForm-email-error"
-            {% endif %}
-            placeholder="{{ 'templates.contact.form.email' | t }}"
           >
-          <label class="field__label" for="ContactForm-email">
-            {{- 'templates.contact.form.email' | t }}
-            <span aria-hidden="true">*</span></label
+
+          <input
+            type="tel"
+            name="contact[phone]"
+            placeholder="Phone"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
           >
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="ContactForm-email-error">
-              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">
-                <span class="svg-wrapper">
-                  {{- 'icon-error.svg' | inline_asset_content -}}
-                </span>
-                {{- form.errors.translated_fields.email | capitalize }}
-                {{ form.errors.messages.email -}}
-              </span>
-            </small>
-          {%- endif -%}
+
+          <textarea
+            name="contact[body]"
+            placeholder="Message"
+            required
+          >{{ form.body }}</textarea>
+
+          <button type="submit">Send Message</button>
+
+        {% endform %}
+      </div>
+
+      <div class="nx-social-bar">
+        <div>
+          <a href="#">FB</a>
+          <a href="#">IG</a>
+          <a href="#">TT</a>
         </div>
       </div>
-      <div class="field">
-        <input
-          type="tel"
-          id="ContactForm-phone"
-          class="field__input"
-          autocomplete="tel"
-          name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          placeholder="{{ 'templates.contact.form.phone' | t }}"
-        >
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+
+      <div class="nx-contact-info">
+        <h3>Contact Info</h3>
+
+        <div class="nx-info-item">
+          <span>☎</span>
+          <p>+1 800 123 4567</p>
+        </div>
+
+        <div class="nx-info-item">
+          <span>✉</span>
+          <p>support@nextshine.com</p>
+        </div>
+
+        <div class="nx-info-item">
+          <span>📍</span>
+          <p>United States</p>
+        </div>
       </div>
-      <div class="field">
-        <textarea
-          rows="10"
-          id="ContactForm-body"
-          class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
-        </label>
-      </div>
-      <div class="contact__button">
-        <button type="submit" class="button">
-          {{ 'templates.contact.form.send' | t }}
-        </button>
-      </div>
-    {%- endform -%}
+
+    </div>
   </div>
-</div>
+</section>
+
+<section class="nx-map-section">
+  <div class="nx-contact-container">
+    <div class="nx-map-inner">
+      <h3>Find Us on Google Map</h3>
+      <p>Visit us or contact us online for car care products, bundles, and support.</p>
+
+      <div class="nx-map-box">
+        <iframe
+          src="https://www.google.com/maps/embed?pb="
+          width="100%"
+          height="420"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.nx-contact-section {
+  background: #f1f1f1;
+  padding: 120px 20px;
+}
+
+.nx-contact-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.nx-contact-inner {
+  background: #fff;
+  position: relative;
+  border-radius: 25px;
+  box-shadow: 20px 22px 44px rgba(0,0,0,.18);
+  overflow: hidden;
+  min-height: 520px;
+}
+
+.nx-contact-form-area {
+  padding: 70px 420px 80px 80px;
+}
+
+.nx-small-title {
+  color: #68d900;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.nx-contact-form-area h2 {
+  color: #050505;
+  font-size: 44px;
+  margin: 10px 0;
+  font-weight: 800;
+}
+
+.nx-contact-form-area p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 35px;
+}
+
+.nx-contact-form input,
+.nx-contact-form textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 16px 5px;
+  margin-bottom: 18px;
+  outline: none;
+  font-size: 15px;
+  background: transparent;
+}
+
+.nx-contact-form textarea {
+  height: 130px;
+  resize: none;
+}
+
+.nx-contact-form input:focus,
+.nx-contact-form textarea:focus {
+  border-bottom: 2px solid #68d900;
+}
+
+.nx-contact-form button {
+  width: 100%;
+  border: none;
+  background: linear-gradient(135deg, #68d900, #1f8f00);
+  color: #fff;
+  padding: 15px;
+  border-radius: 35px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: .3s ease;
+}
+
+.nx-contact-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(104,217,0,.35);
+}
+
+.nx-social-bar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 90px;
+  height: 100%;
+  background: linear-gradient(180deg, #68d900, #0f3d13);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 25px;
+}
+
+.nx-social-bar div {
+  display: flex;
+  gap: 12px;
+  transform: rotate(-90deg);
+}
+
+.nx-social-bar a {
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.nx-contact-info {
+  position: absolute;
+  right: 90px;
+  top: 18%;
+  width: 340px;
+  background: #111;
+  color: #fff;
+  padding: 40px;
+  border-radius: 25px 0 0 25px;
+  box-shadow: 0 20px 45px rgba(0,0,0,.35);
+}
+
+.nx-contact-info h3 {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.nx-info-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin: 28px 0;
+}
+
+.nx-info-item span {
+  color: #68d900;
+  font-size: 22px;
+}
+
+.nx-info-item p {
+  margin: 0;
+  color: #eee;
+  font-size: 14px;
+}
+
+.nx-success {
+  background: rgba(104,217,0,.12);
+  color: #1f8f00;
+  padding: 12px 15px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.nx-map-section {
+  padding: 70px 20px;
+  background: #fff;
+}
+
+.nx-map-inner {
+  text-align: center;
+}
+
+.nx-map-inner h3 {
+  color: #050505;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.nx-map-inner p {
+  color: #555;
+  margin-bottom: 35px;
+}
+
+.nx-map-box {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,.18);
+}
+
+@media screen and (max-width: 900px) {
+  .nx-contact-section {
+    padding: 60px 15px;
+  }
+
+  .nx-contact-form-area {
+    padding: 40px 25px;
+  }
+
+  .nx-contact-form-area h2 {
+    font-size: 34px;
+  }
+
+  .nx-contact-info {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+    border-radius: 0;
+  }
+
+  .nx-social-bar {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nx-social-bar div {
+    transform: none;
+  }
+}
+</style>
 
 {% schema %}
 {
-  "name": "t:sections.contact-form.name",
+  "name": "Contact form",
   "tag": "section",
   "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "inline_richtext",
-      "id": "heading",
-      "default": "t:sections.contact-form.settings.title.default",
-      "label": "t:sections.contact-form.settings.title.label"
-    },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ],
+  "settings": [],
   "presets": [
     {
-      "name": "t:sections.contact-form.presets.name"
+      "name": "Contact form"
     }
   ]
 }
