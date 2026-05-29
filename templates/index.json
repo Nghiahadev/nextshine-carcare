@@ -274,6 +274,36 @@
       ],
       "name": "Nextshine Features",
       "settings": {}
+    },
+    "custom_shop_the_look_hotspots_BWtq9i": {
+      "type": "custom-shop-the-look-hotspots",
+      "blocks": {
+        "hotspot_db7NgR": {
+          "type": "hotspot",
+          "settings": {
+            "product": "",
+            "top": 28,
+            "left": 38
+          }
+        },
+        "hotspot_xXeGnb": {
+          "type": "hotspot",
+          "settings": {
+            "product": "",
+            "top": 50,
+            "left": 61
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_db7NgR",
+        "hotspot_xXeGnb"
+      ],
+      "name": "Shop The Look Hotspots",
+      "settings": {
+        "heading": "Shop the look",
+        "look_image": "shopify://shop_images/Bundles.png"
+      }
     }
   },
   "order": [
@@ -283,6 +313,7 @@
     "custom_glowing_GMpGRW",
     "custom_car_care_steps_xgDUhK",
     "customer_blog_cards_Nkxaif",
-    "custom_features_3hwnE3"
+    "custom_features_3hwnE3",
+    "custom_shop_the_look_hotspots_BWtq9i"
   ]
 }
