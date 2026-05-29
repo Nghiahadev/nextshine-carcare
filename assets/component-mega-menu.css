@@ -42,18 +42,19 @@
 }
 
 .mega-menu__link {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(255, 255, 255, 0.78);
   display: block;
   line-height: calc(1 + 0.3 / var(--font-body-scale));
   padding-bottom: 0.6rem;
   padding-top: 0.6rem;
   text-decoration: none;
-  transition: text-decoration var(--duration-short) ease;
+  transition: all 0.25s ease;
   word-wrap: break-word;
 }
 
 .mega-menu__link--level-2 {
   font-weight: bold;
+  color: #ffffff;
 }
 
 .header--top-center .mega-menu__list {
@@ -70,12 +71,8 @@
 
 .mega-menu__link:hover,
 .mega-menu__link--active {
-  color: rgb(var(--color-foreground));
-  text-decoration: underline;
-}
-
-.mega-menu__link--active:hover {
-  text-decoration-thickness: 0.2rem;
+  color: #7ed321;
+  text-decoration: none;
 }
 
 .mega-menu .mega-menu__list--condensed {
@@ -84,4 +81,339 @@
 
 .mega-menu__list--condensed .mega-menu__link {
   font-weight: normal;
+}
+
+/* =========================================
+   NEXTSHINE PREMIUM MEGA MENU - DESKTOP
+========================================= */
+
+@media screen and (min-width: 990px) {
+  .mega-menu__content {
+    background: #020602 !important;
+    border-top: 1px solid rgba(126, 211, 33, 0.22) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  }
+
+  .custom-viora-mega {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 48px;
+    padding: 42px 60px;
+    background:
+      radial-gradient(circle at top left, rgba(126, 211, 33, 0.12), transparent 34%),
+      linear-gradient(180deg, #061306 0%, #020602 100%);
+  }
+
+  .custom-viora-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 30px;
+    border-right: 1px solid rgba(126, 211, 33, 0.14);
+  }
+
+  .custom-viora-collection {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.28s ease;
+  }
+
+  .custom-viora-collection img {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .custom-viora-collection span {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+
+  .custom-viora-collection:hover,
+  .custom-viora-collection.active {
+    background: rgba(126, 211, 33, 0.10);
+    border-color: rgba(126, 211, 33, 0.22);
+  }
+
+  .custom-viora-collection:hover span,
+  .custom-viora-collection.active span {
+    color: #7ed321;
+  }
+
+  .custom-viora-right {
+    width: 100%;
+  }
+
+  .mega-product-group {
+    display: none;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 32px;
+  }
+
+  .mega-product-group.active {
+    display: grid;
+  }
+
+  .custom-viora-product {
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .custom-viora-product img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    transition: transform 0.35s ease;
+  }
+
+  .custom-viora-product:hover img {
+    transform: translateY(-5px) scale(1.03);
+  }
+
+  .custom-viora-product p {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.45;
+    margin: 0 auto;
+    max-width: 220px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .custom-viora-product:hover p {
+    color: #7ed321;
+  }
+
+  /* FEATURED BRANDS / CATEGORY CARDS */
+  .custom-brand-mega {
+    padding: 42px 60px;
+    background:
+      radial-gradient(circle at top right, rgba(126, 211, 33, 0.12), transparent 35%),
+      linear-gradient(180deg, #061306 0%, #020602 100%);
+  }
+
+  .custom-brand-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 28px;
+  }
+
+  .custom-brand-card {
+    position: relative;
+    height: 370px;
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    background: #071407;
+    transition: all 0.35s ease;
+    border: 1px solid rgba(126, 211, 33, 0.14);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .custom-brand-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.55s ease;
+  }
+
+  .custom-brand-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.08), rgba(2, 6, 2, 0.84));
+  }
+
+  .custom-brand-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    padding: 28px;
+  }
+
+  .custom-brand-overlay h3 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0 0 10px;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .custom-brand-overlay p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 18px;
+  }
+
+  .custom-brand-overlay span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    background: #4fb000;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .custom-brand-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(126, 211, 33, 0.45);
+    box-shadow: 0 18px 45px rgba(126, 211, 33, 0.12);
+  }
+
+  .custom-brand-card:hover img {
+    transform: scale(1.06);
+  }
+
+  .custom-brand-card:hover .custom-brand-overlay span {
+    background: #7ed321;
+  }
+
+  /* ABOUT MENU */
+  .custom-about-mega {
+    padding: 42px 60px;
+    background:
+      radial-gradient(circle at center, rgba(126, 211, 33, 0.10), transparent 38%),
+      linear-gradient(180deg, #061306 0%, #020602 100%);
+  }
+
+  .custom-about-wrap {
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .custom-about-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .custom-about-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(126, 211, 33, 0.12);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 900;
+    transition: all 0.3s ease;
+  }
+
+  .custom-about-link:hover {
+    background: rgba(126, 211, 33, 0.10);
+    color: #7ed321;
+    border-color: rgba(126, 211, 33, 0.35);
+    transform: translateY(-5px);
+  }
+
+  .custom-about-image-card {
+    position: relative;
+    height: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid rgba(126, 211, 33, 0.14);
+  }
+
+  .custom-about-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .custom-about-image-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), rgba(2, 6, 2, 0.82));
+  }
+
+  .custom-about-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    padding: 28px;
+  }
+
+  .custom-about-overlay h3 {
+    color: white;
+    font-size: 30px;
+    font-weight: 900;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+  }
+
+  .custom-about-overlay p {
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 0 18px;
+  }
+
+  .custom-about-overlay span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    background: #4fb000;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .custom-about-image-card:hover span {
+    background: #7ed321;
+  }
+}
+
+/* ================================
+   MOBILE DRAWER CLEANUP
+================================ */
+
+@media screen and (max-width: 989px) {
+  .menu-drawer__submenu .menu-drawer__menu > li > a.menu-drawer__menu-item {
+    display: none !important;
+  }
+
+  .menu-drawer__submenu .menu-drawer__menu > li:has(img),
+  .menu-drawer__submenu .menu-drawer__menu > li:has(.custom-brand-card),
+  .menu-drawer__submenu .menu-drawer__menu > li:has(.custom-viora-card),
+  .menu-drawer__submenu .menu-drawer__menu > li:has(.custom-viora-mega-card) {
+    display: block !important;
+  }
+
+  .menu-drawer__submenu img {
+    border-radius: 18px;
+  }
 }
