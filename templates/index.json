@@ -183,6 +183,36 @@
         "heading": "CAR CARE MADE SIMPLE"
       }
     },
+    "custom_shop_the_look_hotspots_BWtq9i": {
+      "type": "custom-shop-the-look-hotspots",
+      "blocks": {
+        "hotspot_db7NgR": {
+          "type": "hotspot",
+          "settings": {
+            "product": "",
+            "top": 28,
+            "left": 38
+          }
+        },
+        "hotspot_xXeGnb": {
+          "type": "hotspot",
+          "settings": {
+            "product": "",
+            "top": 50,
+            "left": 61
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_db7NgR",
+        "hotspot_xXeGnb"
+      ],
+      "name": "Shop The Look Hotspots",
+      "settings": {
+        "heading": "Shop the look",
+        "look_image": "shopify://shop_images/Bundles.png"
+      }
+    },
     "customer_blog_cards_Nkxaif": {
       "type": "customer-blog-cards",
       "blocks": {
@@ -274,46 +304,16 @@
       ],
       "name": "Nextshine Features",
       "settings": {}
-    },
-    "custom_shop_the_look_hotspots_BWtq9i": {
-      "type": "custom-shop-the-look-hotspots",
-      "blocks": {
-        "hotspot_db7NgR": {
-          "type": "hotspot",
-          "settings": {
-            "product": "",
-            "top": 28,
-            "left": 38
-          }
-        },
-        "hotspot_xXeGnb": {
-          "type": "hotspot",
-          "settings": {
-            "product": "",
-            "top": 50,
-            "left": 61
-          }
-        }
-      },
-      "block_order": [
-        "hotspot_db7NgR",
-        "hotspot_xXeGnb"
-      ],
-      "name": "Shop The Look Hotspots",
-      "settings": {
-        "heading": "Shop the look",
-        "look_image": "shopify://shop_images/Bundles.png"
-      }
     }
   },
   "order": [
     "custom_banner_J6YdFf",
     "custom_shop_by_category_cards_Up84T6",
     "custom_why_choose_us_XbzCan",
-    "custom_glowing_GMpGRW",
     "custom_car_care_steps_xgDUhK",
+    "custom_shop_the_look_hotspots_BWtq9i",
+    "custom_glowing_GMpGRW",
     "customer_blog_cards_Nkxaif",
-    "custom_features_3hwnE3",
-    "custom_shop_the_look_hotspots_BWtq9i"
+    "custom_features_3hwnE3"
   ]
 }
