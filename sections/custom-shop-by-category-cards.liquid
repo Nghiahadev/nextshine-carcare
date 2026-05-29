@@ -1,0 +1,256 @@
+<section class="viora-category-section">
+  <div class="viora-category-heading">
+    <span></span>
+    <h2>{{ section.settings.heading }}</h2>
+    <span></span>
+  </div>
+
+  <div class="viora-category-grid">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link }}" class="viora-category-card" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          <img
+            class="viora-category-bg"
+            src="{{ block.settings.image | image_url: width: 700 }}"
+            alt="{{ block.settings.title | escape }}"
+            loading="lazy"
+          >
+        {% endif %}
+
+        <div class="viora-category-overlay"></div>
+
+        <div class="viora-category-content">
+          {% if block.settings.icon != blank %}
+            <img
+              class="viora-category-icon"
+              src="{{ block.settings.icon | image_url: width: 80 }}"
+              alt=""
+              loading="lazy"
+            >
+          {% endif %}
+
+          <div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.viora-category-section {
+  background: #f7f7f7;
+  padding: 18px 4%;
+}
+
+.viora-category-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.viora-category-heading span {
+  width: 90px;
+  height: 1px;
+  background: #7db342;
+}
+
+.viora-category-heading h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.viora-category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.viora-category-card {
+  position: relative;
+  min-height: 190px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  background: #111;
+  box-shadow: 0 6px 18px rgba(0,0,0,.14);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.viora-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.24);
+}
+
+.viora-category-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.viora-category-card:hover .viora-category-bg {
+  transform: scale(1.08);
+}
+
+.viora-category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.5),
+    rgba(0,0,0,.92)
+  );
+}
+
+.viora-category-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 18px 14px;
+  width: 100%;
+}
+
+.viora-category-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.viora-category-content h3 {
+  margin: 0 0 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.viora-category-content p {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+@media (max-width: 990px) {
+  .viora-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .viora-category-card {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .viora-category-section {
+    padding: 22px 14px;
+  }
+
+  .viora-category-heading span {
+    width: 45px;
+  }
+
+  .viora-category-heading h2 {
+    font-size: 16px;
+  }
+
+  .viora-category-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .viora-category-card {
+    min-height: 210px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Shop by Category Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop By Category"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Wash & Foam"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Keep your car spotless"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Category Cards",
+      "blocks": [
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
