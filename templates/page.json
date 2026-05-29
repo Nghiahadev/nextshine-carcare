@@ -11,9 +11,27 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "image_banner_cQPeDP": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/About_Us_banner.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
       }
     },
     "custom_brand_stack_7JMtAn": {
@@ -137,6 +155,7 @@
   },
   "order": [
     "main",
+    "image_banner_cQPeDP",
     "custom_brand_stack_7JMtAn",
     "custom_timeline_NKR9rb",
     "custom_faq_aMD4wf"
