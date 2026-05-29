@@ -9,27 +9,18 @@
  */
 {
   "sections": {
-    "custom_banner_yLifmR": {
+    "custom_banner_nBEkwR": {
       "type": "custom-banner",
-      "name": "Clean Drive Banner",
+      "name": "Clean Drive Hero",
       "settings": {
         "desktop_image": "shopify://shop_images/Banner.png",
         "mobile_image": "shopify://shop_images/mobile_banner.png",
-        "banner_alt": "Clean Drive car wash banner",
-        "show_button": true,
         "button_text": "Shop Now",
-        "button_link": "shopify://collections/all",
-        "button_color": "#F9C705",
-        "button_hover_text": "#0b1727",
-        "button_left": 8,
-        "button_bottom": 12,
-        "mobile_button_bottom": 7,
-        "button_size": 17,
-        "mobile_button_size": 14
+        "button_link": ""
       }
     }
   },
   "order": [
-    "custom_banner_yLifmR"
+    "custom_banner_nBEkwR"
   ]
 }
