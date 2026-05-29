@@ -3775,3 +3775,11 @@ details-disclosure > details {
     max-height: 48px;
   }
 }
+/* Hide Mobile Hamburger Menu */
+
+.header__icon--menu,
+.header__icon--menu .icon,
+.menu-drawer-container,
+summary.header__icon--menu {
+    display: none !important;
+}
