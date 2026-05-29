@@ -9,18 +9,19 @@
  */
 {
   "sections": {
-    "custom_banner_nBEkwR": {
+    "custom_banner_wPbHwX": {
       "type": "custom-banner",
-      "name": "Clean Drive Hero",
+      "name": "Custom Banner",
       "settings": {
         "desktop_image": "shopify://shop_images/Banner.png",
         "mobile_image": "shopify://shop_images/mobile_banner.png",
+        "alt_text": "Custom banner",
         "button_text": "Shop Now",
         "button_link": ""
       }
     }
   },
   "order": [
-    "custom_banner_nBEkwR"
+    "custom_banner_wPbHwX"
   ]
 }
