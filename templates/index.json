@@ -140,6 +140,49 @@
       "name": "NextShine Ingredients",
       "settings": {}
     },
+    "custom_car_care_steps_xgDUhK": {
+      "type": "custom-car-care-steps",
+      "blocks": {
+        "step_CzMpMr": {
+          "type": "step",
+          "settings": {
+            "title": "WASH",
+            "text": "Remove dirt & grime with our powerful foam and shampoo."
+          }
+        },
+        "step_7txmxf": {
+          "type": "step",
+          "settings": {
+            "title": "CLEAN",
+            "text": "Deep clean surfaces inside and out safely."
+          }
+        },
+        "step_L9N3H9": {
+          "type": "step",
+          "settings": {
+            "title": "PROTECT",
+            "text": "Shine, protect and repel for a long lasting finish."
+          }
+        },
+        "step_aHrGxU": {
+          "type": "step",
+          "settings": {
+            "title": "ENJOY",
+            "text": "Enjoy that fresh, clean car feeling every time."
+          }
+        }
+      },
+      "block_order": [
+        "step_CzMpMr",
+        "step_7txmxf",
+        "step_L9N3H9",
+        "step_aHrGxU"
+      ],
+      "name": "Car Care Made Simple",
+      "settings": {
+        "heading": "CAR CARE MADE SIMPLE"
+      }
+    },
     "customer_blog_cards_Nkxaif": {
       "type": "customer-blog-cards",
       "blocks": {
@@ -149,7 +192,7 @@
             "image": "shopify://shop_images/How_to_Wash_your_car_right_way.png",
             "tag": "GUIDES",
             "title": "How to Wash Your Car the Right Way",
-            "link": "shopify://pages/how-to-wash-your-car-right-way"
+            "link": "shopify://blogs/news/how-to-protect-your-car-paint"
           }
         },
         "card_nEDwj6": {
@@ -158,7 +201,7 @@
             "image": "shopify://shop_images/5_tips_for_a_cleanner_car_interior.png",
             "tag": "INTERIOR",
             "title": "5 Tips for a Cleaner Car Interior",
-            "link": "shopify://pages/5-tips-for-a-cleaner-car-interior"
+            "link": "shopify://blogs/news/5-tips-for-a-cleaner-car-interior"
           }
         },
         "card_WUU7xP": {
@@ -167,7 +210,7 @@
             "image": "shopify://shop_images/tools_every_car_love.png",
             "tag": "DETAILING",
             "title": "Tools Every Car Lover Should Have",
-            "link": "shopify://pages/tools-every-car-lover-should-have"
+            "link": "shopify://blogs/news/tools-every-car-lover-should-have"
           }
         },
         "card_TTqYGG": {
@@ -176,7 +219,7 @@
             "image": "shopify://shop_images/how_to_protect_your_wheel.png",
             "tag": "MAINTENANCE",
             "title": "How to Protect Your Car Paint",
-            "link": "shopify://pages/how-to-protect-your-car-paint"
+            "link": "shopify://blogs/news/how-to-protect-your-car-paint"
           }
         }
       },
@@ -231,49 +274,6 @@
       ],
       "name": "Nextshine Features",
       "settings": {}
-    },
-    "custom_car_care_steps_xgDUhK": {
-      "type": "custom-car-care-steps",
-      "blocks": {
-        "step_CzMpMr": {
-          "type": "step",
-          "settings": {
-            "title": "WASH",
-            "text": "Remove dirt & grime with our powerful foam and shampoo."
-          }
-        },
-        "step_7txmxf": {
-          "type": "step",
-          "settings": {
-            "title": "CLEAN",
-            "text": "Deep clean surfaces inside and out safely."
-          }
-        },
-        "step_L9N3H9": {
-          "type": "step",
-          "settings": {
-            "title": "PROTECT",
-            "text": "Shine, protect and repel for a long lasting finish."
-          }
-        },
-        "step_aHrGxU": {
-          "type": "step",
-          "settings": {
-            "title": "ENJOY",
-            "text": "Enjoy that fresh, clean car feeling every time."
-          }
-        }
-      },
-      "block_order": [
-        "step_CzMpMr",
-        "step_7txmxf",
-        "step_L9N3H9",
-        "step_aHrGxU"
-      ],
-      "name": "Car Care Made Simple",
-      "settings": {
-        "heading": "CAR CARE MADE SIMPLE"
-      }
     }
   },
   "order": [
