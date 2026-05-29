@@ -135,10 +135,45 @@
         "button_link": ""
       }
     },
-    "custom_glowing_GMpGRW": {
-      "type": "custom-glowing",
-      "name": "NextShine Ingredients",
-      "settings": {}
+    "custom_build_bundle_JDwfqc": {
+      "type": "custom-build-bundle",
+      "blocks": {
+        "feature_PePKV8": {
+          "type": "feature",
+          "settings": {
+            "title": "PERFECTLY MATCHED PRODUCTS",
+            "text": "Curated combinations for the best results."
+          }
+        },
+        "feature_t8Wzp6": {
+          "type": "feature",
+          "settings": {
+            "title": "BETTER VALUE",
+            "text": "Save more compared to buying separately."
+          }
+        },
+        "feature_cj4jBA": {
+          "type": "feature",
+          "settings": {
+            "title": "IDEAL FOR EVERY CAR LOVER",
+            "text": "Great for beginners and pros alike."
+          }
+        }
+      },
+      "block_order": [
+        "feature_PePKV8",
+        "feature_t8Wzp6",
+        "feature_cj4jBA"
+      ],
+      "name": "Bundle Promo Banner",
+      "settings": {
+        "image": "shopify://shop_images/Bundles.png",
+        "badge_text": "SAVE 15%",
+        "heading": "COMPLETE CARE.\nMAXIMUM RESULTS.",
+        "text": "Get everything you need in one kit and save more with our premium bundles.",
+        "button_label": "BUILD YOUR BUNDLES",
+        "button_link": ""
+      }
     },
     "custom_car_care_steps_xgDUhK": {
       "type": "custom-car-care-steps",
@@ -212,6 +247,11 @@
         "heading": "Shop the look",
         "look_image": "shopify://shop_images/Bundles.png"
       }
+    },
+    "custom_glowing_GMpGRW": {
+      "type": "custom-glowing",
+      "name": "NextShine Ingredients",
+      "settings": {}
     },
     "customer_blog_cards_Nkxaif": {
       "type": "customer-blog-cards",
@@ -310,6 +350,7 @@
     "custom_banner_J6YdFf",
     "custom_shop_by_category_cards_Up84T6",
     "custom_why_choose_us_XbzCan",
+    "custom_build_bundle_JDwfqc",
     "custom_car_care_steps_xgDUhK",
     "custom_shop_the_look_hotspots_BWtq9i",
     "custom_glowing_GMpGRW",
