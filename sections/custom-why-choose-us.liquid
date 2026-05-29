@@ -8,9 +8,7 @@
         {{ section.settings.heading }}
       </h2>
 
-      <p>
-        {{ section.settings.description }}
-      </p>
+      <p>{{ section.settings.description }}</p>
 
       {% if section.settings.button_text != blank %}
         <a href="{{ section.settings.button_link }}" class="btn5">
@@ -27,14 +25,13 @@
 
           {% if block.settings.icon != blank %}
             <img
-              src="{{ block.settings.icon | image_url: width: 120 }}"
+              src="{{ block.settings.icon | image_url: width: 100 }}"
               alt="{{ block.settings.title }}"
               class="why-icon"
             >
           {% endif %}
 
           <h3>{{ block.settings.title }}</h3>
-
           <p>{{ block.settings.text }}</p>
 
         </div>
@@ -51,179 +48,179 @@
   background: linear-gradient(
     90deg,
     #071b08 0%,
-    #0a250c 35%,
-    #0f4013 70%,
+    #0b2d0d 35%,
+    #0f3f12 70%,
     #071b08 100%
   );
-  padding: 60px 5%;
+  padding:70px 5%;
+  overflow:hidden;
 }
 
 .why-choose__container{
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  align-items: center;
-  gap: 40px;
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:350px 1fr;
+  gap:40px;
+  align-items:center;
 }
 
 .why-left{
-  padding-right: 40px;
-  border-right: 1px solid rgba(255,255,255,.15);
+  padding-right:30px;
+  border-right:1px solid rgba(56,168,0,.25);
 }
 
 .why-title{
-  margin: 0 0 20px;
-  font-size: 42px;
-  line-height: 1.1;
-  text-transform: uppercase;
-  font-weight: 800;
-  color: #fff;
+  color:#fff;
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:20px;
+  text-transform:uppercase;
+  font-weight:800;
 }
 
 .why-title span{
-  display: block;
-  color: #38A800;
-  margin-bottom: 4px;
+  display:block;
+  color:#38A800;
 }
 
 .why-left p{
-  color: rgba(255,255,255,.75);
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 30px;
-}
-
-.btn5 {
-  --color: #38A800;
-
-  padding: 0.8em 1.7em;
-  background-color: transparent;
-  border-radius: 0.3em;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.5s;
-  font-weight: 600;
-  font-size: 17px;
-  border: 1px solid;
-  font-family: inherit;
-  text-transform: uppercase;
-  color: var(--color);
-  border-color: var(--color);
-  z-index: 1;
-}
-
-.btn5::before,
-.btn5::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 50px;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1;
-  background-color: var(--color);
-  transition: 1s ease;
-}
-
-.btn5::before {
-  top: -1em;
-  left: -1em;
-}
-
-.btn5::after {
-  left: calc(100% + 1em);
-  top: calc(100% + 1em);
-}
-
-.btn5:hover::before,
-.btn5:hover::after {
-  width: 410px;
-  height: 410px;
-}
-
-.btn5:hover {
-  color: #ffffff;
-}
-
-.btn5:active {
-  filter: brightness(0.85);
-  transform: scale(0.97);
+  color:#d5d5d5;
+  font-size:16px;
+  line-height:1.8;
+  margin-bottom:30px;
 }
 
 .why-right{
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
 }
 
 .why-item{
-  text-align: center;
-  padding: 0 25px;
-  position: relative;
+  text-align:center;
+  padding:0 25px;
+  position:relative;
 }
 
 .why-item:not(:last-child){
-  border-right: 1px solid rgba(255,255,255,.12);
+  border-right:1px solid rgba(56,168,0,.18);
 }
 
 .why-icon{
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  margin-bottom: 18px;
-  filter: brightness(0) invert(1);
+  width:55px;
+  height:55px;
+  object-fit:contain;
+  margin-bottom:18px;
+  filter:brightness(0) invert(1);
 }
 
 .why-item h3{
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  letter-spacing: .5px;
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:12px;
 }
 
 .why-item p{
-  color: rgba(255,255,255,.70);
-  font-size: 14px;
-  line-height: 1.7;
-  max-width: 180px;
-  margin: 0 auto;
+  color:#d0d0d0;
+  font-size:14px;
+  line-height:1.7;
 }
 
-@media screen and (max-width: 991px){
+/* BUTTON */
+
+.btn5{
+  --color:#38A800;
+  padding:14px 28px;
+  background:transparent;
+  border-radius:4px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.5s;
+  font-weight:700;
+  font-size:15px;
+  border:1px solid var(--color);
+  font-family:inherit;
+  text-transform:uppercase;
+  text-decoration:none;
+  display:inline-block;
+  color:var(--color);
+  z-index:1;
+}
+
+.btn5::before,
+.btn5::after{
+  content:'';
+  display:block;
+  width:50px;
+  height:50px;
+  transform:translate(-50%,-50%);
+  position:absolute;
+  border-radius:50%;
+  z-index:-1;
+  background-color:var(--color);
+  transition:1s ease;
+}
+
+.btn5::before{
+  top:-1em;
+  left:-1em;
+}
+
+.btn5::after{
+  left:calc(100% + 1em);
+  top:calc(100% + 1em);
+}
+
+.btn5:hover::before,
+.btn5:hover::after{
+  width:420px;
+  height:420px;
+}
+
+.btn5:hover{
+  color:#ffffff;
+}
+
+.btn5:active{
+  filter:brightness(.85);
+  transform:scale(.97);
+}
+
+@media(max-width:991px){
 
   .why-choose__container{
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
   }
 
   .why-left{
-    border-right: none;
-    padding-right: 0;
-    text-align: center;
+    border-right:none;
+    padding-right:0;
+    text-align:center;
   }
 
   .why-right{
-    grid-template-columns: repeat(2,1fr);
-    gap: 30px;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
   }
 
   .why-item{
-    border: none !important;
-    padding: 0;
+    border:none !important;
+    padding:0;
   }
+
 }
 
-@media screen and (max-width: 767px){
+@media(max-width:576px){
 
   .why-title{
-    font-size: 32px;
+    font-size:32px;
   }
 
   .why-right{
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
   }
 
 }
@@ -232,73 +229,62 @@
 
 {% schema %}
 {
-  "name": "Why Choose Us",
-  "settings": [
+  "name":"Why Choose Us",
+  "settings":[
     {
-      "type": "text",
-      "id": "heading",
-      "label": "Main Heading",
-      "default": "NEXTSHINE CAR CARE?"
+      "type":"text",
+      "id":"heading",
+      "label":"Heading",
+      "default":"NEXTSHINE CAR CARE?"
     },
     {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "We combine advanced formulas with premium tools to deliver unmatched results and make your car care simple, effective, and satisfying."
+      "type":"textarea",
+      "id":"description",
+      "label":"Description"
     },
     {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "default": "Learn More"
+      "type":"text",
+      "id":"button_text",
+      "label":"Button Text",
+      "default":"Learn More"
     },
     {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
+      "type":"url",
+      "id":"button_link",
+      "label":"Button Link"
     }
   ],
-  "blocks": [
+  "blocks":[
     {
-      "type": "feature",
-      "name": "Feature",
-      "settings": [
+      "type":"feature",
+      "name":"Feature",
+      "settings":[
         {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
+          "type":"image_picker",
+          "id":"icon",
+          "label":"Icon"
         },
         {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Advanced Formulas"
+          "type":"text",
+          "id":"title",
+          "label":"Title"
         },
         {
-          "type": "textarea",
-          "id": "text",
-          "label": "Description",
-          "default": "High performance ingredients for superior cleaning."
+          "type":"textarea",
+          "id":"text",
+          "label":"Description"
         }
       ]
     }
   ],
-  "presets": [
+  "presets":[
     {
-      "name": "Why Choose Us",
-      "blocks": [
-        {
-          "type": "feature"
-        },
-        {
-          "type": "feature"
-        },
-        {
-          "type": "feature"
-        },
-        {
-          "type": "feature"
-        }
+      "name":"Why Choose Us",
+      "blocks":[
+        {"type":"feature"},
+        {"type":"feature"},
+        {"type":"feature"},
+        {"type":"feature"}
       ]
     }
   ]
