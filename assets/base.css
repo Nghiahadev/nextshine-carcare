@@ -3595,3 +3595,135 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* ================================
+   NEXTSHINE DARK GREEN NAVBAR STYLE
+================================ */
+
+/* Main header background */
+.header-wrapper,
+.header-wrapper.gradient {
+  background: #020602 !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(126, 211, 33, 0.28) !important;
+}
+
+/* Header spacing */
+.header {
+  min-height: 86px;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+/* Logo */
+.header__heading-logo {
+  max-height: 58px;
+  width: auto;
+}
+
+/* Menu text */
+.header__menu-item,
+.header__menu-item span,
+.header__active-menu-item {
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+}
+
+/* Menu hover */
+.header__menu-item:hover span,
+.header__menu-item:hover {
+  color: #7ed321 !important;
+  text-decoration: none !important;
+}
+
+/* Green underline hover */
+.header__menu-item span {
+  position: relative;
+}
+
+.header__menu-item span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  background: #7ed321;
+  transition: width 0.3s ease;
+}
+
+.header__menu-item:hover span::after,
+.header__active-menu-item::after {
+  width: 100%;
+}
+
+/* Caret arrow */
+.header__menu-item .icon-caret,
+.header__menu-item svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Header icons */
+.header__icon,
+.header__icon span,
+.header__icon svg {
+  color: #ffffff !important;
+  fill: none !important;
+  stroke: #ffffff !important;
+}
+
+.header__icon:hover svg {
+  stroke: #7ed321 !important;
+}
+
+/* Cart bubble */
+.cart-count-bubble {
+  background: #7ed321 !important;
+  color: #020602 !important;
+  font-weight: 900;
+}
+
+/* Shop now style for last menu item */
+.header__inline-menu .list-menu > li:last-child > a {
+  background: #4fb000 !important;
+  color: #ffffff !important;
+  border-radius: 8px;
+  padding: 12px 22px !important;
+  margin-left: 12px;
+  font-weight: 900;
+  box-shadow: 0 0 16px rgba(126, 211, 33, 0.22);
+}
+
+.header__inline-menu .list-menu > li:last-child > a span {
+  color: #ffffff !important;
+}
+
+.header__inline-menu .list-menu > li:last-child > a span::after {
+  display: none;
+}
+
+.header__inline-menu .list-menu > li:last-child > a:hover {
+  background: #7ed321 !important;
+  color: #020602 !important;
+}
+
+.header__inline-menu .list-menu > li:last-child > a:hover span {
+  color: #020602 !important;
+}
+
+/* Mega menu should stay clean */
+.mega-menu__content {
+  border-top: 1px solid rgba(126, 211, 33, 0.28) !important;
+}
+
+/* Mobile drawer icon */
+.header__icon--menu,
+.menu-drawer-container svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
