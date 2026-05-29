@@ -3596,67 +3596,99 @@ details-disclosure > details {
   }
 }
 
-
-/* ==========================
-   PREMIUM BLACK NAVBAR
-========================== */
+/* ==========================================
+   PREMIUM BLACK GLASS NAVBAR
+========================================== */
 
 .header-wrapper {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 9999 !important;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 
-  background: rgba(0, 0, 0, 0.95) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 
-  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.3s ease;
 }
 
 .header {
-  background: transparent !important;
+  min-height: 80px;
+  align-items: center;
 }
 
-.header__menu-item,
-.header__menu-item span,
-.list-menu__item {
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.4px !important;
+/* Logo */
+
+.header__heading-logo {
+  max-height: 58px;
+  width: auto;
+  transition: transform 0.3s ease;
 }
 
-.header__menu-item:hover,
-.header__menu-item:hover span {
-  color: #d1d5db !important;
+.header__heading-logo:hover {
+  transform: scale(1.03);
 }
+
+/* Main Menu */
+
+.list-menu--inline {
+  gap: 12px;
+}
+
+.header__menu-item {
+  position: relative;
+  padding: 12px 18px !important;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  color: #f8f8f8 !important;
+
+  transition: all 0.3s ease;
+}
+
+.header__menu-item span {
+  color: #f8f8f8 !important;
+  text-decoration: none !important;
+}
+
+/* Animated underline */
 
 .header__menu-item::after {
-  content: "" !important;
-  position: absolute !important;
-  left: 16px !important;
-  right: 16px !important;
-  bottom: 5px !important;
-  height: 2px !important;
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 6px;
+  height: 2px;
 
   background: linear-gradient(
     90deg,
     #ffffff,
     #d1d5db,
     #ffffff
-  ) !important;
+  );
 
-  transform: scaleX(0) !important;
-  transition: 0.3s ease !important;
+  border-radius: 999px;
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 0.3s ease;
+}
+
+.header__menu-item:hover {
+  color: #ffffff !important;
 }
 
 .header__menu-item:hover::after {
-  transform: scaleX(1) !important;
+  transform: scaleX(1);
 }
 
-.header__heading-logo {
-  max-height: 58px !important;
-}
+/* Icons */
 
 .header__icon,
 .header__icon svg {
@@ -3664,33 +3696,82 @@ details-disclosure > details {
   fill: #ffffff !important;
 }
 
-.header__icon:hover {
-  opacity: 0.8 !important;
+.header__icon {
+  transition: all 0.3s ease;
 }
 
+.header__icon:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+/* Cart Bubble */
+
+.cart-count-bubble {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700;
+}
+
+/* Dropdown */
+
 .header__submenu {
-  background: rgba(10, 10, 10, 0.98) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
-  border-radius: 14px !important;
+  background: rgba(10, 10, 10, 0.96);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.6);
+
+  padding: 12px 0;
 }
 
 .header__submenu .header__menu-item {
-  color: #ffffff !important;
+  padding: 14px 24px !important;
+}
+
+.header__submenu .header__menu-item::after {
+  display: none;
 }
 
 .header__submenu .header__menu-item:hover {
-  background: rgba(255,255,255,0.08) !important;
+  background: rgba(255,255,255,0.06);
 }
 
-.menu-drawer {
-  background: #000000 !important;
+/* Search */
+
+.search-modal {
+  background: rgba(0,0,0,0.95);
 }
 
-.menu-drawer__menu-item {
-  color: #ffffff !important;
-}
+/* Mobile Drawer */
 
-.menu-drawer__menu-item:hover {
-  background: rgba(255,255,255,0.08) !important;
+@media screen and (max-width: 989px) {
+
+  .menu-drawer {
+    background: #000000;
+  }
+
+  .menu-drawer__menu-item {
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 18px 24px;
+  }
+
+  .menu-drawer__menu-item:hover {
+    background: rgba(255,255,255,0.06);
+  }
+
+  .header {
+    min-height: 70px;
+  }
+
+  .header__heading-logo {
+    max-height: 48px;
+  }
 }
