@@ -175,12 +175,18 @@
       ],
       "name": "Nextshine Features",
       "settings": {}
+    },
+    "custom_glowing_GMpGRW": {
+      "type": "custom-glowing",
+      "name": "NextShine Ingredients",
+      "settings": {}
     }
   },
   "order": [
     "custom_banner_J6YdFf",
     "custom_shop_by_category_cards_Up84T6",
     "custom_why_choose_us_XbzCan",
+    "custom_glowing_GMpGRW",
     "custom_features_3hwnE3"
   ]
 }
