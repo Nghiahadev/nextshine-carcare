@@ -15,9 +15,48 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "custom_faq_aMD4wf": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_k93a9k": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/Tools_Accessories.png",
+            "question": "Are your products safe for all car surfaces?",
+            "answer": "Yes! Our products are pH balanced and safe for paint, plastic, rubber, glass, and other exterior and interior surfaces."
+          }
+        },
+        "faq_yMEmHD": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/interior_care.png",
+            "question": "Are your products safe for all car surfaces?",
+            "answer": "Yes! Our products are pH balanced and safe for paint, plastic, rubber, glass, and other exterior and interior surfaces."
+          }
+        },
+        "faq_M6wi3b": {
+          "type": "faq",
+          "settings": {
+            "faq_image": "shopify://shop_images/How_to_Wash_your_car_right_way.png",
+            "question": "Are your products safe for all car surfaces?",
+            "answer": "Yes! Our products are pH balanced and safe for paint, plastic, rubber, glass, and other exterior and interior surfaces."
+          }
+        }
+      },
+      "block_order": [
+        "faq_k93a9k",
+        "faq_yMEmHD",
+        "faq_M6wi3b"
+      ],
+      "name": "FAQ Image Accordion",
+      "settings": {
+        "image_1": "shopify://shop_images/How_to_Wash_your_car_right_way.png"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_faq_aMD4wf"
   ]
 }
