@@ -1,318 +1,553 @@
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 
-<section class="nx-contact-section">
-  <div class="nx-contact-container">
+<section class="nx-contact-page">
+  <div class="nx-contact-shell">
 
-    <div class="nx-contact-inner">
+    <div class="nx-contact-main">
 
-      <div class="nx-contact-form-area">
-        <span class="nx-small-title">NEXTSHINE CAR CARE</span>
-        <h2>Contact Us</h2>
-        <p>Feel free to contact us any time. We will get back to you as soon as we can.</p>
+      <div class="nx-contact-left">
+        <span class="nx-kicker">NEXTSHINE CAR CARE</span>
+        <h1>Contact Us</h1>
+        <p class="nx-intro">
+          Feel free to contact us any time. We will get back to you as soon as we can.
+        </p>
 
         {% form 'contact', id: 'ContactForm', class: 'nx-contact-form' %}
 
           {% if form.posted_successfully? %}
-            <p class="nx-success">Thank you! Your message has been sent.</p>
+            <div class="nx-success">Thank you! Your message has been sent.</div>
           {% endif %}
 
           {{ form.errors | default_errors }}
 
-          <input
-            type="text"
-            name="contact[name]"
-            placeholder="Name"
-            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-          >
+          <div class="nx-field">
+            <span class="nx-field-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5Zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5Z"/></svg>
+            </span>
+            <input type="text" name="contact[name]" placeholder="Name">
+          </div>
 
-          <input
-            type="email"
-            name="contact[email]"
-            placeholder="Email"
-            required
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-          >
+          <div class="nx-field">
+            <span class="nx-field-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+            </span>
+            <input type="email" name="contact[email]" placeholder="Email" required>
+          </div>
 
-          <input
-            type="tel"
-            name="contact[phone]"
-            placeholder="Phone"
-            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          >
+          <div class="nx-field">
+            <span class="nx-field-icon">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.3 22 2 13.7 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-1.7 2.2Z"/></svg>
+            </span>
+            <input type="tel" name="contact[phone]" placeholder="Phone">
+          </div>
 
-          <textarea
-            name="contact[body]"
-            placeholder="Message"
-            required
-          >{{ form.body }}</textarea>
+          <div class="nx-field nx-message">
+            <span class="nx-field-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H7l-5 4V6c0-1.1.9-2 2-2Zm2 5h12V7H6v2Zm0 4h9v-2H6v2Z"/></svg>
+            </span>
+            <textarea name="contact[body]" placeholder="Message" required></textarea>
+          </div>
 
-          <button type="submit">Send Message</button>
+          <button type="submit" class="nx-submit">
+            Send Message
+            <span>→</span>
+          </button>
 
         {% endform %}
       </div>
 
-      <div class="nx-social-bar">
-        <div>
-          <a href="#">FB</a>
-          <a href="#">IG</a>
-          <a href="#">TT</a>
+      <div class="nx-contact-card">
+        <h3>Contact Info</h3>
+
+        <div class="nx-info-row">
+          <span class="nx-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.3 22 2 13.7 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.6c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-1.7 2.2Z"/></svg>
+          </span>
+          <div>
+            <strong>Phone</strong>
+            <p>+1 800 123 4567</p>
+          </div>
+        </div>
+
+        <div class="nx-info-row">
+          <span class="nx-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+          </span>
+          <div>
+            <strong>Email</strong>
+            <p>support@nextshine.com</p>
+          </div>
+        </div>
+
+        <div class="nx-info-row">
+          <span class="nx-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+          </span>
+          <div>
+            <strong>Location</strong>
+            <p>United States</p>
+          </div>
+        </div>
+
+        <div class="nx-help-box">
+          <span>
+            <svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.3 6.8 3.8v7.8L12 19.7l-6.8-3.8V8.1L12 4.3Zm-1 4.2h2v6h-2v-6Zm0 7.5h2v2h-2v-2Z"/></svg>
+          </span>
+          <div>
+            <strong>We're here to help!</strong>
+            <p>Got a question or need support? Our team is ready to assist you.</p>
+          </div>
         </div>
       </div>
 
-      <div class="nx-contact-info">
-        <h3>Contact Info</h3>
-
-        <div class="nx-info-item">
-          <span>☎</span>
-          <p>+1 800 123 4567</p>
-        </div>
-
-        <div class="nx-info-item">
-          <span>✉</span>
-          <p>support@nextshine.com</p>
-        </div>
-
-        <div class="nx-info-item">
-          <span>📍</span>
-          <p>United States</p>
-        </div>
+      <div class="nx-social-side">
+        <a href="#">
+          <span>f</span>
+          Facebook
+        </a>
+        <a href="#">
+          <span>◎</span>
+          Instagram
+        </a>
+        <a href="#">
+          <span>𝕏</span>
+          Twitter
+        </a>
+        <a href="#">
+          <span>in</span>
+          LinkedIn
+        </a>
       </div>
 
     </div>
-  </div>
-</section>
 
-<section class="nx-map-section">
-  <div class="nx-contact-container">
-    <div class="nx-map-inner">
-      <h3>Find Us on Google Map</h3>
-      <p>Visit us or contact us online for car care products, bundles, and support.</p>
+    <div class="nx-map-card">
+      <div class="nx-map-text">
+        <span class="nx-kicker">Find Us</span>
+        <h2>Find Us on Google Map</h2>
+        <p>Visit our location or get in touch with us. We're always happy to help you.</p>
+      </div>
 
       <div class="nx-map-box">
         <iframe
           src="https://www.google.com/maps/embed?pb="
           width="100%"
-          height="420"
+          height="260"
           style="border:0;"
           allowfullscreen=""
           loading="lazy">
         </iframe>
       </div>
     </div>
+
   </div>
 </section>
 
 <style>
-.nx-contact-section {
-  background: #f1f1f1;
-  padding: 120px 20px;
+.nx-contact-page {
+  background: #eeeeee;
+  padding: 32px;
+  font-family: inherit;
 }
 
-.nx-contact-container {
-  max-width: 1150px;
+.nx-contact-shell {
+  max-width: 1320px;
   margin: 0 auto;
-}
-
-.nx-contact-inner {
   background: #fff;
+  border-radius: 28px;
+  padding: 75px 90px 28px;
   position: relative;
-  border-radius: 25px;
-  box-shadow: 20px 22px 44px rgba(0,0,0,.18);
   overflow: hidden;
-  min-height: 520px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.16);
 }
 
-.nx-contact-form-area {
-  padding: 70px 420px 80px 80px;
-}
-
-.nx-small-title {
-  color: #68d900;
-  font-weight: 800;
-  letter-spacing: 2px;
-  font-size: 13px;
-}
-
-.nx-contact-form-area h2 {
-  color: #050505;
-  font-size: 44px;
-  margin: 10px 0;
-  font-weight: 800;
-}
-
-.nx-contact-form-area p {
-  color: #555;
-  font-size: 15px;
-  margin-bottom: 35px;
-}
-
-.nx-contact-form input,
-.nx-contact-form textarea {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  padding: 16px 5px;
-  margin-bottom: 18px;
-  outline: none;
-  font-size: 15px;
-  background: transparent;
-}
-
-.nx-contact-form textarea {
-  height: 130px;
-  resize: none;
-}
-
-.nx-contact-form input:focus,
-.nx-contact-form textarea:focus {
-  border-bottom: 2px solid #68d900;
-}
-
-.nx-contact-form button {
-  width: 100%;
-  border: none;
-  background: linear-gradient(135deg, #68d900, #1f8f00);
-  color: #fff;
-  padding: 15px;
-  border-radius: 35px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: .3s ease;
-}
-
-.nx-contact-form button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(104,217,0,.35);
-}
-
-.nx-social-bar {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 90px;
-  height: 100%;
-  background: linear-gradient(180deg, #68d900, #0f3d13);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 25px;
-}
-
-.nx-social-bar div {
-  display: flex;
-  gap: 12px;
-  transform: rotate(-90deg);
-}
-
-.nx-social-bar a {
-  color: #fff;
-  font-weight: 800;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.nx-contact-info {
-  position: absolute;
-  right: 90px;
-  top: 18%;
-  width: 340px;
-  background: #111;
-  color: #fff;
-  padding: 40px;
-  border-radius: 25px 0 0 25px;
-  box-shadow: 0 20px 45px rgba(0,0,0,.35);
-}
-
-.nx-contact-info h3 {
-  font-size: 24px;
-  margin-bottom: 25px;
-}
-
-.nx-info-item {
-  display: flex;
-  gap: 15px;
+.nx-contact-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px 150px;
+  gap: 46px;
   align-items: center;
-  margin: 28px 0;
 }
 
-.nx-info-item span {
-  color: #68d900;
-  font-size: 22px;
-}
-
-.nx-info-item p {
-  margin: 0;
-  color: #eee;
+.nx-kicker {
+  color: #4fd000;
   font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.nx-kicker::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: #4fd000;
+  margin-top: 8px;
+  border-radius: 10px;
+}
+
+.nx-contact-left h1 {
+  color: #050505;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 1;
+  margin: 0 0 22px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.nx-intro {
+  color: #5c6670;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 38px;
+}
+
+.nx-contact-form {
+  max-width: 650px;
+}
+
+.nx-field {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  border-bottom: 1px solid #d6d6d6;
+  padding: 12px 0;
+  margin-bottom: 22px;
+}
+
+.nx-field-icon {
+  width: 48px;
+  height: 48px;
+  background: #f0f8ec;
+  color: #49c900;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 48px;
+}
+
+.nx-field-icon svg,
+.nx-info-icon svg,
+.nx-help-box svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+.nx-field input,
+.nx-field textarea {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 16px;
+  color: #111;
+  font-family: inherit;
+}
+
+.nx-field textarea {
+  height: 110px;
+  resize: vertical;
+  padding-top: 12px;
+}
+
+.nx-message {
+  align-items: flex-start;
+}
+
+.nx-field:focus-within {
+  border-bottom-color: #4fd000;
+}
+
+.nx-submit {
+  width: 100%;
+  border: none;
+  background: linear-gradient(135deg, #57d900, #158f00);
+  color: #fff;
+  height: 58px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: .3s ease;
+  letter-spacing: .3px;
+}
+
+.nx-submit span {
+  margin-left: 12px;
+  font-size: 24px;
+}
+
+.nx-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(74, 206, 0, .35);
 }
 
 .nx-success {
-  background: rgba(104,217,0,.12);
-  color: #1f8f00;
-  padding: 12px 15px;
+  background: rgba(79, 208, 0, .12);
+  border: 1px solid rgba(79, 208, 0, .35);
+  color: #158f00;
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.nx-contact-card {
+  background: radial-gradient(circle at top left, #1d1d1d, #0b0b0b 65%);
+  color: #fff;
+  border-radius: 28px;
+  padding: 48px 42px;
+  box-shadow: 0 25px 70px rgba(0,0,0,.35);
+  min-height: 560px;
+}
+
+.nx-contact-card h3 {
+  font-size: 25px;
+  color: #fff;
+  margin: 0 0 35px;
+  font-weight: 900;
+  position: relative;
+}
+
+.nx-contact-card h3::after {
+  content: "";
+  width: 48px;
+  height: 3px;
+  background: #4fd000;
+  display: block;
+  margin-top: 12px;
   border-radius: 10px;
-  font-weight: 700;
 }
 
-.nx-map-section {
-  padding: 70px 20px;
-  background: #fff;
+.nx-info-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
-.nx-map-inner {
+.nx-info-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(79,208,0,.13);
+  color: #fff;
+  border: 1px solid rgba(79,208,0,.35);
+  box-shadow: 0 0 25px rgba(79,208,0,.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 58px;
+}
+
+.nx-info-row strong {
+  color: #4fd000;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.nx-info-row p {
+  color: #fff;
+  margin: 0;
+  font-size: 15px;
+}
+
+.nx-help-box {
+  display: flex;
+  gap: 16px;
+  margin-top: 35px;
+  align-items: flex-start;
+}
+
+.nx-help-box span {
+  color: #4fd000;
+  flex: 0 0 auto;
+}
+
+.nx-help-box strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.nx-help-box p {
+  margin: 0;
+  color: #e5e5e5;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.nx-social-side {
+  align-self: stretch;
+  background: linear-gradient(180deg, #56d900, #0c3f08);
+  border-radius: 0 28px 28px 0;
+  margin: -75px -90px -28px 0;
+  padding: 120px 22px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nx-social-side::after {
+  content: "";
+  position: absolute;
+  bottom: 40px;
+  left: 22px;
+  right: 22px;
+  height: 140px;
+  opacity: .25;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+.nx-social-side a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 15px;
   text-align: center;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255,255,255,.18);
 }
 
-.nx-map-inner h3 {
+.nx-social-side span {
+  width: 54px;
+  height: 54px;
+  border: 2px solid rgba(255,255,255,.8);
+  border-radius: 16px;
+  transform: rotate(30deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.nx-social-side span > * {
+  transform: rotate(-30deg);
+}
+
+.nx-map-card {
+  margin-top: 70px;
+  background: #f7faf5;
+  border-radius: 28px;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 34px 40px;
+}
+
+.nx-map-text h2 {
   color: #050505;
-  font-size: 34px;
-  margin-bottom: 10px;
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0 0 15px;
+  font-weight: 900;
 }
 
-.nx-map-inner p {
-  color: #555;
-  margin-bottom: 35px;
+.nx-map-text p {
+  color: #65717c;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .nx-map-box {
-  border-radius: 30px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0,0,0,.18);
+  min-height: 260px;
+  background: #ddd;
 }
 
-@media screen and (max-width: 900px) {
-  .nx-contact-section {
-    padding: 60px 15px;
+.nx-map-box iframe {
+  display: block;
+  filter: saturate(.9);
+}
+
+@media screen and (max-width: 1100px) {
+  .nx-contact-shell {
+    padding: 50px 35px 35px;
   }
 
-  .nx-contact-form-area {
-    padding: 40px 25px;
+  .nx-contact-main {
+    grid-template-columns: 1fr;
   }
 
-  .nx-contact-form-area h2 {
-    font-size: 34px;
+  .nx-contact-form {
+    max-width: 100%;
   }
 
-  .nx-contact-info {
-    position: relative;
-    right: auto;
-    top: auto;
+  .nx-contact-card {
+    min-height: auto;
+  }
+
+  .nx-social-side {
+    margin: 0;
+    border-radius: 24px;
+    padding: 28px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nx-social-side a {
     width: auto;
-    border-radius: 0;
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
-  .nx-social-bar {
-    position: relative;
-    width: 100%;
-    height: 70px;
-    padding: 0;
-    align-items: center;
+  .nx-map-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .nx-contact-page {
+    padding: 16px;
   }
 
-  .nx-social-bar div {
-    transform: none;
+  .nx-contact-shell {
+    padding: 36px 20px 24px;
+    border-radius: 22px;
+  }
+
+  .nx-contact-left h1 {
+    font-size: 42px;
+  }
+
+  .nx-field {
+    gap: 14px;
+  }
+
+  .nx-contact-card {
+    padding: 34px 24px;
+  }
+
+  .nx-map-card {
+    padding: 25px 20px;
+  }
+
+  .nx-social-side {
+    gap: 18px;
+  }
+
+  .nx-social-side a {
+    font-size: 13px;
   }
 }
 </style>
