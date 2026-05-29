@@ -16,7 +16,7 @@
       <p>{{ section.settings.text }}</p>
 
       {% if section.settings.button_label != blank %}
-        <a href="{{ section.settings.button_link }}" class="nx-bundle-btn">
+        <a href="{{ section.settings.button_link }}" class="btn5">
           {{ section.settings.button_label }} <span>→</span>
         </a>
       {% endif %}
@@ -115,24 +115,65 @@
   max-width: 430px;
 }
 
-.nx-bundle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  background: #5fc400;
-  color: #fff;
-  text-decoration: none;
-  padding: 14px 26px;
-  border-radius: 5px;
-  font-weight: 900;
-  font-size: 14px;
-  text-transform: uppercase;
-  transition: .3s ease;
+/* BUTTON */
+
+.btn5{
+  --color:#38A800;
+  padding:14px 28px;
+  background:transparent;
+  border-radius:4px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.5s;
+  font-weight:700;
+  font-size:15px;
+  border:1px solid var(--color);
+  font-family:inherit;
+  text-transform:uppercase;
+  text-decoration:none;
+  display:inline-block;
+  color:var(--color);
+  z-index:1;
 }
 
-.nx-bundle-btn:hover {
-  background: #7ed321;
-  transform: translateY(-2px);
+.btn5::before,
+.btn5::after{
+  content:'';
+  display:block;
+  width:50px;
+  height:50px;
+  transform:translate(-50%,-50%);
+  position:absolute;
+  border-radius:50%;
+  z-index:-1;
+  background-color:var(--color);
+  transition:1s ease;
+}
+
+.btn5::before{
+  top:-1em;
+  left:-1em;
+}
+
+.btn5::after{
+  left:calc(100% + 1em);
+  top:calc(100% + 1em);
+}
+
+.btn5:hover::before,
+.btn5:hover::after{
+  width:420px;
+  height:420px;
+}
+
+.btn5:hover{
+  color:#ffffff;
+}
+
+.btn5:active{
+  filter:brightness(.85);
+  transform:scale(.97);
 }
 
 .nx-bundle-features {
