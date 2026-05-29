@@ -2341,9 +2341,16 @@ input[type='checkbox'] {
 
 Main Header Layout
 .header-wrapper {
-  display: block;
-  position: relative;
-  background-color: rgb(var(--color-background));
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
 }
 
 .header-wrapper--border-bottom {
