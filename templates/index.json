@@ -88,10 +88,57 @@
       "settings": {
         "heading": "Shop By Category"
       }
+    },
+    "custom_why_choose_us_XbzCan": {
+      "type": "custom-why-choose-us",
+      "blocks": {
+        "feature_nQG3Lh": {
+          "type": "feature",
+          "settings": {
+            "title": "Advanced formulas",
+            "text": "High performance ingredients or superior cleaning"
+          }
+        },
+        "feature_xAHnrM": {
+          "type": "feature",
+          "settings": {
+            "title": "Advanced formulas",
+            "text": "High performance ingredients or superior cleaning"
+          }
+        },
+        "feature_NbNw9J": {
+          "type": "feature",
+          "settings": {
+            "title": "Advanced formulas",
+            "text": "High performance ingredients or superior cleaning"
+          }
+        },
+        "feature_m89xPk": {
+          "type": "feature",
+          "settings": {
+            "title": "Advanced formulas",
+            "text": "High performance ingredients or superior cleaning"
+          }
+        }
+      },
+      "block_order": [
+        "feature_nQG3Lh",
+        "feature_xAHnrM",
+        "feature_NbNw9J",
+        "feature_m89xPk"
+      ],
+      "name": "Why Choose Us",
+      "settings": {
+        "heading": "NEXTSHINE CAR CARE?",
+        "description": "We Combine advanced ormulas with premium tools to deliver unmatched results and make car care simple, eective, and satsfying.",
+        "button_text": "Learn More",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "custom_banner_J6YdFf",
-    "custom_shop_by_category_cards_Up84T6"
+    "custom_shop_by_category_cards_Up84T6",
+    "custom_why_choose_us_XbzCan"
   ]
 }
