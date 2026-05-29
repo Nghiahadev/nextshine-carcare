@@ -1,0 +1,359 @@
+<style>
+  .nextshine-glow-section {
+    background: #050505;
+    padding: 90px 20px;
+    font-family: Inter, Arial, sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .nextshine-glow-container {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .nextshine-glow-header {
+    text-align: center;
+    margin-bottom: 55px;
+  }
+
+  .nextshine-glow-subtitle {
+    display: block;
+    font-size: clamp(32px, 5vw, 58px);
+    font-style: italic;
+    font-weight: 300;
+    color: #ffffff;
+    opacity: 0.85;
+  }
+
+  .nextshine-glow-title {
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1;
+    margin: 15px 0 18px;
+    font-weight: 900;
+    color: #ffffff;
+  }
+
+  .nextshine-glow-desc {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: clamp(16px, 2vw, 22px);
+    line-height: 1.45;
+    color: rgba(255,255,255,0.72);
+  }
+
+  .nextshine-glow-cards {
+    position: relative;
+  }
+
+  .nextshine-glow-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 22px;
+  }
+
+  .nextshine-card {
+    --hue: 110;
+    --saturation: 95%;
+    --lightness: 45%;
+    --hsl: var(--hue), var(--saturation), var(--lightness);
+
+    position: relative;
+    min-height: 250px;
+    padding: 30px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #1a1a1a, #101010);
+    border: 1px solid rgba(255,255,255,0.16);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 350ms ease;
+  }
+
+  .nextshine-card:nth-child(1) { --hue: 195; }
+  .nextshine-card:nth-child(2) { --hue: 190; }
+  .nextshine-card:nth-child(3) { --hue: 205; }
+  .nextshine-card:nth-child(4) { --hue: 38; }
+  .nextshine-card:nth-child(5) { --hue: 210; }
+  .nextshine-card:nth-child(6) { --hue: 270; }
+  .nextshine-card:nth-child(7) { --hue: 95; }
+  .nextshine-card:nth-child(8) { --hue: 190; }
+  .nextshine-card:nth-child(9) { --hue: 110; }
+
+  .nextshine-card-feature {
+    grid-column: span 2;
+  }
+
+  .nextshine-card-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+  }
+
+  .nextshine-card-feature .nextshine-card-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: left;
+  }
+
+  .nextshine-card img {
+    max-width: 145px;
+    max-height: 125px;
+    object-fit: contain;
+    margin-bottom: 24px;
+    transition: 350ms ease;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.45));
+  }
+
+  .nextshine-card-feature img {
+    max-width: 230px;
+    max-height: 175px;
+    margin-bottom: 0;
+  }
+
+  .nextshine-card h3 {
+    margin: 0;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.2;
+    font-weight: 900;
+    color: #ffffff;
+  }
+
+  .nextshine-card p {
+    margin: 16px 0 0;
+    font-size: 17px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.86);
+  }
+
+  .nextshine-card:hover {
+    background: hsla(var(--hsl), 0.13);
+    border-color: hsla(var(--hsl), 0.8);
+    box-shadow:
+      0 0 35px hsla(var(--hsl), 0.28),
+      0 20px 55px rgba(0,0,0,0.5);
+  }
+
+  .nextshine-card:hover img {
+    transform: scale(1.12);
+  }
+
+  .nextshine-glow-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--opacity, 0);
+    -webkit-mask: radial-gradient(
+      28rem 28rem at var(--x) var(--y),
+      #000 1%,
+      transparent 58%
+    );
+    mask: radial-gradient(
+      28rem 28rem at var(--x) var(--y),
+      #000 1%,
+      transparent 58%
+    );
+    transition: 300ms opacity ease;
+    z-index: 5;
+  }
+
+  .nextshine-glow-overlay .nextshine-card {
+    background: hsla(var(--hsl), 0.18);
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: 1px solid hsla(var(--hsl), 0.9);
+    outline-offset: -1px;
+    transform: none !important;
+  }
+
+  .nextshine-glow-overlay .nextshine-card-content {
+    opacity: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .nextshine-glow-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .nextshine-card-feature {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .nextshine-glow-section {
+      padding: 60px 16px;
+    }
+
+    .nextshine-glow-inner {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .nextshine-card-feature {
+      grid-column: span 1;
+    }
+
+    .nextshine-card-feature .nextshine-card-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .nextshine-card {
+      min-height: 220px;
+      padding: 26px;
+      border-radius: 20px;
+    }
+
+    .nextshine-card-feature img {
+      max-width: 190px;
+    }
+  }
+</style>
+
+<section class="nextshine-glow-section">
+  <div class="nextshine-glow-container">
+
+    <div class="nextshine-glow-header">
+      <span class="nextshine-glow-subtitle">What’s inside</span>
+      <h2 class="nextshine-glow-title">Ingredients that protect</h2>
+      <p class="nextshine-glow-desc">
+        NextShine Car Care products are crafted with premium ingredients that clean, protect, and enhance your car’s shine.
+      </p>
+    </div>
+
+    <div class="nextshine-glow-cards">
+      <div class="nextshine-glow-inner">
+
+        <div class="nextshine-card nextshine-card-feature">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/Deionized_Water-removebg-preview.png?v=1780071873" alt="Deionized Water">
+            <div>
+              <h3>Deionized Water</h3>
+              <p>Pure and safe for your car’s paint, free from minerals and impurities.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/Surfactants-removebg-preview.png?v=1780071873" alt="Surfactants">
+            <h3>Surfactants</h3>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/SiO2_Ceramic_Boosters-removebg-preview.png?v=1780071844" alt="SiO2 Ceramic Boosters">
+            <h3>SiO2 / Ceramic Boosters</h3>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/Carnauba_Wax-removebg-preview.png?v=1780071844" alt="Carnauba Wax">
+            <h3>Carnauba Wax</h3>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/UV_protectants-removebg-preview.png?v=1780071844" alt="UV Protectants">
+            <h3>UV Protectants</h3>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/Fragrance-removebg-preview.png?v=1780071843" alt="Fragrance">
+            <h3>Fragrance</h3>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/PH-removebg-preview.png?v=1780071843" alt="pH Balancers">
+            <h3>pH Balancers</h3>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/Conditioning_Agents-removebg-preview.png?v=1780071844" alt="Conditioning Agents">
+            <h3>Conditioning Agents</h3>
+          </div>
+        </div>
+
+        <div class="nextshine-card">
+          <div class="nextshine-card-content">
+            <img src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/Eco_safe_Preservatives-removebg-preview.png?v=1780071844" alt="Eco-safe Preservatives">
+            <h3>Eco-safe Preservatives</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="nextshine-glow-overlay nextshine-glow-inner"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const cardsWrapper = document.querySelector(".nextshine-glow-cards");
+  const cards = Array.from(document.querySelectorAll(".nextshine-glow-inner:not(.nextshine-glow-overlay) .nextshine-card"));
+  const overlay = document.querySelector(".nextshine-glow-overlay");
+
+  if (!cardsWrapper || !overlay || cards.length === 0) return;
+
+  overlay.innerHTML = "";
+
+  cards.forEach(function(card) {
+    const clone = card.cloneNode(true);
+    overlay.appendChild(clone);
+  });
+
+  function syncOverlaySizes() {
+    const overlayCards = overlay.querySelectorAll(".nextshine-card");
+
+    cards.forEach(function(card, index) {
+      const rect = card.getBoundingClientRect();
+      if (overlayCards[index]) {
+        overlayCards[index].style.height = rect.height + "px";
+      }
+    });
+  }
+
+  syncOverlaySizes();
+  window.addEventListener("resize", syncOverlaySizes);
+
+  cardsWrapper.addEventListener("pointermove", function(e) {
+    const rect = cardsWrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    overlay.style.setProperty("--opacity", "1");
+    overlay.style.setProperty("--x", x + "px");
+    overlay.style.setProperty("--y", y + "px");
+  });
+
+  cardsWrapper.addEventListener("pointerleave", function() {
+    overlay.style.setProperty("--opacity", "0");
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "NextShine Ingredients",
+  "settings": [],
+  "presets": [
+    {
+      "name": "NextShine Ingredients"
+    }
+  ]
+}
+{% endschema %}
