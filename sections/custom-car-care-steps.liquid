@@ -1,165 +1,188 @@
-<section class="nx-steps-section">
-  <div class="nx-steps-container">
-
+<section class="nx-simple-steps">
+  <div class="nx-simple-wrap">
     <h2>{{ section.settings.heading }}</h2>
 
-    <div class="nx-steps-grid">
-
+    <div class="nx-simple-card">
       {% for block in section.blocks %}
-        <div class="nx-step">
+        <div class="nx-simple-item" {{ block.shopify_attributes }}>
+          <div class="nx-icon-box">
+            <span class="nx-step-number">{{ forloop.index }}</span>
 
-          <div class="nx-step-icon">
             {% if block.settings.icon != blank %}
-              <img
-                src="{{ block.settings.icon | image_url: width: 120 }}"
-                alt="{{ block.settings.title }}"
-              >
+              <img src="{{ block.settings.icon | image_url: width: 120 }}" alt="{{ block.settings.title | escape }}">
+            {% else %}
+              <div class="nx-fallback-icon">✦</div>
             {% endif %}
           </div>
 
-          <div class="nx-step-content">
+          <div class="nx-simple-text">
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
           </div>
-
-          {% unless forloop.last %}
-            <div class="nx-arrow">
-              →
-            </div>
-          {% endunless %}
-
         </div>
+
+        {% unless forloop.last %}
+          <div class="nx-simple-arrow">→</div>
+        {% endunless %}
       {% endfor %}
-
     </div>
-
   </div>
 </section>
 
 <style>
-
-.nx-steps-section{
-  padding:60px 20px;
-  background:
-    radial-gradient(circle at left center,
-      rgba(57,255,20,.15),
-      transparent 35%),
-    radial-gradient(circle at right center,
-      rgba(57,255,20,.12),
-      transparent 35%),
-    linear-gradient(
-      90deg,
-      #050505 0%,
-      #07180c 50%,
-      #050505 100%
-    );
+.nx-simple-steps {
+  background: #050b0f;
+  padding: 24px 20px 34px;
+  color: #fff;
 }
 
-.nx-steps-container{
-  max-width:1400px;
-  margin:auto;
+.nx-simple-wrap {
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-.nx-steps-container h2{
-  text-align:center;
-  color:#fff;
-  font-size:36px;
-  font-weight:800;
-  margin-bottom:40px;
-  text-transform:uppercase;
+.nx-simple-wrap h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.nx-steps-grid{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+.nx-simple-card {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 22px;
+  padding: 28px 36px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(16,34,48,.95), rgba(8,20,30,.95));
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: inset 0 0 35px rgba(255,255,255,.03), 0 18px 45px rgba(0,0,0,.35);
 }
 
-.nx-step{
-  flex:1;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  position:relative;
+.nx-simple-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
 }
 
-.nx-step-icon{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(110,255,70,.4);
-
-  background:
-  radial-gradient(
-  circle,
-  rgba(110,255,70,.15),
-  rgba(0,0,0,.2)
-  );
+.nx-icon-box {
+  position: relative;
+  width: 84px;
+  min-width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nx-step-icon img{
-  width:50px;
-  height:50px;
-  object-fit:contain;
+.nx-icon-box img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
-.nx-step-content h3{
-  color:#fff;
-  margin:0 0 8px;
-  font-size:20px;
-  text-transform:uppercase;
+.nx-fallback-icon {
+  color: #fff;
+  font-size: 48px;
 }
 
-.nx-step-content p{
-  color:#cfcfcf;
-  line-height:1.5;
-  margin:0;
-  font-size:14px;
+.nx-step-number {
+  position: absolute;
+  top: -8px;
+  left: -6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 88, 165, .18);
+  border: 2px solid #006fc9;
+  color: #1c8cff;
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nx-arrow{
-  position:absolute;
-  right:-25px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:34px;
-  color:#78d71e;
-  font-weight:700;
+.nx-simple-text h3 {
+  margin: 0 0 7px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-@media(max-width:990px){
-
-.nx-steps-grid{
-  flex-direction:column;
+.nx-simple-text p {
+  margin: 0;
+  color: #d8e0e8;
+  font-size: 14px;
+  line-height: 1.45;
+  max-width: 190px;
 }
 
-.nx-step{
-  width:100%;
-  padding:20px;
-  border-radius:15px;
-  background:
-  linear-gradient(
-  135deg,
-  rgba(0,0,0,.4),
-  rgba(57,255,20,.05)
-  );
+.nx-simple-arrow {
+  color: #fff;
+  font-size: 46px;
+  line-height: 1;
+  opacity: .9;
+  font-weight: 300;
 }
 
-.nx-arrow{
-  display:none;
+@media (max-width: 1100px) {
+  .nx-simple-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .nx-simple-arrow {
+    transform: rotate(90deg);
+    text-align: center;
+    font-size: 36px;
+  }
+
+  .nx-simple-item {
+    justify-content: flex-start;
+  }
+
+  .nx-simple-text p {
+    max-width: none;
+  }
 }
 
-}
+@media (max-width: 600px) {
+  .nx-simple-wrap h2 {
+    font-size: 23px;
+  }
 
+  .nx-simple-card {
+    padding: 22px 18px;
+  }
+
+  .nx-icon-box {
+    width: 68px;
+    min-width: 68px;
+    height: 68px;
+  }
+
+  .nx-icon-box img {
+    width: 58px;
+    height: 58px;
+  }
+
+  .nx-simple-text h3 {
+    font-size: 17px;
+  }
+}
 </style>
 
 {% schema %}
 {
-  "name": "Car Care Steps",
+  "name": "Car Care Made Simple",
   "settings": [
     {
       "type": "text",
@@ -172,11 +195,12 @@
     {
       "type": "step",
       "name": "Step",
+      "limit": 4,
       "settings": [
         {
           "type": "image_picker",
           "id": "icon",
-          "label": "Icon"
+          "label": "Icon image"
         },
         {
           "type": "text",
@@ -187,38 +211,42 @@
         {
           "type": "textarea",
           "id": "text",
-          "label": "Description",
-          "default": "Remove dirt and grime with our powerful foam and shampoo."
+          "label": "Text",
+          "default": "Remove dirt & grime with our powerful foam and shampoo."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Car Care Steps",
+      "name": "Car Care Made Simple",
       "blocks": [
         {
           "type": "step",
           "settings": {
-            "title": "WASH"
+            "title": "WASH",
+            "text": "Remove dirt & grime with our powerful foam and shampoo."
           }
         },
         {
           "type": "step",
           "settings": {
-            "title": "CLEAN"
+            "title": "CLEAN",
+            "text": "Deep clean surfaces inside and out safely."
           }
         },
         {
           "type": "step",
           "settings": {
-            "title": "PROTECT"
+            "title": "PROTECT",
+            "text": "Shine, protect and repel for a long lasting finish."
           }
         },
         {
           "type": "step",
           "settings": {
-            "title": "ENJOY"
+            "title": "ENJOY",
+            "text": "Enjoy that fresh, clean car feeling every time."
           }
         }
       ]
