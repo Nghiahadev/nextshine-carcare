@@ -16,6 +16,55 @@
         "padding_bottom": 28
       }
     },
+    "custom_brand_stack_7JMtAn": {
+      "type": "custom-brand-stack",
+      "blocks": {
+        "card_DYWnRE": {
+          "type": "card",
+          "settings": {
+            "label": "01. MISSION",
+            "title": "Mission",
+            "text": "Our mission is to make car care simple, powerful, and enjoyable for every driver. NextShine creates premium cleaning products that help protect, refresh, and bring out the best shine in every vehicle.",
+            "image": "shopify://shop_images/How_to_Wash_your_car_right_way.png"
+          }
+        },
+        "card_hjtKKB": {
+          "type": "card",
+          "settings": {
+            "label": "02. VISION",
+            "title": "Vision",
+            "text": "Our vision is to become a trusted car care brand for people who want their vehicle to look clean, protected, and showroom-ready without complicated steps.",
+            "image": "shopify://shop_images/how_to_protect_your_wheel.png"
+          }
+        },
+        "card_VDD7ny": {
+          "type": "card",
+          "settings": {
+            "label": "03. STORY",
+            "title": "Story",
+            "text": "NextShine was built from a love for clean cars and better detailing products. We wanted products that look professional, work effectively, and feel easy enough for anyone to use at home.",
+            "image": "shopify://shop_images/exterior_care.png"
+          }
+        },
+        "card_cyhdXr": {
+          "type": "card",
+          "settings": {
+            "label": "04. PROMISE",
+            "title": "Promise",
+            "text": "We are committed to safe formulas, modern design, and reliable results. Every product is made to help customers clean smarter, protect longer, and drive with confidence.",
+            "image": "shopify://shop_images/5_tips_for_a_cleanner_car_interior.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_DYWnRE",
+        "card_hjtKKB",
+        "card_VDD7ny",
+        "card_cyhdXr"
+      ],
+      "name": "NextShine Brand Stack",
+      "settings": {}
+    },
     "custom_timeline_NKR9rb": {
       "type": "custom-timeline",
       "blocks": {
@@ -88,6 +137,7 @@
   },
   "order": [
     "main",
+    "custom_brand_stack_7JMtAn",
     "custom_timeline_NKR9rb",
     "custom_faq_aMD4wf"
   ]
