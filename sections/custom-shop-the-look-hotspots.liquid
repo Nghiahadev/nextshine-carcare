@@ -1,0 +1,273 @@
+<section class="stl-section">
+  <div class="stl-grid">
+    <div class="stl-left">
+      <h2>{{ section.settings.heading }}</h2>
+
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        {% if product != blank %}
+          <div class="stl-product {% if forloop.first %}active{% endif %}" data-product="{{ block.id }}">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.title | escape }}">
+            </a>
+
+            <h3>{{ product.title }}</h3>
+            <p class="stl-price">{{ product.price | money }}</p>
+
+            {% if product.available %}
+              <p class="stl-stock">Available</p>
+            {% else %}
+              <p class="stl-stock">Sold out</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="stl-right">
+      {% if section.settings.look_image != blank %}
+        <img src="{{ section.settings.look_image | image_url: width: 1600 }}" alt="Shop the look">
+      {% endif %}
+
+      {% for block in section.blocks %}
+        <button
+          class="stl-hotspot {% if forloop.first %}active{% endif %}"
+          data-target="{{ block.id }}"
+          style="top: {{ block.settings.top }}%; left: {{ block.settings.left }}%;"
+          aria-label="View product">
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.stl-section {
+  background: #fff;
+}
+
+.stl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 760px;
+}
+
+.stl-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  text-align: left;
+}
+
+.stl-left h2 {
+  font-size: 42px;
+  font-weight: 400;
+  margin: 0 0 60px;
+  color: #111;
+}
+
+.stl-product {
+  display: none;
+  max-width: 420px;
+  width: 100%;
+}
+
+.stl-product.active {
+  display: block;
+}
+
+.stl-product img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  margin-bottom: 45px;
+}
+
+.stl-product h3 {
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+  color: #111;
+  font-weight: 800;
+}
+
+.stl-price {
+  font-size: 14px;
+  color: #111;
+  margin: 0 0 28px;
+}
+
+.stl-stock {
+  font-size: 14px;
+  color: #8b8b8b;
+  margin: 0;
+}
+
+.stl-right {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+}
+
+.stl-right > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stl-hotspot {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 8px solid rgba(255,255,255,.9);
+  background: #fff;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+  transition: .25s ease;
+}
+
+.stl-hotspot::after {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+  animation: stlPulse 1.8s infinite;
+}
+
+.stl-hotspot:hover,
+.stl-hotspot.active {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+@keyframes stlPulse {
+  0% {
+    transform: scale(.7);
+    opacity: .7;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .stl-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stl-right {
+    min-height: 520px;
+    order: 1;
+  }
+
+  .stl-left {
+    order: 2;
+    padding: 40px 20px;
+  }
+
+  .stl-left h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .stl-product img {
+    height: 320px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".stl-section");
+
+  sections.forEach(function(section) {
+    const hotspots = section.querySelectorAll(".stl-hotspot");
+    const products = section.querySelectorAll(".stl-product");
+
+    hotspots.forEach(function(hotspot) {
+      hotspot.addEventListener("click", function() {
+        const target = hotspot.dataset.target;
+
+        hotspots.forEach(btn => btn.classList.remove("active"));
+        products.forEach(product => product.classList.remove("active"));
+
+        hotspot.classList.add("active");
+
+        const activeProduct = section.querySelector(`[data-product="${target}"]`);
+        if (activeProduct) {
+          activeProduct.classList.add("active");
+        }
+      });
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Shop The Look Hotspots",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop the look"
+    },
+    {
+      "type": "image_picker",
+      "id": "look_image",
+      "label": "Right side look image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "top",
+          "label": "Hotspot vertical position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "left",
+          "label": "Hotspot horizontal position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop The Look Hotspots",
+      "blocks": [
+        {
+          "type": "hotspot"
+        },
+        {
+          "type": "hotspot"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
