@@ -1,38 +1,36 @@
-<section class="cd-banner">
+<section class="cd-hero">
 
-  <div class="cd-banner-wrapper">
+  <!-- Desktop -->
+  <img
+    class="cd-banner desktop-banner"
+    src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/Banner.png?v=1779884706"
+    alt="Clean Drive"
+  >
 
-    <img
-      class="cd-banner-img desktop-banner"
-      src="{{ section.settings.desktop_image | image_url: width: 2400 }}"
-      alt="Banner">
+  <!-- Mobile -->
+  <img
+    class="cd-banner mobile-banner"
+    src="https://cdn.shopify.com/s/files/1/0752/1032/6207/files/mobile_banner.png?v=1779887015"
+    alt="Clean Drive"
+  >
 
-    <img
-      class="cd-banner-img mobile-banner"
-      src="{{ section.settings.mobile_image | image_url: width: 1000 }}"
-      alt="Banner">
-
-    <div class="cd-banner-content">
-      <a href="{{ section.settings.button_link }}" class="cd-btn">
-        {{ section.settings.button_text }}
-      </a>
-    </div>
-
+  <div class="cd-content">
+    <a href="/collections/all" class="btn5">
+      Shop Now
+    </a>
   </div>
 
 </section>
 
 <style>
 
-.cd-banner{
-  width:100%;
-}
-
-.cd-banner-wrapper{
+.cd-hero{
   position:relative;
+  width:100%;
+  overflow:hidden;
 }
 
-.cd-banner-img{
+.cd-banner{
   width:100%;
   display:block;
 }
@@ -41,42 +39,74 @@
   display:none;
 }
 
-/* BUTTON */
-
-.cd-banner-content{
+/* BUTTON POSITION */
+.cd-content{
   position:absolute;
   left:8%;
-  bottom:12%;
+  bottom:14%;
+  z-index:10;
 }
 
-.cd-btn{
-  display:inline-block;
+/* GOLD BUTTON */
+.btn5 {
+  --color: #F9C705;
 
-  padding:16px 38px;
-
-  background:#63d110;
-  color:#fff;
-
-  font-size:18px;
-  font-weight:700;
-  text-transform:uppercase;
+  padding: 16px 40px;
+  background: transparent;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border: 2px solid var(--color);
+  text-transform: uppercase;
+  color: var(--color);
   text-decoration:none;
-
-  border-radius:8px;
-
-  transition:.3s ease;
-
-  box-shadow:0 10px 30px rgba(99,209,16,.35);
+  display:inline-block;
+  z-index:1;
 }
 
-.cd-btn:hover{
-  background:#4ca900;
-  transform:translateY(-2px);
+.btn5::before,
+.btn5::after {
+  content:'';
+  position:absolute;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:var(--color);
+  z-index:-1;
+  transition:1s ease;
+}
+
+.btn5::before{
+  top:-25px;
+  left:-25px;
+}
+
+.btn5::after{
+  right:-25px;
+  bottom:-25px;
+}
+
+.btn5:hover::before,
+.btn5:hover::after{
+  width:450px;
+  height:450px;
+}
+
+.btn5:hover{
+  color:#000;
+}
+
+.btn5:active{
+  transform:scale(.97);
 }
 
 /* MOBILE */
-
-@media(max-width:749px){
+@media screen and (max-width: 749px){
 
   .desktop-banner{
     display:none;
@@ -86,50 +116,18 @@
     display:block;
   }
 
-  .cd-banner-content{
+  .cd-content{
     left:50%;
-    bottom:8%;
     transform:translateX(-50%);
+    bottom:8%;
+    width:100%;
+    text-align:center;
   }
 
-  .cd-btn{
-    padding:14px 28px;
-    font-size:15px;
+  .btn5{
+    font-size:14px;
+    padding:12px 28px;
   }
 }
 
 </style>
-
-{% schema %}
-{
-  "name":"Clean Drive Banner",
-  "settings":[
-    {
-      "type":"image_picker",
-      "id":"desktop_image",
-      "label":"Desktop Banner"
-    },
-    {
-      "type":"image_picker",
-      "id":"mobile_image",
-      "label":"Mobile Banner"
-    },
-    {
-      "type":"text",
-      "id":"button_text",
-      "label":"Button Text",
-      "default":"SHOP NOW"
-    },
-    {
-      "type":"url",
-      "id":"button_link",
-      "label":"Button Link"
-    }
-  ],
-  "presets":[
-    {
-      "name":"Clean Drive Banner"
-    }
-  ]
-}
-{% endschema %}
