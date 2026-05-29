@@ -52,25 +52,28 @@
         "category_BbkbTW": {
           "type": "category",
           "settings": {
-            "title": "Wash & Foam",
-            "text": "Keep your car spotless",
-            "link": ""
+            "image": "shopify://shop_images/exterior_care.png",
+            "title": "exterior care",
+            "text": "Shine, protect & repel",
+            "link": "shopify://collections/exterior-care"
           }
         },
         "category_4dWNVn": {
           "type": "category",
           "settings": {
-            "title": "Wash & Foam",
-            "text": "Keep your car spotless",
-            "link": ""
+            "image": "shopify://shop_images/Tools_Accessories.png",
+            "title": "Tools & accessories",
+            "text": "Premium tools for perfect detail",
+            "link": "shopify://collections/tools-accessories"
           }
         },
         "category_BApMB9": {
           "type": "category",
           "settings": {
-            "title": "Wash & Foam",
-            "text": "Keep your car spotless",
-            "link": ""
+            "image": "shopify://shop_images/Bundles.png",
+            "title": "Bundles",
+            "text": "Top products, better value",
+            "link": "shopify://collections/bundles"
           }
         }
       },
