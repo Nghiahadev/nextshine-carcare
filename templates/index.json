@@ -9,19 +9,84 @@
  */
 {
   "sections": {
-    "custom_banner_wPbHwX": {
+    "custom_banner_J6YdFf": {
       "type": "custom-banner",
-      "name": "Custom Banner",
+      "name": "Clean Drive Banner",
       "settings": {
         "desktop_image": "shopify://shop_images/Banner.png",
         "mobile_image": "shopify://shop_images/mobile_banner.png",
-        "alt_text": "Custom banner",
+        "banner_alt": "Clean Drive car wash banner",
+        "show_button": true,
         "button_text": "Shop Now",
-        "button_link": ""
+        "button_link": "shopify://collections/all",
+        "button_color": "#38a800",
+        "button_hover_text": "#0b1727",
+        "button_left": 8,
+        "button_bottom": 12,
+        "mobile_button_bottom": 7,
+        "button_size": 17,
+        "mobile_button_size": 14
+      }
+    },
+    "custom_shop_by_category_cards_Up84T6": {
+      "type": "custom-shop-by-category-cards",
+      "blocks": {
+        "category_zJGJjb": {
+          "type": "category",
+          "settings": {
+            "title": "Wash & Foam",
+            "text": "Keep your car spotless",
+            "link": ""
+          }
+        },
+        "category_xdkqBQ": {
+          "type": "category",
+          "settings": {
+            "title": "Wash & Foam",
+            "text": "Keep your car spotless",
+            "link": ""
+          }
+        },
+        "category_BbkbTW": {
+          "type": "category",
+          "settings": {
+            "title": "Wash & Foam",
+            "text": "Keep your car spotless",
+            "link": ""
+          }
+        },
+        "category_4dWNVn": {
+          "type": "category",
+          "settings": {
+            "title": "Wash & Foam",
+            "text": "Keep your car spotless",
+            "link": ""
+          }
+        },
+        "category_BApMB9": {
+          "type": "category",
+          "settings": {
+            "title": "Wash & Foam",
+            "text": "Keep your car spotless",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_zJGJjb",
+        "category_xdkqBQ",
+        "category_BbkbTW",
+        "category_4dWNVn",
+        "category_BApMB9"
+      ],
+      "name": "Shop by Category Cards",
+      "settings": {
+        "heading": "Shop By Category"
       }
     }
   },
   "order": [
-    "custom_banner_wPbHwX"
+    "custom_banner_J6YdFf",
+    "custom_shop_by_category_cards_Up84T6"
   ]
 }
