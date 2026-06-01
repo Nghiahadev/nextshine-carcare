@@ -3846,7 +3846,7 @@ summary.header__icon--menu {
 
 .mobile-bottom-nav a:hover,
 .mobile-bottom-nav a.active {
-  background: linear-gradient(135deg, #57d117, #6aff00);
+  background:linear-gradient(135deg,#57d117,#6aff00);
   color: #050505;
   box-shadow: 0 0 18px rgba(106,255,0,.45);
   transform: translateY(-5px);
