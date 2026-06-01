@@ -3800,3 +3800,62 @@ summary.header__icon--menu {
 .header__menu-item:hover i {
   transform: translateY(-2px);
 }
+
+
+
+
+/* Mobile Bottom Navbar */
+
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: #ffffff;
+  border-top: 1px solid #e5e5e5;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 10px 0;
+  z-index: 9999;
+
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+}
+
+.mobile-bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+
+  color: #333;
+  font-size: 12px;
+  gap: 3px;
+}
+
+.mobile-bottom-nav span {
+  font-size: 20px;
+}
+
+.mobile-bottom-nav a:hover {
+  color: #000;
+}
+
+/* Only Mobile */
+
+@media screen and (min-width: 990px) {
+  .mobile-bottom-nav {
+    display: none;
+  }
+}
+
+/* Prevent content hiding behind navbar */
+
+@media screen and (max-width: 989px) {
+  body {
+    padding-bottom: 80px;
+  }
+}
