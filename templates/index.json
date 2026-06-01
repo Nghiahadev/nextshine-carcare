@@ -135,6 +135,59 @@
         "button_link": ""
       }
     },
+    "custom_best_sellers_grid_MhpwnD": {
+      "type": "custom-best-sellers-grid",
+      "blocks": {
+        "product_hRBM8m": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_VmbY79": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_yiewni": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_zVcG4r": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        },
+        "product_LwH8t4": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "BEST SELLER"
+          }
+        }
+      },
+      "block_order": [
+        "product_hRBM8m",
+        "product_VmbY79",
+        "product_yiewni",
+        "product_zVcG4r",
+        "product_LwH8t4"
+      ],
+      "name": "Best Sellers Grid",
+      "settings": {
+        "heading": "BEST SELLERS",
+        "button_label": "VIEW ALL PRODUCTS",
+        "button_link": ""
+      }
+    },
     "custom_build_bundle_JDwfqc": {
       "type": "custom-build-bundle",
       "blocks": {
@@ -311,6 +364,7 @@
         "feature_GPfLAR": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/fast_shipping.png",
             "heading": "FAST SHIPPING",
             "text": "Quick & Reliable Delivery"
           }
@@ -318,22 +372,25 @@
         "feature_PaK6tb": {
           "type": "feature",
           "settings": {
-            "heading": "FAST SHIPPING",
-            "text": "Quick & Reliable Delivery"
+            "icon": "shopify://shop_images/30_day_return.png",
+            "heading": "30 day returns",
+            "text": "Hassle free returns"
           }
         },
         "feature_7BYLF9": {
           "type": "feature",
           "settings": {
-            "heading": "FAST SHIPPING",
-            "text": "Quick & Reliable Delivery"
+            "icon": "shopify://shop_images/secure_checkout.png",
+            "heading": "secure payment",
+            "text": "100% secure checkout"
           }
         },
         "feature_DP4Hkb": {
           "type": "feature",
           "settings": {
-            "heading": "FAST SHIPPING",
-            "text": "Quick & Reliable Delivery"
+            "icon": "shopify://shop_images/247_services.png",
+            "heading": "Support 24/7",
+            "text": "We're here to help"
           }
         }
       },
@@ -345,59 +402,6 @@
       ],
       "name": "Nextshine Features",
       "settings": {}
-    },
-    "custom_best_sellers_grid_MhpwnD": {
-      "type": "custom-best-sellers-grid",
-      "blocks": {
-        "product_hRBM8m": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "badge": "BEST SELLER"
-          }
-        },
-        "product_VmbY79": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "badge": "BEST SELLER"
-          }
-        },
-        "product_yiewni": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "badge": "BEST SELLER"
-          }
-        },
-        "product_zVcG4r": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "badge": "BEST SELLER"
-          }
-        },
-        "product_LwH8t4": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "badge": "BEST SELLER"
-          }
-        }
-      },
-      "block_order": [
-        "product_hRBM8m",
-        "product_VmbY79",
-        "product_yiewni",
-        "product_zVcG4r",
-        "product_LwH8t4"
-      ],
-      "name": "Best Sellers Grid",
-      "settings": {
-        "heading": "BEST SELLERS",
-        "button_label": "VIEW ALL PRODUCTS",
-        "button_link": ""
-      }
     }
   },
   "order": [
