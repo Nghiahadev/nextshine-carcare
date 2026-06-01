@@ -1,26 +1,28 @@
 <div class="mobile-bottom-nav">
-  <a href="/collections/all" class="{% if request.page_type == 'collection' %}active{% endif %}">
-    {{ 'icon-bag.svg' | inline_asset_content }}
+
+  <a href="/collections/all">
+    <i class='bx bx-grid-alt'></i>
     <small>Shop</small>
   </a>
 
-  <a href="/pages/wishlist" class="{% if request.path contains 'wishlist' %}active{% endif %}">
-    {{ 'icon-heart.svg' | inline_asset_content }}
+  <a href="/pages/wishlist">
+    <i class='bx bx-heart'></i>
     <small>Wishlist</small>
   </a>
 
-  <a href="/cart" class="{% if request.page_type == 'cart' %}active{% endif %}">
-    {{ 'icon-cart.svg' | inline_asset_content }}
+  <a href="/cart">
+    <i class='bx bx-cart'></i>
     <small>Cart</small>
   </a>
 
-  <a href="/account" class="{% if request.page_type == 'customers/account' %}active{% endif %}">
-    {{ 'icon-account.svg' | inline_asset_content }}
+  <a href="/account">
+    <i class='bx bx-user'></i>
     <small>Account</small>
   </a>
 
-  <a href="/search" class="{% if request.page_type == 'search' %}active{% endif %}">
-    {{ 'icon-search.svg' | inline_asset_content }}
+  <a href="/search" class="active">
+    <i class='bx bx-search'></i>
     <small>Search</small>
   </a>
+
 </div>
