@@ -3839,22 +3839,19 @@ summary.header__icon--menu {
   transition: all .25s ease;
 }
 
-.mobile-bottom-nav i{
-  font-size:28px;
-  line-height:1;
+.mobile-bottom-nav svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
 }
 
 .mobile-bottom-nav a:hover,
-.mobile-bottom-nav a.active{
-  background:#57d117;
-  color:#fff;
-
-  border-radius:18px;
-
-  transform:translateY(-3px);
-
-  box-shadow:
-  0 0 10px rgba(87,209,23,.4);
+.mobile-bottom-nav a.active {
+  background: linear-gradient(135deg, #57d117, #6aff00);
+  color: #050505;
+  box-shadow: 0 0 18px rgba(106,255,0,.45);
+  transform: translateY(-5px);
 }
 
 .mobile-bottom-nav small {
