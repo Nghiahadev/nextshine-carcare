@@ -45,7 +45,7 @@
             "image": "shopify://shop_images/Tools_Accessories.png",
             "title": "Accessories",
             "text": "Tools and accessories every car lover needs.",
-            "link": ""
+            "link": "shopify://collections/tools-accessories"
           }
         }
       },
