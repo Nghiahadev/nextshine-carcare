@@ -1,26 +1,31 @@
 <div class="mobile-bottom-nav">
 
-  <a href="/collections/all">
+  <a href="/collections/all"
+     class="{% if request.page_type == 'collection' or request.page_type == 'product' %}active{% endif %}">
     <i class='bx bx-grid-alt'></i>
     <small>Shop</small>
   </a>
 
-  <a href="/pages/wishlist">
+  <a href="/pages/wishlist"
+     class="{% if request.path contains 'wishlist' %}active{% endif %}">
     <i class='bx bx-heart'></i>
     <small>Wishlist</small>
   </a>
 
-  <a href="/cart">
+  <a href="/cart"
+     class="{% if request.page_type == 'cart' %}active{% endif %}">
     <i class='bx bx-cart'></i>
     <small>Cart</small>
   </a>
 
-  <a href="/account">
+  <a href="/account"
+     class="{% if request.path contains '/account' %}active{% endif %}">
     <i class='bx bx-user'></i>
     <small>Account</small>
   </a>
 
-  <a href="/search" class="active">
+  <a href="/search"
+     class="{% if request.page_type == 'search' %}active{% endif %}">
     <i class='bx bx-search'></i>
     <small>Search</small>
   </a>
