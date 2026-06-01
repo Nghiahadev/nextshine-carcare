@@ -17,11 +17,54 @@
         "color_scheme": "scheme-1"
       }
     },
+    "custom_category_cards_REizDa": {
+      "type": "custom-category-cards",
+      "blocks": {
+        "card_BHkV6i": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/interior_care.png",
+            "title": "Interior",
+            "text": "Clean, refresh, and protect your car interior.",
+            "link": ""
+          }
+        },
+        "card_7BctVf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/exterior_care.png",
+            "title": "Exterior",
+            "text": "Wash, foam, shine, and protect your paint.",
+            "link": ""
+          }
+        },
+        "card_hjAHkz": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Tools_Accessories.png",
+            "title": "Accessories",
+            "text": "Tools and accessories every car lover needs.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_BHkV6i",
+        "card_7BctVf",
+        "card_hjAHkz"
+      ],
+      "name": "Next Shine Category Cards",
+      "settings": {
+        "subtitle": "Shop By Category",
+        "title": "Detail Every Part of Your Ride"
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,7 +75,6 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -40,6 +82,7 @@
   },
   "order": [
     "banner",
+    "custom_category_cards_REizDa",
     "product-grid"
   ]
 }
