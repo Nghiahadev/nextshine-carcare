@@ -3804,66 +3804,89 @@ summary.header__icon--menu {
 
 
 
-/* Bottom Nav */
+/* ================================
+   Mobile Bottom Navigation
+================================ */
+
 .mobile-bottom-nav {
   position: fixed;
-  left: 12px;
-  right: 12px;
+  left: 10px;
+  right: 10px;
   bottom: 12px;
   height: 74px;
-  background: rgba(5, 5, 5, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(106, 255, 0, 0.18);
-  box-shadow: 0 -8px 30px rgba(0,0,0,.55), 0 0 18px rgba(87,209,23,.12);
+
+  background: rgba(20, 20, 20, 0.78);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 22px;
-  z-index: 9999;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  z-index: 9999;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .mobile-bottom-nav a {
   width: 20%;
-  height: 58px;
+  height: 62px;
+
   color: #ffffff;
   text-decoration: none;
-  font-size: 11px;
-  font-weight: 600;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 5px;
-  border-radius: 17px;
-  transition: all .25s ease;
+  justify-content: center;
+
+  gap: 4px;
+  border-radius: 18px;
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+
+  transition: all 0.25s ease;
 }
 
-.mobile-bottom-nav svg {
-  width: 23px;
-  height: 23px;
-  fill: none;
-  stroke: currentColor;
-}
-
-.mobile-bottom-nav a:hover,
-.mobile-bottom-nav a.active {
-  background: linear-gradient(135deg, #57d117, #6aff00);
-  color: #050505;
-  box-shadow: 0 0 18px rgba(106,255,0,.45);
-  transform: translateY(-5px);
+.mobile-bottom-nav i {
+  font-size: 29px;
+  line-height: 1;
+  font-weight: 400;
 }
 
 .mobile-bottom-nav small {
+  font-size: 11px;
   line-height: 1;
 }
 
+/* Active / hover item */
+.mobile-bottom-nav a:hover,
+.mobile-bottom-nav a.active {
+  background: #35c9e8;
+  color: #ffffff;
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 6px 18px rgba(53, 201, 232, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* Hide on desktop */
 @media screen and (min-width: 990px) {
   .mobile-bottom-nav {
     display: none;
   }
 }
 
+/* Add space so content does not hide behind nav */
 @media screen and (max-width: 989px) {
   body {
     padding-bottom: 95px;
