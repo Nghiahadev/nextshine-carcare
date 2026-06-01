@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -55,7 +56,7 @@
       ],
       "name": "Next Shine Category Cards",
       "settings": {
-        "subtitle": "Shop By Category",
+        "subtitle": "",
         "title": "Detail Every Part of Your Ride"
       }
     },
