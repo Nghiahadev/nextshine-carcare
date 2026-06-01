@@ -3805,7 +3805,7 @@ summary.header__icon--menu {
 
 
 /* ================================
-   Mobile Bottom Navigation
+   NextShine Mobile Bottom Nav
 ================================ */
 
 .mobile-bottom-nav {
@@ -3815,11 +3815,11 @@ summary.header__icon--menu {
   bottom: 12px;
   height: 74px;
 
-  background: rgba(20, 20, 20, 0.78);
+  background: rgba(5, 5, 5, 0.88);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(106, 255, 0, 0.22);
   border-radius: 22px;
 
   display: flex;
@@ -3829,11 +3829,14 @@ summary.header__icon--menu {
   z-index: 9999;
 
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 10px 35px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 18px rgba(106, 255, 0, 0.12);
 }
 
 .mobile-bottom-nav a {
+  position: relative;
+
   width: 20%;
   height: 62px;
 
@@ -3859,6 +3862,8 @@ summary.header__icon--menu {
   font-size: 29px;
   line-height: 1;
   font-weight: 400;
+
+  transition: all 0.25s ease;
 }
 
 .mobile-bottom-nav small {
@@ -3866,17 +3871,64 @@ summary.header__icon--menu {
   line-height: 1;
 }
 
-/* Active / hover item */
-.mobile-bottom-nav a:hover,
-.mobile-bottom-nav a.active {
-  background: #35c9e8;
-  color: #ffffff;
+/* Hover */
+.mobile-bottom-nav a:hover {
+  color: #6aff00;
+}
 
-  transform: translateY(-4px);
+/* Active page */
+.mobile-bottom-nav a.active {
+  color: #6aff00;
+}
+
+.mobile-bottom-nav a.active i {
+  transform: scale(1.16);
+
+  filter:
+    drop-shadow(0 0 5px rgba(106, 255, 0, 0.9))
+    drop-shadow(0 0 12px rgba(106, 255, 0, 0.45));
+}
+
+/* Active green bottom indicator */
+.mobile-bottom-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+
+  width: 26px;
+  height: 3px;
+
+  background: #6aff00;
+  border-radius: 999px;
+
+  transform: translateX(-50%);
 
   box-shadow:
-    0 6px 18px rgba(53, 201, 232, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    0 0 8px rgba(106, 255, 0, 0.9),
+    0 0 16px rgba(106, 255, 0, 0.45);
+}
+
+/* Optional: cart count badge */
+.mobile-bottom-nav .cart-count-bubble {
+  position: absolute;
+  top: 6px;
+  right: 20px;
+
+  background: #6aff00;
+  color: #050505;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Hide on desktop */
@@ -3886,9 +3938,9 @@ summary.header__icon--menu {
   }
 }
 
-/* Add space so content does not hide behind nav */
+/* Space for mobile bottom nav */
 @media screen and (max-width: 989px) {
   body {
-    padding-bottom: 95px;
+    padding-bottom: 96px;
   }
 }
