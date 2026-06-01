@@ -235,7 +235,7 @@
         "step_CzMpMr": {
           "type": "step",
           "settings": {
-            "icon": "shopify://shop_images/image-removebg-preview1.png",
+            "icon": "shopify://shop_images/wash.png",
             "title": "WASH",
             "text": "Remove dirt & grime with our powerful foam and shampoo."
           }
@@ -243,7 +243,7 @@
         "step_7txmxf": {
           "type": "step",
           "settings": {
-            "icon": "shopify://shop_images/Clean_d95ded10-10d1-41b2-8ab1-3ca9f4ff7cbe.png",
+            "icon": "shopify://shop_images/Clean.png",
             "title": "CLEAN",
             "text": "Deep clean surfaces inside and out safely."
           }
@@ -259,7 +259,7 @@
         "step_aHrGxU": {
           "type": "step",
           "settings": {
-            "icon": "shopify://shop_images/37d399f5-8351-47ec-be02-f3110ad153fc.png",
+            "icon": "shopify://shop_images/like.png",
             "title": "ENJOY",
             "text": "Enjoy that fresh, clean car feeling every time."
           }
