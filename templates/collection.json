@@ -27,7 +27,7 @@
             "image": "shopify://shop_images/interior_care.png",
             "title": "Interior",
             "text": "Clean, refresh, and protect your car interior.",
-            "link": ""
+            "link": "shopify://collections/interior-care"
           }
         },
         "card_7BctVf": {
@@ -36,7 +36,7 @@
             "image": "shopify://shop_images/exterior_care.png",
             "title": "Exterior",
             "text": "Wash, foam, shine, and protect your paint.",
-            "link": ""
+            "link": "shopify://collections/exterior-care"
           }
         },
         "card_hjAHkz": {
@@ -57,7 +57,7 @@
       "name": "Next Shine Category Cards",
       "settings": {
         "subtitle": "",
-        "title": "Detail Every Part of Your Ride"
+        "title": ""
       }
     },
     "product-grid": {
