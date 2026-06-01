@@ -243,6 +243,7 @@
         "step_7txmxf": {
           "type": "step",
           "settings": {
+            "icon": "shopify://shop_images/Clean_d95ded10-10d1-41b2-8ab1-3ca9f4ff7cbe.png",
             "title": "CLEAN",
             "text": "Deep clean surfaces inside and out safely."
           }
