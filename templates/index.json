@@ -235,6 +235,7 @@
         "step_CzMpMr": {
           "type": "step",
           "settings": {
+            "icon": "shopify://shop_images/image-removebg-preview1.png",
             "title": "WASH",
             "text": "Remove dirt & grime with our powerful foam and shampoo."
           }
@@ -249,6 +250,7 @@
         "step_L9N3H9": {
           "type": "step",
           "settings": {
+            "icon": "shopify://shop_images/UV_protectants-removebg-preview.png",
             "title": "PROTECT",
             "text": "Shine, protect and repel for a long lasting finish."
           }
