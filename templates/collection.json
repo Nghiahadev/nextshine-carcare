@@ -89,7 +89,7 @@
           "settings": {
             "heading": "Exterior Products",
             "text": "Choose your products",
-            "collection": ""
+            "collection": "exterior-care"
           }
         },
         "step_4ehVqp": {
@@ -97,7 +97,7 @@
           "settings": {
             "heading": "Interior Products",
             "text": "Choose your products",
-            "collection": ""
+            "collection": "interior-care"
           }
         },
         "step_eTbJ3t": {
@@ -105,7 +105,7 @@
           "settings": {
             "heading": "Accessories",
             "text": "Choose your products",
-            "collection": ""
+            "collection": "tools-accessories"
           }
         }
       },
