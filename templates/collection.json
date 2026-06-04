@@ -62,7 +62,6 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -80,51 +79,11 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "custom_bundle_builder_ghHmii": {
-      "type": "custom-bundle-builder",
-      "blocks": {
-        "step_XYAnbj": {
-          "type": "step",
-          "settings": {
-            "heading": "Exterior Products",
-            "text": "Choose your products",
-            "collection": "exterior-care"
-          }
-        },
-        "step_4ehVqp": {
-          "type": "step",
-          "settings": {
-            "heading": "Interior Products",
-            "text": "Choose your products",
-            "collection": "interior-care"
-          }
-        },
-        "step_eTbJ3t": {
-          "type": "step",
-          "settings": {
-            "heading": "Accessories",
-            "text": "Choose your products",
-            "collection": "tools-accessories"
-          }
-        }
-      },
-      "block_order": [
-        "step_XYAnbj",
-        "step_4ehVqp",
-        "step_eTbJ3t"
-      ],
-      "name": "Bundle Builder",
-      "settings": {
-        "title": "Build Your Own Bundle",
-        "subtitle": "Select items for your own bundle and save."
-      }
     }
   },
   "order": [
     "banner",
     "custom_category_cards_REizDa",
-    "product-grid",
-    "custom_bundle_builder_ghHmii"
+    "product-grid"
   ]
 }
