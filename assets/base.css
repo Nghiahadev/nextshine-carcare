@@ -3957,9 +3957,7 @@ summary.header__icon--menu {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  color: #111;
-  
+  gap: 6px;  
 }
 
 .variant-image-option img {
