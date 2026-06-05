@@ -3973,19 +3973,70 @@ summary.header__icon--menu {
 }
 /* Variant picker - white background */
 .product-form__input input[type='radio'] + label {
-    background-color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff !important;
     color: #000000 !important;
-    border: 1px solid #dcdcdc !important;
+    border: 1px solid #d9d9d9 !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-/* Selected variant */
+/* Hover Effect */
+.product-form__input input[type='radio'] + label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Selected Variant */
 .product-form__input input[type='radio']:checked + label {
-    background-color: #ffffff !important;
+    background: #ffffff !important;
     color: #000000 !important;
     border: 2px solid #000000 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* Hover effect */
-.product-form__input input[type='radio'] + label:hover {
-    background-color: #f5f5f5 !important;
+/* Shine Effect */
+.product-form__input input[type='radio'] + label::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.95),
+        transparent
+    );
+    transform: skewX(-25deg);
+}
+
+/* Shine only on selected variant */
+.product-form__input input[type='radio']:checked + label::after {
+    animation: variantShine 2.5s linear infinite;
+}
+
+@keyframes variantShine {
+    0% {
+        left: -200%;
+    }
+    100% {
+        left: 250%;
+    }
+}
+
+/* Optional Premium Glow */
+.product-form__input input[type='radio']:checked + label {
+    animation: subtleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+    from {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    to {
+        box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+    }
 }
