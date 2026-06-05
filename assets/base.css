@@ -3964,9 +3964,7 @@ summary.header__icon--menu {
   width: 54px;
   height: 54px;
   object-fit: contain;
-  background: white;
-  border-radius: 8px;
-  padding: 2px;
+  display: block;
 }
 
 .variant-image-option span {
