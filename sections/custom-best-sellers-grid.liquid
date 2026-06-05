@@ -29,7 +29,7 @@
 
             <form method="post" action="/cart/add">
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-              <button type="submit" class="nx-add-btn">
+              <button type="submit" class="btn5">
                 ADD TO CART
               </button>
             </form>
@@ -158,23 +158,65 @@
   font-weight: 900;
 }
 
-.nx-add-btn {
-  width: 150px;
-  max-width: 100%;
-  background: linear-gradient(180deg, #54b900, #278900);
-  border: none;
-  color: #fff;
-  padding: 11px 16px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 900;
-  cursor: pointer;
-  transition: .3s ease;
+/* BUTTON */
+
+.btn5{
+  --color:#38A800;
+  padding:14px 28px;
+  background:transparent;
+  border-radius:4px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.5s;
+  font-weight:700;
+  font-size:15px;
+  border:1px solid var(--color);
+  font-family:inherit;
+  text-transform:uppercase;
+  text-decoration:none;
+  display:inline-block;
+  color:var(--color);
+  z-index:1;
 }
 
-.nx-add-btn:hover {
-  background: linear-gradient(180deg, #7ed321, #3fa000);
-  transform: translateY(-2px);
+.btn5::before,
+.btn5::after{
+  content:'';
+  display:block;
+  width:50px;
+  height:50px;
+  transform:translate(-50%,-50%);
+  position:absolute;
+  border-radius:50%;
+  z-index:-1;
+  background-color:var(--color);
+  transition:1s ease;
+}
+
+.btn5::before{
+  top:-1em;
+  left:-1em;
+}
+
+.btn5::after{
+  left:calc(100% + 1em);
+  top:calc(100% + 1em);
+}
+
+.btn5:hover::before,
+.btn5:hover::after{
+  width:420px;
+  height:420px;
+}
+
+.btn5:hover{
+  color:#ffffff;
+}
+
+.btn5:active{
+  filter:brightness(.85);
+  transform:scale(.97);
 }
 
 .nx-view-all-wrap {
