@@ -3947,27 +3947,93 @@ summary.header__icon--menu {
 
 
 
-/* Varient Picker Image */
-.product-form__input input[type='radio'] + .variant-image-option {
-  min-width: 90px;
-  min-height: 90px;
-  padding: 10px;
-  border-radius: 14px;
-  display: inline-flex;
+/* ==========================
+   NEXTSHINE VARIANT CARDS
+========================== */
+
+.product-form__input {
+  gap: 12px;
+}
+
+.product-form__input .variant-image-option {
+  width: 110px;
+  min-height: 115px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;  
+  gap: 8px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
 }
 
+/* Hover */
+
+.product-form__input .variant-image-option:hover {
+  transform: translateY(-3px);
+  border-color: #39b54a;
+  box-shadow: 0 8px 20px rgba(57, 181, 74, 0.12);
+}
+
+/* Selected */
+
+.product-form__input
+  input[type='radio']:checked
+  + .variant-image-option {
+  background: #ffffff;
+  border: 2px solid #39b54a;
+  box-shadow: 0 8px 20px rgba(57, 181, 74, 0.18);
+}
+
+/* Product Image */
+
 .variant-image-option img {
-  width: 54px;
-  height: 54px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   display: block;
 }
 
+/* Text */
+
 .variant-image-option span {
   font-size: 13px;
-  line-height: 1.2;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Labels */
+
+.form__label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 749px) {
+  .product-form__input .variant-image-option {
+    width: 95px;
+    min-height: 105px;
+  }
+
+  .variant-image-option img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .variant-image-option span {
+    font-size: 12px;
+  }
 }
