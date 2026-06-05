@@ -4020,7 +4020,7 @@ summary.header__icon--menu {
 
 /* Animate only selected */
 .product-form__input input[type='radio']:checked + label::after {
-    animation: luxuryShine 3s ease-in-out infinite;
+    animation: luxuryShine 2.5s ease-in-out infinite;
 }
 
 @keyframes luxuryShine {
