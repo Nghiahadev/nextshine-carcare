@@ -4000,43 +4000,46 @@ summary.header__icon--menu {
 .product-form__input input[type='radio'] + label::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: -200%;
-    width: 60%;
-    height: 100%;
+    top: -50%;
+    left: -150%;
+    width: 80%;
+    height: 200%;
     background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.95),
-        transparent
+        115deg,
+        transparent 0%,
+        transparent 35%,
+        rgba(255,255,255,0.15) 45%,
+        rgba(255,255,255,0.9) 50%,
+        rgba(255,255,255,0.15) 55%,
+        transparent 65%,
+        transparent 100%
     );
-    transform: skewX(-25deg);
+    transform: rotate(25deg);
+    pointer-events: none;
 }
 
-/* Shine only on selected variant */
+/* Animate only selected */
 .product-form__input input[type='radio']:checked + label::after {
-    animation: variantShine 2.5s linear infinite;
+    animation: luxuryShine 3s ease-in-out infinite;
 }
 
-@keyframes variantShine {
+@keyframes luxuryShine {
     0% {
-        left: -200%;
+        left: -180%;
+        opacity: 0;
     }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        left: 180%;
+        opacity: 1;
+    }
+
     100% {
-        left: 250%;
-    }
-}
-
-/* Optional Premium Glow */
-.product-form__input input[type='radio']:checked + label {
-    animation: subtleGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes subtleGlow {
-    from {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    }
-    to {
-        box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+        left: 180%;
+        opacity: 0;
     }
 }
