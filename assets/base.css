@@ -3958,6 +3958,7 @@ summary.header__icon--menu {
   align-items: center;
   justify-content: center;
   gap: 6px;
+   background: #f3f8ff;
 }
 
 .variant-image-option img {
