@@ -3972,57 +3972,20 @@ summary.header__icon--menu {
   line-height: 1.2;
 }
 /* Variant picker - white background */
-.product-form__input input[type='radio'] + label {
-    position: relative;
-    overflow: hidden;
-    background: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #d9d9d9 !important;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-/* Hover */
-.product-form__input input[type='radio'] + label:hover {
-    border-color: #000 !important;
-    transform: translateY(-1px);
-}
-
-/* Selected */
 .product-form__input input[type='radio']:checked + label {
-    background: #fff !important;
-    color: #000 !important;
-    border: 2px solid #000 !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    border: 2px solid transparent !important;
+    background:
+        linear-gradient(#fff,#fff) padding-box,
+        linear-gradient(90deg,#000,#777,#000) border-box;
+    background-size: 100% 100%, 300% 100%;
+    animation: borderFlow 4s linear infinite;
 }
 
-/* Premium reflection */
-.product-form__input input[type='radio']:checked + label::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -120%;
-    width: 40%;
-    height: 200%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.45),
-        transparent
-    );
-    transform: rotate(25deg);
-    animation: luxuryReflection 4s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes luxuryReflection {
+@keyframes borderFlow {
     0% {
-        left: -120%;
-    }
-    20% {
-        left: 130%;
+        background-position: 0 0, 0% 50%;
     }
     100% {
-        left: 130%;
+        background-position: 0 0, 300% 50%;
     }
 }
