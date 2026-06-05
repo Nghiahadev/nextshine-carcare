@@ -95,10 +95,28 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}">
-      {{ value -}}
-      {{ label_unavailable }}
-    </label>
+{%- liquid
+  assign variant_image = null
+
+  if value.variant.featured_media
+    assign variant_image = value.variant.featured_media.preview_image
+  elsif value.variant.image
+    assign variant_image = value.variant.image
+  endif
+-%}
+
+<label for="{{ input_id }}" class="variant-image-option">
+  {% if variant_image %}
+    <img
+      src="{{ variant_image | image_url: width: 120 }}"
+      alt="{{ value | escape }}"
+      loading="lazy"
+    >
+  {% endif %}
+
+  <span>{{ value }}</span>
+  {{ label_unavailable }}
+</label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option
       id="{{ input_id }}"
