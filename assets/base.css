@@ -3604,12 +3604,7 @@ details-disclosure > details {
     min-height: 120px !important;
 }
 
-/* Make logo bigger */
-.header__heading-logo {
-    height: 90px !important;
-    width: auto !important;
-    max-width: none !important;
-}
+
 
 /* Keep logo container larger */
 .header__heading-link {
@@ -3635,12 +3630,11 @@ details-disclosure > details {
   align-items: center;
 }
 
-/* Logo */
-
+/* Make logo bigger */
 .header__heading-logo {
-  max-height: 200px;
-  width: auto;
-  transition: transform 0.3s ease;
+    height: 90px !important;
+    width: auto !important;
+    max-width: none !important;
 }
 
 .header__heading-logo:hover {
