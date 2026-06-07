@@ -3784,24 +3784,7 @@ details-disclosure > details {
     max-height: 48px;
   }
 }
-@media screen and (max-width: 749px) {
 
-  .header__heading,
-  .header__heading-link {
-    width: 140px !important;
-    max-width: 140px !important;
-  }
-
-  .header__heading-logo {
-    width: 140px !important;
-    height: auto !important;
-    max-width: 140px !important;
-  }
-
-  .header {
-    min-height: 90px !important;
-  }
-}
 /* Hide Mobile Hamburger Menu */
 
 .header__icon--menu,
