@@ -3623,9 +3623,9 @@ details-disclosure > details {
 /* Logo */
 
 .header__heading-logo {
-    width: 350px !important;
-    max-width: none !important;
-    height: auto !important;
+  max-height: 88px;
+  width: auto;
+  transition: transform 0.3s ease;
 }
 
 .header__heading-logo:hover {
