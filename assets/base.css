@@ -3600,6 +3600,13 @@ details-disclosure > details {
    PREMIUM BLACK GLASS NAVBAR
 ========================================== */
 
+/* Bigger Header Logo */
+.header__heading-logo {
+    max-width: 280px !important;
+    width: 100%;
+    height: auto;
+}
+
 .header-wrapper {
   position: sticky;
   top: 0;
