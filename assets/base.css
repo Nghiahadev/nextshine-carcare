@@ -3599,7 +3599,22 @@ details-disclosure > details {
 /* ==========================================
    PREMIUM BLACK GLASS NAVBAR
 ========================================== */
+/* Make header taller */
+.header {
+    min-height: 120px !important;
+}
 
+/* Make logo bigger */
+.header__heading-logo {
+    height: 90px !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* Keep logo container larger */
+.header__heading-link {
+    padding: 0 !important;
+}
 .header-wrapper {
   position: sticky;
   top: 0;
