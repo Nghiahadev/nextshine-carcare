@@ -3784,20 +3784,22 @@ details-disclosure > details {
     max-height: 48px;
   }
 }
-/* Bigger logo on mobile */
 @media screen and (max-width: 749px) {
-  .header {
-    min-height: 120px !important;
-  }
 
+  .header__heading,
   .header__heading-link {
-    padding: 0 !important;
+    width: 140px !important;
+    max-width: 140px !important;
   }
 
   .header__heading-logo {
-    height: 90px !important;
-    width: auto !important;
-    max-width: none !important;
+    width: 140px !important;
+    height: auto !important;
+    max-width: 140px !important;
+  }
+
+  .header {
+    min-height: 90px !important;
   }
 }
 /* Hide Mobile Hamburger Menu */
