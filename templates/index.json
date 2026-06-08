@@ -306,11 +306,6 @@
         "look_image": "shopify://shop_images/Bundles.png"
       }
     },
-    "custom_glowing_GMpGRW": {
-      "type": "custom-glowing",
-      "name": "NextShine Ingredients",
-      "settings": {}
-    },
     "customer_blog_cards_Nkxaif": {
       "type": "customer-blog-cards",
       "blocks": {
@@ -416,7 +411,6 @@
     "custom_build_bundle_JDwfqc",
     "custom_car_care_steps_xgDUhK",
     "custom_shop_the_look_hotspots_BWtq9i",
-    "custom_glowing_GMpGRW",
     "customer_blog_cards_Nkxaif",
     "custom_features_3hwnE3"
   ]
