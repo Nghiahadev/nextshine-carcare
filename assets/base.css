@@ -4053,3 +4053,44 @@ summary.header__icon--menu {
 
 /* Image on left */
 
+@media screen and (min-width: 990px) {
+  .product--thumbnail_slider {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .product--thumbnail_slider media-gallery {
+    display: contents;
+  }
+
+  .product--thumbnail_slider .slider-mobile-gutter {
+    grid-column: 2;
+  }
+
+  .product--thumbnail_slider .thumbnail-slider {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .product--thumbnail_slider .thumbnail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .product--thumbnail_slider .thumbnail-list__item {
+    width: 90px !important;
+  }
+
+  .product--thumbnail_slider .thumbnail {
+    width: 90px;
+    height: 90px;
+  }
+
+  .product--thumbnail_slider .thumbnail img {
+    object-fit: cover;
+  }
+}
