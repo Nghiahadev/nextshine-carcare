@@ -69,35 +69,28 @@
     margin: 0 0 12px;
   }
 
-.drawer-upsell-slider {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 8px;
-  cursor: grab;
-}
+  .drawer-upsell-slider {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+    cursor: grab;
+  }
 
-.drawer-upsell-slider::-webkit-scrollbar {
-  height: 6px;
-}
+  .drawer-upsell-slider::-webkit-scrollbar {
+    height: 6px;
+  }
 
-.drawer-upsell-slider::-webkit-scrollbar-thumb {
-  background: #cfcfcf;
-  border-radius: 99px;
-}
-
-.drawer-upsell-card {
-  min-width: calc(50% - 6px);
-  max-width: calc(50% - 6px);
-  scroll-snap-align: start;
-  background: #f6fff6;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-}
+  .drawer-upsell-slider::-webkit-scrollbar-thumb {
+    background: #cfcfcf;
+    border-radius: 99px;
+  }
 
   .drawer-upsell-card {
+    min-width: calc(50% - 6px);
+    max-width: calc(50% - 6px);
+    scroll-snap-align: start;
     background: #f6fff6;
     padding: 10px;
     border-radius: 10px;
@@ -329,11 +322,13 @@
                                   data-quantity-variant-id="{{ item.variant.id }}"
                                   name="updates[]"
                                   value="{{ item.quantity }}"
+                                  data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
                                   min="0"
                                   {% if item.variant.quantity_rule.max != null %}
                                     max="{{ item.variant.quantity_rule.max }}"
                                   {% endif %}
                                   step="{{ item.variant.quantity_rule.increment }}"
+                                  aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                                   id="Drawer-quantity-{{ item.index | plus: 1 }}"
                                   data-index="{{ item.index | plus: 1 }}"
                                 >
@@ -432,6 +427,7 @@
                       name="id"
                       value="{{ product.selected_or_first_available_variant.id }}"
                     >
+                    <input type="hidden" name="quantity" value="1">
                     <button type="submit">Add to Cart</button>
                   </form>
                 </div>
@@ -495,7 +491,7 @@
     </div>
   </div>
 
-    <script>
+  <script>
     document.addEventListener('submit', async function(event) {
       const form = event.target;
 
@@ -507,31 +503,45 @@
       const originalText = button.textContent;
 
       button.disabled = true;
-      button.textContent = 'Added';
+      button.textContent = 'Adding...';
 
       try {
         const formData = new FormData(form);
-        formData.append('quantity', '1');
 
-        const response = await fetch('/cart/add.js', {
+        if (!formData.get('quantity')) {
+          formData.append('quantity', '1');
+        }
+
+        const addResponse = await fetch('/cart/add.js', {
           method: 'POST',
           body: formData
         });
 
-        if (!response.ok) {
-          throw new Error('Add to cart failed');
+        if (!addResponse.ok) {
+          const errorData = await addResponse.json();
+          throw new Error(errorData.description || 'Add to cart failed');
         }
 
-        setTimeout(() => {
-          button.disabled = false;
-          button.textContent = originalText;
-        }, 700);
+        const response = await fetch('/?section_id=cart-drawer');
+        const html = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        const newDrawer = doc.querySelector('cart-drawer');
+        const currentDrawer = document.querySelector('cart-drawer');
+
+        if (newDrawer && currentDrawer) {
+          currentDrawer.innerHTML = newDrawer.innerHTML;
+          currentDrawer.classList.remove('is-empty');
+          currentDrawer.classList.add('active');
+        }
 
       } catch (error) {
-        console.error(error);
+        console.error('Add to cart error:', error);
         button.disabled = false;
-        button.textContent = 'Error';
+        button.textContent = originalText;
       }
     });
-    </script>
+  </script>
 </cart-drawer>
