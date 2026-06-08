@@ -514,7 +514,7 @@
                     <span>{{ product.price | money }}</span>
                   </a>
 
-                  <form class="drawer-upsell-form">
+                  <form method="post" action="{{ routes.cart_add_url }}">
                     <input
                       type="hidden"
                       name="id"
