@@ -49,6 +49,33 @@
           "type": "description",
           "settings": {}
         },
+        "collapsible_tab_Erd3jx": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "icon": "star",
+            "content": "<p>{{ product.description }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_QpiTPX": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping",
+            "icon": "truck",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_GreJTg": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Return",
+            "icon": "return",
+            "content": "",
+            "page": ""
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -64,6 +91,9 @@
         "quantity_selector",
         "buy_buttons",
         "description",
+        "collapsible_tab_Erd3jx",
+        "collapsible_tab_QpiTPX",
+        "collapsible_tab_GreJTg",
         "share"
       ],
       "settings": {
