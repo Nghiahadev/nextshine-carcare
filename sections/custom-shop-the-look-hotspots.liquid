@@ -5,10 +5,13 @@
 
       {% for block in section.blocks %}
         {% assign product = block.settings.product %}
+
         {% if product != blank %}
-          <div class="stl-product {% if forloop.first %}active{% endif %}" data-product="{{ block.id }}">
+          <div class="stl-product {% if forloop.first %}active{% endif %}" data-product="{{ block.id }}" {{ block.shopify_attributes }}>
             <a href="{{ product.url }}">
-              <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.title | escape }}">
+              {% if product.featured_image != blank %}
+                <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.title | escape }}">
+              {% endif %}
             </a>
 
             <h3>{{ product.title }}</h3>
@@ -17,20 +20,21 @@
             {% if product.available %}
               <p class="stl-stock">Available</p>
 
-              <form class="stl-add-form">
+              <form class="drawer-upsell-form">
                 <input
                   type="hidden"
                   name="id"
                   value="{{ product.selected_or_first_available_variant.id }}"
                 >
+
                 <button type="submit" class="stl-add-btn">
-                  Add to Cart
+                  ADD TO CART
                 </button>
               </form>
             {% else %}
               <p class="stl-stock">Sold out</p>
               <button class="stl-add-btn soldout" disabled>
-                Sold Out
+                SOLD OUT
               </button>
             {% endif %}
           </div>
@@ -121,27 +125,61 @@
 }
 
 .stl-add-btn {
-  width: 100%;
-  padding: 15px 22px;
-  background: #111;
-  color: #fff;
-  border: 1px solid #111;
-  font-size: 13px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  --color: #38A800;
+  padding: 14px 28px;
+  background: transparent;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  transition: all .3s ease;
+  transition: .5s;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px solid var(--color);
+  font-family: inherit;
+  text-transform: uppercase;
+  display: inline-block;
+  color: var(--color);
+  z-index: 1;
+}
+
+.stl-add-btn::before,
+.stl-add-btn::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.stl-add-btn::before {
+  top: -1em;
+  left: -1em;
+}
+
+.stl-add-btn::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.stl-add-btn:hover::before,
+.stl-add-btn:hover::after {
+  width: 420px;
+  height: 420px;
 }
 
 .stl-add-btn:hover {
-  background: #fff;
-  color: #111;
+  color: #fff;
 }
 
 .stl-add-btn.soldout {
-  background: #ccc;
-  border-color: #ccc;
-  color: #666;
+  --color: #ccc;
+  color: #777;
   cursor: not-allowed;
 }
 
@@ -256,41 +294,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (activeProduct) {
           activeProduct.classList.add("active");
         }
-      });
-    });
-
-    const forms = section.querySelectorAll(".stl-add-form");
-
-    forms.forEach(function(form) {
-      form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const button = form.querySelector(".stl-add-btn");
-        const formData = new FormData(form);
-
-        button.textContent = "Adding...";
-        button.disabled = true;
-
-        fetch("/cart/add.js", {
-          method: "POST",
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          button.textContent = "Added";
-
-          document.dispatchEvent(new CustomEvent("cart:refresh"));
-          document.dispatchEvent(new CustomEvent("cart:open"));
-
-          setTimeout(() => {
-            button.textContent = "Add to Cart";
-            button.disabled = false;
-          }, 1500);
-        })
-        .catch(error => {
-          button.textContent = "Error";
-          button.disabled = false;
-        });
       });
     });
   });
