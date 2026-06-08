@@ -491,7 +491,7 @@
     </div>
   </div>
 
-  <script>
+    <script>
     document.addEventListener('submit', async function(event) {
       const form = event.target;
 
@@ -500,36 +500,34 @@
       event.preventDefault();
 
       const button = form.querySelector('button');
+      const originalText = button.textContent;
+
       button.disabled = true;
-      button.textContent = 'Adding...';
+      button.textContent = 'Added';
 
       try {
         const formData = new FormData(form);
+        formData.append('quantity', '1');
 
-        await fetch('/cart/add.js', {
+        const response = await fetch('/cart/add.js', {
           method: 'POST',
           body: formData
         });
 
-        const response = await fetch('/?section_id=cart-drawer');
-        const html = await response.text();
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-
-        const newDrawer = doc.querySelector('cart-drawer');
-        const currentDrawer = document.querySelector('cart-drawer');
-
-        if (newDrawer && currentDrawer) {
-          currentDrawer.innerHTML = newDrawer.innerHTML;
-          currentDrawer.classList.remove('is-empty');
-          currentDrawer.classList.add('active');
+        if (!response.ok) {
+          throw new Error('Add to cart failed');
         }
+
+        setTimeout(() => {
+          button.disabled = false;
+          button.textContent = originalText;
+        }, 700);
+
       } catch (error) {
-        console.error('Upsell add to cart error:', error);
+        console.error(error);
         button.disabled = false;
-        button.textContent = 'Add to Cart';
+        button.textContent = 'Error';
       }
     });
-  </script>
+    </script>
 </cart-drawer>
