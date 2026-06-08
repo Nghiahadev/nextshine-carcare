@@ -34,10 +34,20 @@
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
+    },
+    "mystery_box_slot_aFqr9h": {
+      "type": "mystery-box-slot",
+      "name": "Mystery Box Slot",
+      "settings": {
+        "heading": "Mystery Box Slot Machine",
+        "subheading": "Stop 5 columns to reveal your mystery box items.",
+        "mystery_product": ""
+      }
     }
   },
   "order": [
     "main",
-    "image_banner_cQPeDP"
+    "image_banner_cQPeDP",
+    "mystery_box_slot_aFqr9h"
   ]
 }
