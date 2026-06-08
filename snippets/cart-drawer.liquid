@@ -474,6 +474,49 @@
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
       </cart-drawer-items>
+      {% assign free_shipping_goal = 8000 %}
+{% assign cart_total = cart.total_price %}
+{% assign remaining = free_shipping_goal | minus: cart_total %}
+
+<div class="drawer-free-shipping">
+  {% if remaining > 0 %}
+    <p>You are <strong>{{ remaining | money }}</strong> away from free shipping</p>
+  {% else %}
+    <p><strong>You unlocked free shipping!</strong></p>
+  {% endif %}
+
+  {% assign progress = cart_total | times: 100 | divided_by: free_shipping_goal %}
+  {% if progress > 100 %}
+    {% assign progress = 100 %}
+  {% endif %}
+
+  <div class="drawer-progress">
+    <span style="width: {{ progress }}%;"></span>
+  </div>
+</div>
+
+<div class="drawer-upsell">
+  <h3>You may also like</h3>
+
+  <div class="drawer-upsell-grid">
+    {% assign upsell_collection = collections['best-sellers'] %}
+
+    {% for product in upsell_collection.products limit: 4 %}
+      <div class="drawer-upsell-card">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | image_url: width: 200 }}" alt="{{ product.title }}">
+          <p>{{ product.title }}</p>
+          <span>{{ product.price | money }}</span>
+        </a>
+
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit">Add to Cart</button>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
+</div>
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
