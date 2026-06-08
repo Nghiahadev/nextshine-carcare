@@ -27,8 +27,12 @@
             <h3>{{ product.title }}</h3>
             <p class="nx-price">{{ product.price | money }}</p>
 
-            <form method="post" action="/cart/add">
-              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <form class="drawer-upsell-form">
+                    <input
+                      type="hidden"
+                      name="id"
+                      value="{{ product.selected_or_first_available_variant.id }}"
+                    >
               <button type="submit" class="btn5">
                 ADD TO CART
               </button>
