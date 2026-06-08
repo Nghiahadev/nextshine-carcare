@@ -1,0 +1,411 @@
+{% comment %}
+  Mystery Box Slot Machine for Shopify Dawn
+{% endcomment %}
+
+<section class="mystery-slot-page">
+  <div class="mystery-container">
+
+    {% if customer == nil %}
+      <div class="mystery-login-box">
+        <h1>{{ section.settings.heading }}</h1>
+        <p>Please login to play Mystery Box.</p>
+        <a class="mystery-btn" href="/account/login?return_url={{ request.path }}">
+          Login to Spin
+        </a>
+      </div>
+    {% else %}
+
+      <h1>{{ section.settings.heading }}</h1>
+      <p class="mystery-subtitle">{{ section.settings.subheading }}</p>
+
+      <div id="already-played-message" class="mystery-hidden">
+        <h2>You already played today.</h2>
+        <p>Please come back tomorrow.</p>
+      </div>
+
+      <div id="mystery-game">
+        <div class="slot-grid">
+          {% for i in (1..5) %}
+            <div class="slot-column" data-column="{{ forloop.index0 }}">
+              <div class="slot-window">
+                <div class="slot-reel">
+                  {% for block in section.blocks %}
+                    <div class="slot-item">
+                      {% if block.settings.image != blank %}
+                        <img src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.title }}">
+                      {% endif %}
+                      <span>{{ block.settings.title }}</span>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <button class="stop-btn" data-stop="{{ forloop.index0 }}" disabled>
+                Stop {{ forloop.index }}
+              </button>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="mystery-actions">
+          <button id="start-btn" class="mystery-btn">Start Mystery Box</button>
+          <button id="add-cart-btn" class="mystery-btn mystery-hidden">Add Mystery Box To Cart</button>
+        </div>
+
+        <div class="mystery-result">
+          <h2>Your Mystery Box</h2>
+          <ol id="result-list"></ol>
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const customerId = "{{ customer.id }}";
+          const today = new Date().toISOString().slice(0, 10);
+          const playKey = `mystery_box_played_${customerId}_${today}`;
+
+          const alreadyPlayedMessage = document.getElementById("already-played-message");
+          const game = document.getElementById("mystery-game");
+          const startBtn = document.getElementById("start-btn");
+          const addCartBtn = document.getElementById("add-cart-btn");
+          const stopButtons = document.querySelectorAll(".stop-btn");
+          const reels = document.querySelectorAll(".slot-reel");
+          const resultList = document.getElementById("result-list");
+
+          const mysteryVariantId = "{{ section.settings.mystery_product.selected_or_first_available_variant.id }}";
+
+          const prizes = [
+            {% for block in section.blocks %}
+              {
+                title: {{ block.settings.title | json }},
+                image: {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 200 | json }}{% else %}null{% endif %}
+              }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ];
+
+          let results = [];
+          let currentColumn = 0;
+          let started = false;
+
+          if (localStorage.getItem(playKey)) {
+            alreadyPlayedMessage.classList.remove("mystery-hidden");
+            game.classList.add("mystery-hidden");
+            return;
+          }
+
+          startBtn.addEventListener("click", function () {
+            if (started) return;
+            started = true;
+
+            reels.forEach(reel => {
+              reel.classList.add("spinning");
+            });
+
+            stopButtons[0].disabled = false;
+            startBtn.disabled = true;
+            startBtn.innerText = "Spinning...";
+          });
+
+          stopButtons.forEach(button => {
+            button.addEventListener("click", function () {
+              const columnIndex = Number(this.dataset.stop);
+
+              if (columnIndex !== currentColumn) return;
+
+              const prize = prizes[Math.floor(Math.random() * prizes.length)];
+              results.push(prize.title);
+
+              const reel = reels[columnIndex];
+              reel.classList.remove("spinning");
+
+              reel.innerHTML = `
+                <div class="slot-item slot-winner">
+                  ${prize.image ? `<img src="${prize.image}" alt="${prize.title}">` : ""}
+                  <span>${prize.title}</span>
+                </div>
+              `;
+
+              const li = document.createElement("li");
+              li.textContent = prize.title;
+              resultList.appendChild(li);
+
+              this.disabled = true;
+              currentColumn++;
+
+              if (currentColumn < stopButtons.length) {
+                stopButtons[currentColumn].disabled = false;
+              } else {
+                addCartBtn.classList.remove("mystery-hidden");
+                startBtn.classList.add("mystery-hidden");
+                localStorage.setItem(playKey, "true");
+              }
+            });
+          });
+
+          addCartBtn.addEventListener("click", function () {
+            if (!mysteryVariantId) {
+              alert("Please select Mystery Box product in section settings.");
+              return;
+            }
+
+            addCartBtn.disabled = true;
+            addCartBtn.innerText = "Adding...";
+
+            fetch("/cart/add.js", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify({
+                id: Number(mysteryVariantId),
+                quantity: 1,
+                properties: {
+                  "Mystery Item 1": results[0] || "",
+                  "Mystery Item 2": results[1] || "",
+                  "Mystery Item 3": results[2] || "",
+                  "Mystery Item 4": results[3] || "",
+                  "Mystery Item 5": results[4] || ""
+                }
+              })
+            })
+            .then(response => response.json())
+            .then(data => {
+              window.location.href = "/cart";
+            })
+            .catch(error => {
+              console.error(error);
+              alert("Something went wrong. Please try again.");
+              addCartBtn.disabled = false;
+              addCartBtn.innerText = "Add Mystery Box To Cart";
+            });
+          });
+        });
+      </script>
+
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .mystery-slot-page {
+    padding: 60px 20px;
+    background: #070707;
+    color: #fff;
+    min-height: 80vh;
+  }
+
+  .mystery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mystery-container h1 {
+    font-size: 42px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .mystery-subtitle {
+    color: #ccc;
+    margin-bottom: 40px;
+  }
+
+  .slot-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+
+  .slot-column {
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+
+  .slot-window {
+    height: 180px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #fff;
+    color: #000;
+    margin-bottom: 15px;
+    position: relative;
+  }
+
+  .slot-reel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slot-reel.spinning {
+    animation: slotSpin 0.45s linear infinite;
+  }
+
+  .slot-item {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .slot-item img {
+    max-width: 90px;
+    max-height: 90px;
+    object-fit: contain;
+  }
+
+  .slot-winner {
+    background: #fff7d6;
+  }
+
+  @keyframes slotSpin {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-540px);
+    }
+  }
+
+  .stop-btn,
+  .mystery-btn {
+    border: none;
+    background: #f5c542;
+    color: #000;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .stop-btn:hover,
+  .mystery-btn:hover {
+    transform: translateY(-2px);
+    background: #ffd95a;
+  }
+
+  .stop-btn:disabled,
+  .mystery-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .mystery-actions {
+    margin: 30px 0;
+  }
+
+  .mystery-result {
+    background: #111;
+    border-radius: 18px;
+    padding: 25px;
+    max-width: 500px;
+    margin: 30px auto 0;
+    border: 1px solid #333;
+  }
+
+  .mystery-result h2 {
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  #result-list {
+    text-align: left;
+    color: #fff;
+    font-size: 17px;
+  }
+
+  #result-list li {
+    margin-bottom: 8px;
+  }
+
+  .mystery-hidden {
+    display: none !important;
+  }
+
+  .mystery-login-box {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 50px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 900px) {
+    .slot-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .slot-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mystery-container h1 {
+      font-size: 32px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Mystery Box Slot",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Mystery Box Slot Machine"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Stop 5 columns to reveal your mystery box items."
+    },
+    {
+      "type": "product",
+      "id": "mystery_product",
+      "label": "Mystery Box Product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "prize",
+      "name": "Prize Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Prize name",
+          "default": "Ocean"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Prize image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mystery Box Slot"
+    }
+  ]
+}
+{% endschema %}
