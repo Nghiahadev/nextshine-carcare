@@ -69,11 +69,33 @@
     margin: 0 0 12px;
   }
 
-  .drawer-upsell-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
+.drawer-upsell-slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  cursor: grab;
+}
+
+.drawer-upsell-slider::-webkit-scrollbar {
+  height: 6px;
+}
+
+.drawer-upsell-slider::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 99px;
+}
+
+.drawer-upsell-card {
+  min-width: calc(50% - 6px);
+  max-width: calc(50% - 6px);
+  scroll-snap-align: start;
+  background: #f6fff6;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
 
   .drawer-upsell-card {
     background: #f6fff6;
@@ -369,7 +391,7 @@
         <div class="drawer-upsell">
           <h3>You may also like</h3>
 
-          <div class="drawer-upsell-grid">
+          <div class="drawer-upsell-slider">
             {% if settings.cart_drawer_collection != blank %}
               {% assign upsell_collection = settings.cart_drawer_collection %}
             {% else %}
