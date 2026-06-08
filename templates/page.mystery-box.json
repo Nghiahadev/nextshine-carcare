@@ -21,8 +21,8 @@
       "type": "image-banner",
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/About_Us_banner.png",
-        "image_2": "shopify://shop_images/About_Us_banner_mobile.png",
+        "image": "shopify://shop_images/mysterybanner.png",
+        "image_2": "shopify://shop_images/mysterybanner.png",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",
