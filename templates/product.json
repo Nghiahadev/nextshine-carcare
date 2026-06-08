@@ -129,10 +129,16 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "custom_glowing_VHiJiM": {
+      "type": "custom-glowing",
+      "name": "NextShine Ingredients",
+      "settings": {}
     }
   },
   "order": [
     "main",
+    "custom_glowing_VHiJiM",
     "related-products"
   ]
 }
