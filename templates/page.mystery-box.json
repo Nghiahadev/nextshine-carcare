@@ -38,18 +38,18 @@
     "mystery_box_slot_aFqr9h": {
       "type": "mystery-box-slot",
       "blocks": {
-        "prize_eEwqEb": {
-          "type": "prize",
-          "settings": {
-            "title": "Brush",
-            "image": "shopify://shop_images/Clean.png"
-          }
-        },
         "prize_CTyWMx": {
           "type": "prize",
           "settings": {
             "title": "32oz black ice",
             "image": "shopify://shop_images/Dark_Ice_Ultra_Foam_64oz.webp"
+          }
+        },
+        "prize_eEwqEb": {
+          "type": "prize",
+          "settings": {
+            "title": "Brush",
+            "image": "shopify://shop_images/Clean.png"
           }
         },
         "prize_ckcx4B": {
@@ -82,8 +82,8 @@
         }
       },
       "block_order": [
-        "prize_eEwqEb",
         "prize_CTyWMx",
+        "prize_eEwqEb",
         "prize_ckcx4B",
         "prize_EBQ4HQ",
         "prize_Apbyb7",
